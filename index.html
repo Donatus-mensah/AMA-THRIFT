@@ -1,0 +1,2359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMA THRIFT AND CLOTHING</title>
+    
+    <!-- SECURITY SCRIPT: Blocks Ctrl+U, DevTools, & Save immediately -->
+    <script>
+        (function() {
+            function blockSource(e) {
+                const isCtrl = e.ctrlKey || e.metaKey;
+                if (isCtrl && (e.key === 'u' || e.key === 'U' || e.keyCode === 85)) {
+                    e.preventDefault(); e.stopPropagation();
+                    if(window.logToBash) window.logToBash('SECURITY ALERT: View Source attempt [Ctrl+U] blocked.', 'error');
+                    return false;
+                }
+                if (isCtrl && e.shiftKey && (e.key === 'i' || e.key === 'I' || e.key === 'j' || e.key === 'J')) {
+                    e.preventDefault(); e.stopPropagation();
+                    if(window.logToBash) window.logToBash('SECURITY ALERT: DevTools attempt blocked.', 'error');
+                    return false;
+                }
+                if (isCtrl && (e.key === 's' || e.key === 'S')) {
+                    e.preventDefault(); e.stopPropagation();
+                    if(window.logToBash) window.logToBash('SECURITY ALERT: Save Page attempt blocked.', 'warning');
+                    return false;
+                }
+                if (e.key === 'F12' || e.keyCode === 123) {
+                    e.preventDefault(); e.stopPropagation();
+                    if(window.logToBash) window.logToBash('SECURITY ALERT: F12 DevTools blocked.', 'error');
+                    return false;
+                }
+            }
+            document.addEventListener('keydown', blockSource, true);
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                if(window.logToBash) window.logToBash('MOUSE EVENT: Right-click context menu blocked.', 'warning');
+            }, true);
+            window.addEventListener('load', function() {
+                document.addEventListener('keydown', blockSource, true);
+            });
+        })();
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Enable Tailwind Dark Mode via class to fix dark: utilities -->
+    <script>tailwind.config = { darkMode: 'class' }</script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- PAYSTACK -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
+    <style>
+        /* * --- THEME VARIABLES (Transparent & Opened Up) --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --text-color-muted: #4b5563;
+            --text-color-inverted: #f8fafc;
+            --text-color-brand: #22c55e;
+            --text-color-logo: #000000;
+            --text-color-logo-brand: #22c55e;
+
+            /* Enhanced Transparency */
+            --bg-glass-effect: rgba(255, 255, 255, 0.65);
+            --border-glass-effect: rgba(0, 0, 0, 0.05);
+            
+            --bg-preloader: #ffffff;
+            --preloader-crystal: #4ade80;
+            
+            --bg-card: rgba(255, 255, 255, 0.75);
+            --border-card: rgba(0, 0, 0, 0.08);
+            
+            --bg-input: rgba(245, 245, 245, 0.7);
+            --border-input: rgba(0, 0, 0, 0.1);
+            --input-focus-ring: #4ade80;
+
+            --bg-section-muted: rgba(240, 253, 244, 0.5); /* Very light, transparent green tint */
+            
+            --bg-button: #4ade80;
+            --text-button: #000000;
+            --bg-button-hover: #22c55e;
+
+            --scrollbar-track: transparent;
+            --scrollbar-thumb: rgba(74, 222, 128, 0.5);
+            --scrollbar-thumb-hover: #22c55e;
+
+            --hero-image-brightness: brightness(0.9);
+            --hero-overlay-bg: rgba(255, 255, 255, 0.6);
+            --hero-text-color: #000000;
+            --hero-subtext-color: #333333;
+
+            --icon-color: #000000;
+            --icon-color-hover: #22c55e;
+
+            /* Bash Terminal Variables */
+            --bash-bg: rgba(0, 0, 0, 0.85);
+            --bash-text: #4ade80;
+            --bash-border: #22c55e;
+        }
+
+        html.dark {
+            --bg-color: #050505;
+            --text-color: #ffffff;
+            --text-color-muted: #d1d5db;
+            --text-color-inverted: #000000;
+            --text-color-brand: #4ade80;
+            --text-color-logo: #ffffff;
+            --text-color-logo-brand: #4ade80;
+
+            /* Enhanced Transparency */
+            --bg-glass-effect: rgba(10, 10, 10, 0.65);
+            --border-glass-effect: rgba(74, 222, 128, 0.1);
+
+            --bg-preloader: #050505;
+            --preloader-crystal: #4ade80;
+
+            --bg-card: rgba(20, 20, 20, 0.65);
+            --border-card: rgba(74, 222, 128, 0.15);
+
+            --bg-input: rgba(30, 30, 30, 0.6);
+            --border-input: rgba(74, 222, 128, 0.2);
+            --input-focus-ring: #4ade80;
+
+            --bg-section-muted: rgba(15, 20, 15, 0.5);
+
+            --bg-button: #4ade80;
+            --text-button: #000000;
+            --bg-button-hover: #22c55e;
+
+            --scrollbar-track: transparent;
+            --scrollbar-thumb: rgba(74, 222, 128, 0.5);
+            --scrollbar-thumb-hover: #22c55e;
+
+            --hero-image-brightness: brightness(0.4);
+            --hero-overlay-bg: rgba(0, 0, 0, 0.5);
+            --hero-text-color: #ffffff;
+            --hero-subtext-color: #e5e7eb;
+            
+            --icon-color: #ffffff;
+            --icon-color-hover: #4ade80;
+        }
+
+        /* Custom Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .logo-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .glass-effect {
+            background-color: var(--bg-glass-effect);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-glass-effect);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .nav-link.active {
+            color: var(--text-color-logo-brand);
+            position: relative;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background-color: var(--text-color-logo-brand);
+            border-radius: 50%;
+        }
+
+        .page { display: none; animation: fadeIn 0.6s ease-out; }
+        .page.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Bash Terminal Styles */
+        #bash-terminal {
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 250px;
+            background-color: var(--bash-bg); border-top: 1px solid var(--bash-border);
+            backdrop-filter: blur(8px);
+            z-index: 10000; font-family: 'Fira Code', monospace; display: flex;
+            flex-direction: column; box-shadow: 0 -5px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease-in-out; transform: translateY(100%);
+        }
+        #bash-terminal.open { transform: translateY(0); }
+        .bash-header {
+            background-color: rgba(0,0,0,0.5); padding: 8px 16px; border-bottom: 1px solid var(--bash-border);
+            display: flex; justify-content: space-between; align-items: center; color: #888;
+            font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .bash-content { flex: 1; padding: 12px 16px; overflow-y: auto; color: var(--bash-text); font-size: 13px; }
+        .bash-line { margin-bottom: 4px; line-height: 1.4; display: flex; }
+        .bash-time { color: #666; margin-right: 12px; min-width: 75px; }
+        .bash-prompt { color: var(--text-color-brand); margin-right: 8px; }
+        .bash-msg-error { color: #ef4444; }
+        .bash-msg-warning { color: #facc15; }
+        .bash-msg-success { color: #4ade80; }
+        .bash-msg-info { color: #60a5fa; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+        ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
+
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--bg-preloader); z-index: 9999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 0.5s ease-out;
+        }
+        .loader-crystal {
+            width: 40px; height: 40px; border: 3px solid var(--preloader-crystal);
+            border-radius: 8px; animation: rotate 2s infinite linear;
+        }
+        #preloader-text { color: var(--preloader-crystal); transition: color 0.3s ease; }
+        @keyframes rotate {
+            0% { transform: rotate(0deg) scale(0.9); }
+            50% { transform: rotate(180deg) scale(1.0); }
+            100% { transform: rotate(360deg) scale(0.9); }
+        }
+
+        #hero-carousel-container { position: relative; width: 100%; height: 100vh; }
+        #hero-carousel { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0; }
+        #hero-carousel img {
+            width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;
+            opacity: 0; transition: opacity 1.5s ease-in-out; filter: var(--hero-image-brightness);
+        }
+        #hero-carousel img.active { opacity: 1; }
+        .content-overlay {
+            position: relative; z-index: 10; min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 5rem;
+        }
+        .hero-content-box {
+            background-color: var(--hero-overlay-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            padding: 2rem; border-radius: 1rem; max-width: 90%; width: 48rem; transition: background-color 0.3s ease;
+        }
+        .hero-content-box h1 { color: var(--hero-text-color); }
+        .hero-content-box p { color: var(--hero-subtext-color); }
+        .hero-explore-btn { background-color: var(--bg-button); color: var(--text-button); }
+        .hero-explore-btn:hover { background-color: var(--bg-button-hover); }
+
+        .product-image { width: 100%; height: 220px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 12px; }
+        @media (min-width: 768px) {
+            .product-image { height: 260px; }
+        }
+        
+        .category-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .category-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+
+        #popup-message {
+            transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+            transform: translateY(30px); opacity: 0;
+        }
+        #popup-message.popup-show { transform: translateY(0); opacity: 1; }
+        
+        .marquee-container { -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); }
+        #marquee-content { animation: marquee 35s linear infinite; }
+        .marquee-container:hover #marquee-content { animation-play-state: paused; }
+        @keyframes marquee { from { transform: translateX(0%); } to { transform: translateX(-50%); } }
+        
+        .text-muted { color: var(--text-color-muted); }
+        .text-brand { color: var(--text-color-brand); }
+        .text-logo { color: var(--text-color-logo); }
+        .text-logo-brand { color: var(--text-color-logo-brand); }
+        
+        /* Opened up glassy elements */
+        .bg-card { 
+            background-color: var(--bg-card); 
+            border: 1px solid var(--border-card); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            transition: background-color 0.3s ease, border-color 0.3s ease; 
+        }
+        .bg-section-muted { 
+            background-color: var(--bg-section-muted); 
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: background-color 0.3s ease; 
+        }
+        .bg-input {
+            background-color: var(--bg-input); color: var(--text-color); border: 1px solid var(--border-input);
+            backdrop-filter: blur(4px);
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+        .bg-input:focus { outline: none; box-shadow: 0 0 0 2px var(--input-focus-ring); border-color: transparent; }
+        
+        .bg-button { background-color: var(--bg-button); color: var(--text-button); }
+        .bg-button:hover { background-color: var(--bg-button-hover); }
+        .icon-button { color: var(--icon-color); }
+        .icon-button:hover { color: var(--icon-color-hover); }
+        .nav-link { color: var(--text-color); }
+        .nav-link:hover { color: var(--text-color-logo-brand); }
+        html.dark .nav-link { color: #f8fafc; }
+        .nav-link-mobile { color: var(--text-color); }
+        .nav-link-mobile:hover { color: var(--text-color-logo-brand); }
+        .glass-effect .logo-span-1 { color: var(--text-color-logo); }
+        .glass-effect .logo-span-2 { color: var(--text-color-logo-brand); }
+    </style>
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-crystal"></div>
+        <p id="preloader-text" class="mt-4 logo-font text-sm md:text-lg font-semibold tracking-widest uppercase">Loading Collection...</p>
+    </div>
+
+    <!-- 3D Background Canvas -->
+    <div id="canvas-container"></div>
+    
+    <!-- REAL-TIME BASH TERMINAL -->
+    <div id="bash-terminal">
+        <div class="bash-header">
+            <span>System Terminal [v3.0.0] - Connected</span>
+            <span class="text-[10px] normal-case opacity-70">Press 'Ctrl + `' to toggle</span>
+        </div>
+        <div id="bash-content" class="bash-content"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="glass-effect shadow-sm fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-3 md:py-4">
+                <!-- Logo -->
+                <a href="#home" class="text-2xl md:text-3xl font-bold logo-font nav-link tracking-tight" data-page="home">
+                    <span class="logo-span-1">AMA</span>
+                    <span class="text-logo-brand logo-span-2"> THRIFT</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-6 lg:space-x-8 font-semibold text-xs lg:text-sm uppercase tracking-wider">
+                    <a href="#home" class="nav-link hover:text-green-500 transition-colors duration-300 active" data-page="home">Home</a>
+                    <a href="#categories" class="nav-link hover:text-green-500 transition-colors duration-300" data-page="categories">Categories</a>
+                    <a href="#explore" class="nav-link hover:text-green-500 transition-colors duration-300" data-page="explore">Explore</a>
+                    <a href="#locate-us" class="nav-link hover:text-green-500 transition-colors duration-300" data-page="locate-us">Locate Us</a>
+                </nav>
+
+                <!-- Action Icons & Enhanced Features -->
+                <div class="flex items-center space-x-3 sm:space-x-5">
+                    <button id="theme-toggle" class="icon-button transition-colors duration-300">
+                        <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                        <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                    </button>
+                    
+                    <!-- Search Icon -->
+                    <button id="search-icon" class="icon-button transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    </button>
+
+                    <!-- User Profile Icon -->
+                    <div class="relative">
+                        <button id="user-icon" class="icon-button transition-colors duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </button>
+                        <!-- User Dropdown (Dynamic based on Auth) -->
+                        <div id="user-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-card rounded-lg shadow-lg z-50 py-2 border border-gray-200 dark:border-gray-800">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Wishlist (Heart) Icon -->
+                    <a href="#wishlist" class="nav-link icon-button transition-colors duration-300 relative" data-page="wishlist">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                        <span id="wishlist-badge" class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] w-4 h-4 md:w-5 md:h-5 rounded-full flex items-center justify-center font-bold hidden shadow">0</span>
+                    </a>
+
+                    <!-- Cart Icon -->
+                    <a href="#cart" class="nav-link icon-button transition-colors duration-300 relative" data-page="cart">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+                        <span id="cart-badge" class="absolute -top-2 -right-2 bg-green-500 text-black text-[10px] w-4 h-4 md:w-5 md:h-5 rounded-full flex items-center justify-center font-bold hidden shadow">0</span>
+                    </a>
+
+                    <button id="mobile-menu-button" class="md:hidden icon-button transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Search Dropdown with Visual Search (Camera) -->
+            <div id="search-dropdown" class="hidden absolute right-0 mr-4 mt-2 p-3 md:p-4 bg-card rounded-lg shadow-xl z-20 w-64 md:w-72 border border-gray-200 dark:border-gray-800">
+                <div class="relative">
+                    <input id="search-input" type="text" placeholder="Search for items..." class="w-full pl-3 pr-10 py-2 text-sm bg-input rounded-md focus:outline-none border border-gray-200 dark:border-gray-700">
+                    <button id="visual-search-btn" title="Visual Image Search" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-green-500 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/><path d="m19 6 1.5-1.5"/><path d="m18.5 3.5.5.5"/><path d="m20.5 4.5.5.5"/></svg>
+                    </button>
+                    <input type="file" id="visual-search-input" class="hidden" accept="image/*">
+                </div>
+                <div id="recent-searches-container" class="hidden mt-3 mb-1">
+                    <p class="text-[10px] md:text-xs font-bold text-muted mb-2 uppercase tracking-wider">Recent Searches</p>
+                    <div id="recent-searches-list" class="flex flex-wrap gap-2"></div>
+                </div>
+                <button id="search-button" class="mt-3 w-full text-sm bg-button text-button py-2 rounded-md hover:bg-button-hover transition-colors duration-300 font-semibold">Search</button>
+            </div>
+        </div>
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden p-4 glass-effect border-t border-gray-200 dark:border-gray-800">
+            <nav class="flex flex-col space-y-4 text-center text-sm font-semibold uppercase tracking-wider">
+                <a href="#home" class="nav-link-mobile hover:text-green-500 transition-colors duration-300 active" data-page="home">Home</a>
+                <a href="#categories" class="nav-link-mobile hover:text-green-500 transition-colors duration-300" data-page="categories">Categories</a>
+                <a href="#explore" class="nav-link-mobile hover:text-green-500 transition-colors duration-300" data-page="explore">Explore</a>
+                <a href="#locate-us" class="nav-link-mobile hover:text-green-500 transition-colors duration-300" data-page="locate-us">Locate Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="relative pt-14 md:pt-16">
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <div id="hero-carousel-container">
+                <div id="hero-carousel"></div>
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center content-overlay">
+                    <div class="hero-content-box shadow-xl border border-gray-200/50 dark:border-gray-800/50">
+                        <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold logo-font mb-3 md:mb-4 leading-tight tracking-tight">Curating Your Unique Style</h1>
+                        <p class="text-sm sm:text-base md:text-lg lg:text-xl mb-6 md:mb-8 font-medium">Discover a world of premium thrift clothing, where every piece tells a unique story.</p>
+                        <div class="flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-4 mb-6 md:mb-8">
+                            <a href="#explore" class="hero-explore-btn font-bold py-2 px-6 sm:py-3 sm:px-8 rounded-full text-sm sm:text-base transition-all duration-300 transform hover:scale-105 inline-block nav-link w-full sm:w-auto" data-page="explore">Explore Collection</a>
+                             <a href="#new-arrivals" class="bg-black/90 dark:bg-white/90 text-white dark:text-black font-bold py-2 px-6 sm:py-3 sm:px-8 rounded-full text-sm sm:text-base transition-all duration-300 transform hover:scale-105 inline-block nav-link border border-gray-700 dark:border-gray-300 w-full sm:w-auto" data-page="new-arrivals">Shop New Arrivals</a>
+                        </div>
+                         <p class="text-xs sm:text-sm italic font-semibold tracking-wide" style="color: var(--hero-subtext-color);">Free delivery on orders within Accra</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trending Now Section -->
+            <section id="trending-products" class="py-12 md:py-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between items-end mb-6 md:mb-10 border-b border-gray-200 dark:border-gray-800 pb-2">
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font">Trending Now <span class="text-brand">🔥</span></h2>
+                        <a href="#explore" class="nav-link text-sm md:text-base text-brand font-semibold hover:underline" data-page="explore">View All</a>
+                    </div>
+                    <div id="trending-product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"></div>
+                </div>
+            </section>
+
+            <!-- Deals and Discounts Section -->
+            <section id="deals-products" class="py-12 md:py-16 bg-section-muted border-t border-b border-gray-200/50 dark:border-gray-800/50">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between items-end mb-6 md:mb-10 border-b border-gray-200 dark:border-gray-800 pb-2">
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font">Clearance & Deals <span class="text-red-500">🏷️</span></h2>
+                        <a href="#explore" class="nav-link text-sm md:text-base text-brand font-semibold hover:underline" data-page="explore">View All</a>
+                    </div>
+                    <div id="deals-product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"></div>
+                </div>
+            </section>
+
+            <!-- Featured Collections Section -->
+            <section id="featured-products" class="py-12 md:py-20">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12">New Arrivals</h2>
+                    <div id="featured-product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"></div>
+                </div>
+            </section>
+            
+            <section id="why-us" class="py-12 md:py-20 bg-section-muted">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12">Why Choose Ama Thrift</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 text-center">
+                        <div class="p-4 md:p-6 bg-card rounded-xl shadow-sm">
+                            <div class="flex items-center justify-center h-12 w-12 md:h-16 md:w-16 rounded-full bg-green-500/20 text-green-500 mx-auto mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 md:h-8 md:w-8"><path d="M6 3h12l4 6-10 13L2 9Z" /><path d="M12 22V9" /><path d="m3.29 9 8.71 13 8.71-13" /></svg>
+                            </div>
+                            <h3 class="text-lg md:text-xl font-semibold logo-font mb-2">Premium Quality</h3>
+                            <p class="text-sm md:text-base text-muted">We source the finest, gently-used materials to provide luxurious and long-lasting outfits.</p>
+                        </div>
+                        <div class="p-4 md:p-6 bg-card rounded-xl shadow-sm">
+                            <div class="flex items-center justify-center h-12 w-12 md:h-16 md:w-16 rounded-full bg-green-500/20 text-green-500 mx-auto mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 md:h-8 md:w-8"><path d="m12 3-1.9 5.8-5.8 1.9 5.8 1.9L12 18l1.9-5.8 5.8-1.9-5.8-1.9L12 3z" /><path d="M5 3v4" /><path d="M19 17v4" /><path d="M3 5h4" /><path d="M17 19h4" /></svg>
+                            </div>
+                            <h3 class="text-lg md:text-xl font-semibold logo-font mb-2">Unique Styles</h3>
+                            <p class="text-sm md:text-base text-muted">Discover your signature look from our exclusive and diverse clothing collection.</p>
+                        </div>
+                        <div class="p-4 md:p-6 bg-card rounded-xl shadow-sm">
+                            <div class="flex items-center justify-center h-12 w-12 md:h-16 md:w-16 rounded-full bg-green-500/20 text-green-500 mx-auto mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 md:h-8 md:w-8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" /><path d="M14.5 9.1c-1.2-1.2-3.1-1.2-4.2 0-1.2 1.2-1.2 3.1 0 4.2.6.6 1.3.9 2.1.9s1.5-.3 2.1-.9c1.2-1.2 1.2-3.1 0-4.2" /></svg>
+                            </div>
+                            <h3 class="text-lg md:text-xl font-semibold logo-font mb-2">Exceptional Service</h3>
+                            <p class="text-sm md:text-base text-muted">Our dedicated team is here to help you find the perfect fit and styling.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="testimonials" class="py-12 md:py-20 overflow-hidden">
+                <div class="container mx-auto">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12">What Our Customers Say</h2>
+                    <div class="marquee-container relative h-40 md:h-48">
+                         <div id="marquee-content" class="flex absolute top-0 left-0"></div>
+                    </div>
+                    <div class="text-center mt-8 md:mt-12 px-4">
+                        <button id="add-testimonial-btn" class="w-full sm:w-auto bg-button text-button font-semibold py-3 px-8 rounded-full hover:bg-button-hover transition-colors duration-300">Leave a Review</button>
+                    </div>
+                    <div id="testimonial-form-container" class="hidden mt-8 max-w-2xl mx-auto px-4">
+                        <div id="testimonial-confirmation" class="hidden text-center bg-green-900/50 border border-green-500 p-3 md:p-4 rounded-lg mb-4">
+                            <p class="text-green-400 font-semibold text-sm md:text-base">Thank you for your review!</p>
+                        </div>
+                        <form id="testimonial-form" class="space-y-4 bg-card p-6 md:p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800">
+                            <h3 class="text-xl md:text-2xl font-semibold logo-font text-center mb-4">Share Your Experience</h3>
+                            <input type="text" id="testimonial-name" placeholder="Your Name" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md">
+                            <textarea id="testimonial-comment" placeholder="Your review..." required rows="4" class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md"></textarea>
+                            <button type="submit" class="w-full mt-4 bg-button text-button font-bold py-3 px-8 rounded-full hover:bg-button-hover transition-colors duration-300">Submit Review</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Categories Page -->
+        <div id="categories-page" class="page pt-8 md:pt-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12">Shop by Category</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Cards -->
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer category-card" data-category="Female">
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=800" alt="Female" class="w-full h-48 md:h-64 object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1a1a1a/4ade80?text=Female'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <h3 class="absolute bottom-4 left-4 md:bottom-6 md:left-6 text-2xl md:text-3xl font-bold logo-font text-white drop-shadow-md">Female</h3>
+                    </div>
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer category-card" data-category="Male">
+                        <img src="https://images.unsplash.com/photo-1490578474895-699bc4e3f44f?auto=format&fit=crop&q=80&w=800" alt="Male" class="w-full h-48 md:h-64 object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1a1a1a/4ade80?text=Male'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <h3 class="absolute bottom-4 left-4 md:bottom-6 md:left-6 text-2xl md:text-3xl font-bold logo-font text-white drop-shadow-md">Male</h3>
+                    </div>
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer category-card" data-category="Unisex">
+                        <img src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?auto=format&fit=crop&q=80&w=800" alt="Unisex" class="w-full h-48 md:h-64 object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1a1a1a/4ade80?text=Unisex'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <h3 class="absolute bottom-4 left-4 md:bottom-6 md:left-6 text-2xl md:text-3xl font-bold logo-font text-white drop-shadow-md">Unisex</h3>
+                    </div>
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer category-card" data-category="Kids">
+                        <img src="https://images.unsplash.com/photo-1519241047957-be31d7379a5d?auto=format&fit=crop&q=80&w=800" alt="Kids" class="w-full h-48 md:h-64 object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1a1a1a/4ade80?text=Kids'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <h3 class="absolute bottom-4 left-4 md:bottom-6 md:left-6 text-2xl md:text-3xl font-bold logo-font text-white drop-shadow-md">Kids</h3>
+                    </div>
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer category-card" data-category="Vintage">
+                        <img src="https://images.unsplash.com/photo-1550614000-4b95d4662d9b?auto=format&fit=crop&q=80&w=800" alt="Vintage Collections" class="w-full h-48 md:h-64 object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1a1a1a/4ade80?text=Vintage'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <h3 class="absolute bottom-4 left-4 md:bottom-6 md:left-6 text-2xl md:text-3xl font-bold logo-font text-white drop-shadow-md">Vintage</h3>
+                    </div>
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer category-card" data-category="Accessories">
+                        <img src="https://images.unsplash.com/photo-1611080920405-c1c41df3c0c5?auto=format&fit=crop&q=80&w=800" alt="Accessories" class="w-full h-48 md:h-64 object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1a1a1a/4ade80?text=Accessories'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <h3 class="absolute bottom-4 left-4 md:bottom-6 md:left-6 text-2xl md:text-3xl font-bold logo-font text-white drop-shadow-md">Accessories</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Explore Page -->
+        <div id="explore-page" class="page pt-8 md:pt-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12">Our Collection</h2>
+                <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"></div>
+            </div>
+        </div>
+
+        <!-- Wishlist Page -->
+        <div id="wishlist-page" class="page pt-8 md:pt-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12 flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-500 fill-current md:w-9 md:h-9"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                    Your Wishlist
+                </h2>
+                <div id="wishlist-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"></div>
+            </div>
+        </div>
+        
+        <!-- Product Detail Page (PDP) -->
+        <div id="product-detail-page" class="page pt-8 md:pt-16">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+                <button id="back-to-explore-btn" class="mb-6 flex items-center text-sm md:text-base font-semibold text-muted hover:text-green-500 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 md:w-5 md:h-5 mr-2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                    Back to Collection
+                </button>
+                <div id="product-detail-content" class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start bg-card p-4 sm:p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800">
+                    <div id="pdp-image-container" class="flex flex-col gap-4 relative">
+                        <!-- Images and thumbnails will be injected here via JS -->
+                    </div>
+                    <div id="pdp-info-container" class="flex flex-col h-full justify-center">
+                        <h1 id="pdp-name" class="text-3xl sm:text-4xl md:text-5xl font-bold logo-font mb-2 leading-tight"></h1>
+                        <p id="pdp-category" class="text-sm md:text-base text-brand uppercase tracking-widest font-semibold mb-4"></p>
+                        <p id="pdp-price" class="text-2xl md:text-4xl font-bold text-brand mb-6"></p>
+                         <div class="mb-8">
+                            <h3 class="text-lg md:text-xl font-semibold logo-font mb-2">Item Description</h3>
+                            <p id="pdp-description" class="text-sm md:text-base text-muted leading-relaxed"></p>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4 mb-8">
+                            <div class="bg-card p-3 rounded-lg border-t-4 border-t-green-500 text-center shadow-sm">
+                                <p class="text-[10px] md:text-xs text-muted uppercase tracking-wider mb-1 font-semibold">Size</p>
+                                <p id="pdp-size" class="font-bold text-sm md:text-base" style="color: var(--text-color);"></p>
+                            </div>
+                            <div class="bg-card p-3 rounded-lg border-t-4 border-t-green-500 text-center shadow-sm">
+                                <p class="text-[10px] md:text-xs text-muted uppercase tracking-wider mb-1 font-semibold">Quality</p>
+                                <p id="pdp-quality" class="font-bold text-sm md:text-base" style="color: var(--text-color);"></p>
+                            </div>
+                            <div class="bg-card p-3 rounded-lg border-t-4 border-t-green-500 text-center col-span-2 sm:col-span-1 shadow-sm">
+                                <p class="text-[10px] md:text-xs text-muted uppercase tracking-wider mb-1 font-semibold">Fabric</p>
+                                <p id="pdp-fabric" class="font-bold text-sm md:text-base" style="color: var(--text-color);"></p>
+                            </div>
+                        </div>
+                        <button id="pdp-add-to-cart-btn" class="add-to-cart-btn w-full bg-button text-button font-bold py-3 md:py-4 px-6 md:px-8 rounded-full text-base md:text-lg hover:bg-button-hover transition-colors duration-300 shadow-md transform hover:scale-[1.02]">Add to Bag</button>
+                    </div>
+                </div>
+
+                <!-- Similar Items Section (Intelligent Matching) -->
+                <div id="similar-items-section" class="mt-12 md:mt-16 hidden">
+                    <h3 class="text-2xl sm:text-3xl font-bold logo-font mb-6 md:mb-8 text-center border-b border-gray-200 dark:border-gray-800 pb-3" style="color: var(--text-color);">You May Also Like</h3>
+                    <div id="similar-items-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"></div>
+                </div>
+             </div>
+        </div>
+        
+        <!-- New Arrivals Page -->
+        <div id="new-arrivals-page" class="page pt-8 md:pt-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12">Freshly Handpicked: New Arrivals</h2>
+                <div id="new-arrivals-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"></div>
+            </div>
+        </div>
+
+        <!-- My Account Page -->
+        <div id="account-page" class="page pt-8 md:pt-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 max-w-6xl">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12">My Account</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Profile Settings -->
+                    <div class="lg:col-span-1 bg-card p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 h-fit">
+                        <h3 class="text-xl font-bold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Profile Settings</h3>
+                        <form id="profile-form" class="space-y-4">
+                            <div>
+                                <label class="text-xs text-muted font-bold uppercase">Name</label>
+                                <input type="text" id="profile-name" class="w-full px-3 py-2 text-sm bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500 border border-gray-300 dark:border-gray-700" required>
+                            </div>
+                            <div>
+                                <label class="text-xs text-muted font-bold uppercase">Email Address</label>
+                                <input type="email" id="profile-email" class="w-full px-3 py-2 text-sm bg-input rounded-md outline-none opacity-60 cursor-not-allowed border border-gray-300 dark:border-gray-700" readonly>
+                            </div>
+                            <div>
+                                <label class="text-xs text-muted font-bold uppercase">Phone Number</label>
+                                <input type="tel" id="profile-phone" placeholder="e.g. 024XXXXXXX" class="w-full px-3 py-2 text-sm bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500 border border-gray-300 dark:border-gray-700">
+                            </div>
+                            <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
+                                <label class="text-xs text-muted font-bold uppercase">Change Password</label>
+                                <input type="password" id="profile-password" placeholder="Leave blank to keep current" class="w-full px-3 py-2 mt-1 text-sm bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500 border border-gray-300 dark:border-gray-700">
+                            </div>
+                            <button type="submit" class="w-full bg-button text-button font-bold py-3 rounded-full hover:bg-button-hover transition-colors shadow-md">Update Profile</button>
+                        </form>
+                    </div>
+                    <!-- Purchase History -->
+                    <div class="lg:col-span-2 bg-card p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800">
+                        <h3 class="text-xl font-bold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Purchase Records</h3>
+                        <div id="order-history-list" class="space-y-4 max-h-[500px] overflow-y-auto pr-2">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- About Us Page -->
+        <div id="about-page" class="page pt-8 md:pt-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+                <div class="text-center bg-card p-6 md:p-10 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font mb-4">Our Story</h2>
+                    <p class="text-sm sm:text-base md:text-lg text-muted max-w-3xl mx-auto leading-relaxed">Ama Thrift and Clothing was born from a passion for sustainable, unique fashion. Founded on the belief that a great outfit expresses individuality, we set out to curate high-quality, pre-loved clothes that tell a story.</p>
+                </div>
+                <div class="my-12 md:my-20 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <div class="bg-card p-6 md:p-10 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 h-full flex flex-col justify-center">
+                        <h3 class="text-2xl md:text-3xl font-bold logo-font mb-4 text-brand">Our Mission & Values</h3>
+                        <p class="text-sm md:text-base text-muted mb-6 leading-relaxed">To provide unforgettable fashion experiences through exceptional thrift collections, combining affordability with modern style. We are committed to quality, sustainability, and celebrating individuality.</p>
+                        <ul class="space-y-4 text-sm md:text-base">
+                            <li class="flex items-start"><span class="text-brand mr-3 mt-1 font-bold">✓</span> <span class="text-muted"><strong>Quality:</strong> Using only the finest, carefully inspected pieces.</span></li>
+                            <li class="flex items-start"><span class="text-brand mr-3 mt-1 font-bold">✓</span> <span class="text-muted"><strong>Sustainability:</strong> Promoting a circular fashion economy.</span></li>
+                            <li class="flex items-start"><span class="text-brand mr-3 mt-1 font-bold">✓</span> <span class="text-muted"><strong>Customer Delight:</strong> Ensuring a personal and memorable shopping experience.</span></li>
+                        </ul>
+                    </div>
+                    <div class="rounded-2xl overflow-hidden shadow-xl h-64 md:h-full min-h-[300px]">
+                        <img src="https://images.unsplash.com/photo-1558769132-cb1fac08b4af?auto=format&fit=crop&q=80&w=800" alt="Our Store" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="text-center my-12 md:my-20">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font mb-8 md:mb-12">Meet The Team</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                        <div class="team-member-card cursor-pointer transform hover:scale-105 transition-all duration-300 bg-card p-6 md:p-8 rounded-2xl text-center shadow-lg border border-gray-200 dark:border-gray-800" data-member="ama">
+                             <img src="https://placehold.co/200x200/0a0a0a/4ade80?text=A.M." alt="Founder" class="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto mb-4 border-2 border-green-500 shadow-md">
+                             <h4 class="text-lg md:text-xl font-semibold logo-font">Ama Thrift</h4>
+                             <p class="text-sm md:text-base text-brand font-medium">Founder & Head Stylist</p>
+                        </div>
+                         <div class="team-member-card cursor-pointer transform hover:scale-105 transition-all duration-300 bg-card p-6 md:p-8 rounded-2xl text-center shadow-lg border border-gray-200 dark:border-gray-800" data-member="kb">
+                             <img src="https://placehold.co/200x200/0a0a0a/4ade80?text=K.B." alt="Lead Sourcing" class="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto mb-4 border-2 border-green-500 shadow-md">
+                             <h4 class="text-lg md:text-xl font-semibold logo-font">K.B. Asante</h4>
+                             <p class="text-sm md:text-base text-brand font-medium">Head of Collection & Sourcing</p>
+                        </div>
+                         <div class="team-member-card cursor-pointer transform hover:scale-105 transition-all duration-300 bg-card p-6 md:p-8 rounded-2xl text-center shadow-lg border border-gray-200 dark:border-gray-800 sm:col-span-2 lg:col-span-1" data-member="dontus">
+                             <img src="https://tatxyrbbezljpcvubueu.supabase.co/storage/v1/object/public/ADMINS/DONATUS%20(1).jpg" alt="Customer Relations" class="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto mb-4 border-2 border-green-500 shadow-md">
+                             <h4 class="text-lg md:text-xl font-semibold logo-font">Dontus Ernest Mensah</h4>
+                             <p class="text-sm md:text-base text-brand font-medium">Customer Experience Lead</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Careers Page -->
+        <div id="careers-page" class="page pt-8 md:pt-16">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+                 <div class="text-center bg-card p-6 md:p-10 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 mb-12">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font mb-4">Join Our Styling Team</h2>
+                    <p class="text-sm sm:text-base md:text-lg text-muted max-w-3xl mx-auto">We are a team of passionate fashion curators and sustainability advocates. If you share our love for thrift fashion, we invite you to explore a career with us.</p>
+                </div>
+                 <div class="text-center">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font mb-8 md:mb-12">Open Positions</h2>
+                    <div id="application-confirmation" class="hidden max-w-md mx-auto text-center bg-green-900/50 border border-green-500 p-4 md:p-6 rounded-xl mb-8 shadow-md">
+                        <p class="text-green-400 font-semibold text-sm md:text-base">Thank you! Your application details are being opened in your email client.</p>
+                    </div>
+                    <div class="space-y-6 max-w-3xl mx-auto text-left">
+                        <div class="bg-card p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800">
+                            <h3 class="text-lg md:text-xl font-semibold logo-font text-brand">Thrift Curator & Stylist (Full-Time)</h3>
+                            <p class="text-sm md:text-base text-muted mt-2 mb-4">We're looking for an enthusiastic individual with a sharp eye for fashion to guide our customers on their style discovery journey.</p>
+                            <a href="#apply" data-page="application" data-job-title="Thrift Curator & Stylist (Full-Time)" class="apply-now-btn nav-link inline-block bg-button text-button font-bold py-2 px-6 rounded-full text-sm md:text-base hover:bg-button-hover transition-colors duration-300 shadow">Apply Now</a>
+                        </div>
+                         <div class="bg-card p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800">
+                            <h3 class="text-lg md:text-xl font-semibold logo-font text-brand">Social Media Manager</h3>
+                            <p class="text-sm md:text-base text-muted mt-2 mb-4">Join our marketing team to showcase our daily drops. Experience with social media (TikTok/IG Reels) and content creation is required.</p>
+                            <a href="#apply" data-page="application" data-job-title="Social Media Manager" class="apply-now-btn nav-link inline-block bg-button text-button font-bold py-2 px-6 rounded-full text-sm md:text-base hover:bg-button-hover transition-colors duration-300 shadow">Apply Now</a>
+                        </div>
+                    </div>
+                 </div>
+             </div>
+        </div>
+
+        <!-- Application Page -->
+        <div id="application-page" class="page pt-8 md:pt-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl py-8 md:py-12">
+                <button id="back-to-careers-btn" class="nav-link mb-6 flex items-center text-sm md:text-base font-semibold text-muted hover:text-green-500 transition-colors duration-300" data-page="careers">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 md:w-5 md:h-5 mr-2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                    Back to Open Positions
+                </button>
+                 <div id="application-form">
+                     <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font mb-6 md:mb-8 text-center">Apply Now</h3>
+                     <form id="career-application-form" class="space-y-4 md:space-y-5 bg-card p-6 md:p-10 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800">
+                         <div class="pt-2">
+                             <label for="career-job-title-display" class="block text-sm md:text-base text-muted font-semibold mb-2">Applying for:</label>
+                             <input id="career-job-title-display" type="text" readonly class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md text-green-500 font-bold border-l-4 border-green-500 outline-none">
+                             <input type="hidden" id="career-job-title">
+                         </div>
+                         <input id="career-name" type="text" placeholder="Full Name" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500">
+                         <input id="career-email" type="email" placeholder="Email Address" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500">
+                         <div class="pt-2">
+                             <label for="career-resume" class="block text-sm md:text-base text-muted font-semibold mb-2">Upload Your Resume</label>
+                             <input id="career-resume" type="file" required class="w-full text-sm text-muted file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs md:file:text-sm file:font-semibold file:bg-button file:text-button hover:file:bg-button-hover cursor-pointer"/>
+                             <p class="text-[10px] md:text-xs text-muted mt-2 italic">Note: You will be asked to attach this file in the email client that opens.</p>
+                         </div>
+                         <textarea id="career-message" placeholder="Tell us why you're a great fit..." required rows="4" class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500"></textarea>
+                         <button type="submit" class="w-full mt-4 bg-button text-button font-bold py-3 md:py-4 px-8 rounded-full text-base md:text-lg hover:bg-button-hover transition-all duration-300 shadow-md transform hover:scale-[1.02]">Submit Application</button>
+                     </form>
+                 </div>
+            </div>
+        </div>
+        
+        <!-- Cart Page -->
+        <div id="cart-page" class="page pt-8 md:pt-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12">Your Shopping Bag</h2>
+                <div id="cart-items" class="bg-card p-4 md:p-8 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800"></div>
+                <div id="cart-summary" class="mt-6 md:mt-8 text-right"></div>
+            </div>
+        </div>
+        
+        <!-- Checkout Page -->
+        <div id="checkout-page" class="page pt-8 md:pt-16">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12">Checkout</h2>
+                
+                <div id="order-confirmation" class="hidden text-center bg-green-900/40 backdrop-blur-md border border-green-500 p-6 md:p-10 rounded-2xl shadow-2xl">
+                    <h3 class="text-2xl md:text-3xl font-bold logo-font text-green-400 mb-4">Payment Successful! Thank You!</h3>
+                    <p class="text-sm md:text-base text-slate-200 mb-6 max-w-lg mx-auto">Your order has been processed via Paystack successfully. Your Order ID is: <strong id="confirmed-order-id" class="text-green-400 bg-black/50 px-2 py-1 rounded"></strong>. Use this ID to track your shipment.</p>
+                    <a href="#account" class="bg-button text-button font-bold py-3 px-8 rounded-full text-sm md:text-base hover:bg-button-hover transition-colors duration-300 nav-link shadow-md inline-block mr-2" data-page="account">View Order Record</a>
+                    <a href="#home" class="bg-gray-600 text-white font-bold py-3 px-8 rounded-full text-sm md:text-base hover:bg-gray-500 transition-colors duration-300 nav-link shadow-md inline-block mt-2 sm:mt-0" data-page="home">Continue Shopping</a>
+                </div>
+                
+                <div id="details-confirmation" class="hidden bg-card p-6 md:p-10 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800">
+                    <h3 class="text-xl md:text-2xl font-semibold logo-font mb-6 border-b border-gray-200 dark:border-gray-700 pb-3">Confirm Your Details</h3>
+                    <div id="confirmation-summary" class="space-y-4 text-sm md:text-base text-muted border-b border-gray-200 dark:border-gray-700 pb-6 mb-6">
+                        <p class="flex items-start"><strong class="w-24 shrink-0">Name:</strong> <span id="confirm-name" style="color: var(--text-color);" class="font-medium"></span></p>
+                        <p class="flex items-start"><strong class="w-24 shrink-0">Email:</strong> <span id="confirm-email" style="color: var(--text-color);" class="font-medium"></span></p>
+                        <p class="flex items-start"><strong class="w-24 shrink-0">Phone:</strong> <span id="confirm-phone" style="color: var(--text-color);" class="font-medium"></span></p>
+                        <p class="flex items-start"><strong class="w-24 shrink-0">Address:</strong> <span id="confirm-address" style="color: var(--text-color);" class="block whitespace-pre-wrap font-medium"></span></p>
+                    </div>
+                    <div class="mt-8 flex flex-col sm:flex-row justify-end gap-3 md:gap-4">
+                        <button id="edit-details-btn" class="bg-gray-600/80 backdrop-blur text-white font-bold py-3 px-6 rounded-full text-sm md:text-base hover:bg-gray-500 transition-colors duration-300 shadow-md">Edit Details</button>
+                        <button id="confirm-order-btn" class="bg-green-600 text-white font-bold py-3 px-6 rounded-full text-sm md:text-base hover:bg-green-500 transition-colors duration-300 flex items-center justify-center shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 md:w-5 md:h-5 mr-2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 15 5 5 5-5"/><path d="M12 20v-7"/></svg>
+                            Pay via Paystack
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="checkout-content" class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+                    <div class="bg-card p-6 md:p-8 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800">
+                        <h3 class="text-xl md:text-2xl font-semibold logo-font mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">Delivery Details</h3>
+                        <form id="checkout-form" class="space-y-4 md:space-y-5">
+                             <input id="fullname" type="text" placeholder="Full Name" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500">
+                             <input id="email" type="email" placeholder="Email Address" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500">
+                             <input id="phone" type="tel" placeholder="Phone Number (e.g. 024XXXXXXX)" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500">
+                             
+                             <div class="space-y-3 mt-4 bg-section-muted p-4 rounded-xl border border-gray-200/50 dark:border-gray-700/50">
+                                <label class="block text-sm md:text-base font-semibold mb-1 text-brand">Delivery Region</label>
+                                <div class="flex flex-col space-y-3">
+                                    <label class="flex items-center cursor-pointer p-3 bg-card rounded-lg border border-transparent hover:border-green-400 transition-all shadow-sm">
+                                        <input type="radio" name="delivery_zone" value="accra" checked class="mr-3 w-5 h-5 text-green-500 focus:ring-green-500 cursor-pointer accent-green-500">
+                                        <span class="text-sm md:text-base font-medium">Within Accra (Free)</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer p-3 bg-card rounded-lg border border-transparent hover:border-green-400 transition-all shadow-sm">
+                                        <input type="radio" name="delivery_zone" value="outside" class="mr-3 w-5 h-5 text-green-500 focus:ring-green-500 cursor-pointer accent-green-500">
+                                        <span class="text-sm md:text-base font-medium">Outside Accra (+<span class="delivery-fee-display text-red-500 font-bold">GH₵50.00</span>)</span>
+                                    </label>
+                                </div>
+                             </div>
+
+                             <div id="outside-location-container" class="hidden transition-all duration-300">
+                                 <input id="delivery-location" type="text" placeholder="Enter Specific City/Region" class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md mt-2 border-l-4 border-green-500 outline-none">
+                             </div>
+
+                             <textarea id="address" placeholder="Specific House/Street Address" required rows="3" class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500"></textarea>
+                             
+                             <p id="phone-error" class="text-red-500 hidden text-xs md:text-sm font-semibold bg-red-500/10 border border-red-500/20 p-3 rounded-lg">❌ Please enter a valid 10+ digit phone number to proceed.</p>
+                             
+                             <button type="submit" class="w-full mt-6 bg-button text-button font-bold py-3 md:py-4 px-8 rounded-full text-base md:text-lg hover:bg-button-hover transition-all duration-300 shadow-md transform hover:scale-[1.02]">Verify Details & Proceed</button>
+                        </form>
+                    </div>
+                    <div id="checkout-summary-container" class="bg-card p-6 md:p-8 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800 h-fit sticky top-24">
+                        <h3 class="text-xl md:text-2xl font-semibold logo-font mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">Order Summary</h3>
+                         <div id="checkout-summary"></div>
+                    </div>
+                </div>
+             </div>
+        </div>
+
+        <!-- FAQs Page -->
+        <div id="faqs-page" class="page pt-8 md:pt-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl py-8 md:py-12">
+                <div class="bg-card p-6 md:p-10 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12">Frequently Asked Questions</h2>
+                    <div class="space-y-4">
+                        <details class="bg-input p-4 md:p-5 rounded-xl cursor-pointer border border-gray-200/50 dark:border-gray-700/50 shadow-sm transition-all open:ring-1 open:ring-green-500">
+                            <summary class="font-semibold text-base md:text-lg text-brand outline-none">What are your delivery options?</summary>
+                            <p class="mt-4 text-sm md:text-base text-muted pl-4 border-l-2 border-green-500">We offer free delivery within Accra and a standard flat fee for regions outside Accra.</p>
+                        </details>
+                        <details class="bg-input p-4 md:p-5 rounded-xl cursor-pointer border border-gray-200/50 dark:border-gray-700/50 shadow-sm transition-all open:ring-1 open:ring-green-500">
+                            <summary class="font-semibold text-base md:text-lg text-brand outline-none">Are the thrift items washed and clean?</summary>
+                            <p class="mt-4 text-sm md:text-base text-muted pl-4 border-l-2 border-green-500">Yes, all our items go through a rigorous quality check and are professionally laundered before being listed.</p>
+                        </details>
+                        <details class="bg-input p-4 md:p-5 rounded-xl cursor-pointer border border-gray-200/50 dark:border-gray-700/50 shadow-sm transition-all open:ring-1 open:ring-green-500">
+                            <summary class="font-semibold text-base md:text-lg text-brand outline-none">What is your return policy?</summary>
+                            <p class="mt-4 text-sm md:text-base text-muted pl-4 border-l-2 border-green-500">Due to the nature of thrift clothing, we generally do not accept returns unless the item has a major undisclosed defect. We encourage checking sizes carefully!</p>
+                        </details>
+                        <details class="bg-input p-4 md:p-5 rounded-xl cursor-pointer border border-gray-200/50 dark:border-gray-700/50 shadow-sm transition-all open:ring-1 open:ring-green-500">
+                            <summary class="font-semibold text-base md:text-lg text-brand outline-none">How can I track my order?</summary>
+                            <p class="mt-4 text-sm md:text-base text-muted pl-4 border-l-2 border-green-500">Once your order is processed, you can use your unique Order ID on our tracking page to check its real-time status.</p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Terms & Conditions Page -->
+        <div id="terms-page" class="page pt-8 md:pt-16">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl py-8 md:py-12">
+                <div class="bg-card p-6 md:p-10 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12">Terms & Conditions</h2>
+                    <div class="space-y-6 md:space-y-8 text-sm md:text-base text-muted leading-relaxed">
+                        <div><h3 class="text-xl md:text-2xl font-semibold logo-font text-brand mb-2">1. Introduction</h3><p>Welcome to Ama Thrift and Clothing. These terms and conditions outline the rules and regulations for the use of our website. By accessing this site, we assume you accept these terms.</p></div>
+                        <div><h3 class="text-xl md:text-2xl font-semibold logo-font text-brand mb-2">2. Product Descriptions</h3><p>We do our best to accurately display the colors, features, and conditions of the products. As these are curated thrift items, minor wear and tear may be present and will be noted in the description.</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Tracking Page -->
+        <div id="tracking-page" class="page pt-8 md:pt-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl py-8 md:py-12">
+                <div class="bg-card p-6 md:p-10 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-6 md:mb-8">Track Your Order</h2>
+                    <form id="tracking-form" class="flex flex-col sm:flex-row items-center gap-3">
+                        <input id="order-id-input" type="text" placeholder="Order ID (e.g., AMAT-123456)" required class="w-full sm:flex-grow px-4 py-3 text-sm md:text-base bg-input rounded-lg border border-gray-300 dark:border-gray-700 outline-none focus:ring-2 focus:ring-green-500">
+                        <button type="submit" class="w-full sm:w-auto bg-button text-button font-bold py-3 px-8 rounded-lg hover:bg-button-hover transition-colors duration-300 shadow-md">Track</button>
+                    </form>
+                    <div id="tracking-results" class="mt-6 md:mt-8"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Privacy Policy Page -->
+        <div id="privacy-page" class="page pt-8 md:pt-16">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl py-8 md:py-12">
+                <div class="bg-card p-6 md:p-10 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12">Privacy Policy</h2>
+                    <div class="space-y-6 md:space-y-8 text-sm md:text-base text-muted leading-relaxed">
+                        <div><h3 class="text-lg md:text-xl font-semibold logo-font text-brand mb-2">Last Updated: October 2025</h3><p>Ama Thrift and Clothing is committed to protecting your privacy. We use your data strictly to process orders and improve your shopping experience.</p></div>
+                        <div><h3 class="text-xl md:text-2xl font-semibold logo-font text-brand mb-2">Contact Us</h3><p>If you have questions or comments about this Privacy Policy, please contact us at: <a href="mailto:nyaa4266@gmail.com" class="text-brand font-bold hover:underline">nyaa4266@gmail.com</a></p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Us Page -->
+        <div id="contact-page" class="page pt-8 md:pt-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl py-8 md:py-12">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12">Get In Touch</h2>
+                <div id="contact-confirmation" class="hidden max-w-md mx-auto text-center bg-green-900/50 backdrop-blur border border-green-500 p-4 md:p-6 rounded-xl mb-8 shadow-md">
+                    <p class="text-green-400 font-semibold text-sm md:text-base">Thank you! Your message has been received.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+                    <div class="bg-card p-6 md:p-10 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800">
+                        <h3 class="text-xl md:text-2xl font-semibold logo-font mb-6 text-brand">Send Us a Message</h3>
+                        <form id="contact-form" class="space-y-4 md:space-y-5">
+                            <input id="contact-name" type="text" placeholder="Your Name" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md border-l-4 border-green-500 outline-none focus:ring-2 focus:ring-green-500">
+                            <input id="contact-email" type="email" placeholder="Your Email" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500">
+                            <textarea id="contact-message" placeholder="Your Message..." required rows="5" class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500"></textarea>
+                            <button type="submit" class="w-full mt-4 bg-button text-button font-bold py-3 md:py-4 px-8 rounded-full text-base md:text-lg hover:bg-button-hover transition-all duration-300 shadow-md transform hover:scale-[1.02]">Send Message</button>
+                        </form>
+                    </div>
+                    <div class="space-y-8 text-muted pt-4 md:pl-6">
+                        <h3 class="text-xl md:text-2xl font-semibold logo-font mb-6" style="color: var(--text-color);">Contact Information</h3>
+                         <div class="bg-section-muted p-5 rounded-xl shadow-sm border border-gray-200/50 dark:border-gray-700/50"><h4 class="font-bold text-brand text-base md:text-lg flex items-center"><span class="mr-2">📍</span>Address</h4><p class="pl-8 text-sm md:text-base mt-1">OLD ESTATE SSNIT TRAFFIC - Koforidua, Ghana</p></div>
+                        <div class="bg-section-muted p-5 rounded-xl shadow-sm border border-gray-200/50 dark:border-gray-700/50"><h4 class="font-bold text-brand text-base md:text-lg flex items-center"><span class="mr-2">📞</span>Phone</h4><p class="pl-8 text-sm md:text-base mt-1">+233 54 020 3780</p></div>
+                        <div class="bg-section-muted p-5 rounded-xl shadow-sm border border-gray-200/50 dark:border-gray-700/50"><h4 class="font-bold text-brand text-base md:text-lg flex items-center"><span class="mr-2">📧</span>Email</h4><p class="pl-8 text-sm md:text-base mt-1"><a href="mailto:nyaa4266@gmail.com" class="hover:underline text-brand font-medium">nyaa4266@gmail.com</a></p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Locate Us Page -->
+        <div id="locate-us-page" class="page pt-8 md:pt-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12">Visit Ama Thrift</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center bg-card p-6 md:p-10 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800">
+                    <div class="space-y-6 md:space-y-8">
+                        <div><img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&q=80&w=800" alt="Ama Thrift Storefront" class="rounded-xl shadow-md w-full h-48 sm:h-64 object-cover"></div>
+                        <div class="bg-section-muted p-6 rounded-xl border border-gray-200/50 dark:border-gray-700/50">
+                            <h3 class="text-xl md:text-2xl font-semibold logo-font text-brand mb-4">Store Details</h3>
+                            <div class="space-y-3 text-sm md:text-base text-muted">
+                                <p class="flex items-start"><span class="text-brand mr-3 mt-1 text-lg">📍</span> <span>OLD ESTATE SSNIT TRAFFIC <br> Koforidua, Ghana</span></p>
+                                <p class="flex items-start"><span class="text-brand mr-3 mt-1 text-lg">📞</span> <span>+233 54 020 3780</span></p>
+                                 <p class="flex items-start"><span class="text-brand mr-3 mt-1 text-lg">📧</span> <a href="mailto:nyaa4266@gmail.com" class="hover:underline text-brand font-medium">nyaa4266@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div>
+                             <button id="get-directions-btn" class="w-full bg-button text-button font-bold py-3 md:py-4 px-8 rounded-full text-base md:text-lg hover:bg-button-hover transition-all duration-300 flex items-center justify-center shadow-md transform hover:scale-[1.02]">Get Directions</button>
+                        </div>
+                    </div>
+                    <div class="h-64 sm:h-96 lg:h-full w-full rounded-xl overflow-hidden border-2 border-green-500/30 shadow-inner">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!m12!1m3!1d480.06761737989615!2d-0.2768482514723241!3d6.088829161661174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf4177e5643815%3A0x673dd6b90e838488!2sECPL%20Koforidua%20Retail!5e0!3m2!1sen!2sgh!4v1761069061683!5m2!1sen!2sgh" class="w-full h-full min-h-[300px]" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-effect mt-auto border-t border-gray-200 dark:border-gray-800 shadow-[0_-10px_20px_rgba(0,0,0,0.05)] text-sm md:text-base">
+        <div class="container mx-auto px-6 md:px-8 py-10 md:py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div>
+                <h3 class="font-bold text-base md:text-lg mb-4 text-brand uppercase tracking-wider">Company</h3>
+                <div class="mb-2 w-fit"><a href="#about" class="nav-link inline-block hover:text-green-500 transition-colors duration-300 font-medium" data-page="about">About Us</a></div>
+                <div class="mb-2 w-fit"><a href="#careers" class="nav-link inline-block hover:text-green-500 transition-colors duration-300 font-medium" data-page="careers">Careers</a></div>
+                <div class="mb-2 w-fit"><a href="#contact" class="nav-link inline-block hover:text-green-500 transition-colors duration-300 font-medium" data-page="contact">Contact Us</a></div>
+                <div class="mb-2 w-fit"><a href="#locate-us" class="nav-link inline-block hover:text-green-500 transition-colors duration-300 font-medium" data-page="locate-us">Locate Store</a></div>
+            </div>
+            <div>
+                <h3 class="font-bold text-base md:text-lg mb-4 text-brand uppercase tracking-wider">Help</h3>
+                <div class="mb-2 w-fit"><a href="#tracking" class="nav-link inline-block hover:text-green-500 transition-colors duration-300 font-medium" data-page="tracking">Order Tracking</a></div>
+                <div class="mb-2 w-fit"><a href="#faqs" class="nav-link inline-block hover:text-green-500 transition-colors duration-300 font-medium" data-page="faqs">FAQs</a></div>
+                <div class="mb-2 w-fit"><a href="#terms" class="nav-link inline-block hover:text-green-500 transition-colors duration-300 font-medium" data-page="terms">Terms &amp; Conditions</a></div>
+                <div class="mb-2 w-fit"><a href="#privacy" class="nav-link inline-block hover:text-green-500 transition-colors duration-300 font-medium" data-page="privacy">Privacy Policy</a></div>
+            </div>
+            <div>
+                <h3 class="font-bold text-base md:text-lg mb-4 text-brand uppercase tracking-wider">Store</h3>
+                <div class="mb-2 w-fit"><a href="#new-arrivals" class="nav-link inline-block hover:text-green-500 transition-colors duration-300 font-medium" data-page="new-arrivals">New Arrivals</a></div>
+                <div class="mb-2 w-fit"><a href="#categories" class="nav-link inline-block hover:text-green-500 transition-colors duration-300 font-medium" data-page="categories">Categories</a></div>
+                <div class="mb-2 w-fit"><a href="#explore" class="nav-link inline-block hover:text-green-500 transition-colors duration-300 font-medium" data-page="explore">Explore</a></div>
+            </div>
+            <div>
+                <h3 class="font-bold text-base md:text-lg mb-4 text-brand uppercase tracking-wider">Follow Us</h3>
+                <p class="mb-4 text-muted font-semibold text-xs md:text-sm">Free delivery on orders within Accra!</p>
+                <div class="flex space-x-4 mt-2">
+                    <a href="#" aria-label="Facebook" class="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-input border border-gray-200 dark:border-gray-800 text-muted hover:bg-green-500 hover:text-black hover:border-green-500 transition-all duration-300 hover:-translate-y-1 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="https://www.instagram.com/ackon.nana?igsh=MXBqcHBxbml4bTloZg==" aria-label="Instagram" class="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-input border border-gray-200 dark:border-gray-800 text-muted hover:bg-green-500 hover:text-black hover:border-green-500 transition-all duration-300 hover:-translate-y-1 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@abaackon_1?is_from_webapp=1&sender_device=pc" aria-label="TikTok" class="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-input border border-gray-200 dark:border-gray-800 text-muted hover:bg-green-500 hover:text-black hover:border-green-500 transition-all duration-300 hover:-translate-y-1 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center py-4 text-xs md:text-sm font-semibold tracking-wide" style="background-color: var(--bg-section-muted); border-top: 1px solid var(--border-card); color: var(--text-color-muted)">
+            &copy; 2026 AMA THRIFT AND CLOTHING. All Rights Reserved.
+        </div>
+    </footer>
+    
+    <!-- General Popup Message -->
+    <div id="popup-message" class="hidden fixed bottom-6 right-6 md:bottom-10 md:right-10 bg-green-800/90 backdrop-blur-md border border-green-500 text-white py-3 px-6 md:py-4 md:px-8 rounded-xl shadow-2xl z-50 font-semibold text-sm md:text-lg">
+        <p>Item action completed!</p>
+    </div>
+
+    <!-- Auth Modal (Sign Up / Sign In) -->
+    <div id="login-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center animation-fade-in px-4">
+        <div class="bg-card p-6 md:p-8 rounded-2xl shadow-2xl max-w-sm w-full relative border border-gray-200 dark:border-gray-800">
+            <button id="close-login-modal" class="absolute top-4 right-4 text-gray-500 hover:text-red-500 font-bold text-xl">×</button>
+            <h3 id="auth-title" class="text-xl md:text-2xl font-bold logo-font text-center mb-6">Welcome Back</h3>
+            <form id="auth-form" class="space-y-4">
+                <input type="text" id="auth-name" placeholder="Full Name" class="hidden w-full px-4 py-3 text-sm md:text-base bg-input rounded-md border border-gray-300 dark:border-gray-700 outline-none focus:ring-2 focus:ring-green-500">
+                <input type="email" id="auth-email" placeholder="Email Address" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md border border-gray-300 dark:border-gray-700 outline-none focus:ring-2 focus:ring-green-500">
+                <input type="password" id="auth-password" placeholder="Password" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md border border-gray-300 dark:border-gray-700 outline-none focus:ring-2 focus:ring-green-500">
+                <button type="submit" id="auth-submit-btn" class="w-full bg-button text-button font-bold py-3 rounded-full text-sm md:text-base hover:bg-button-hover transition-colors shadow-md">Sign In</button>
+                <p class="text-center text-xs md:text-sm text-muted mt-4">
+                    <span id="auth-switch-text">Don't have an account?</span> 
+                    <button type="button" id="auth-toggle-btn" class="text-brand hover:underline font-semibold">Sign up</button>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Team Member Modal -->
+    <div id="team-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center animation-fade-in px-4">
+        <div class="bg-card p-6 md:p-8 rounded-2xl shadow-2xl max-w-md w-full relative border border-gray-200 dark:border-gray-800 text-center">
+            <button id="close-team-modal" class="absolute top-4 right-4 text-gray-500 hover:text-red-500 font-bold text-xl">×</button>
+            <img id="team-modal-img" src="" alt="Team Member" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-green-500 shadow-lg object-cover">
+            <h3 id="team-modal-name" class="text-2xl md:text-3xl font-bold logo-font mb-1" style="color: var(--text-color);"></h3>
+            <p id="team-modal-role" class="text-sm md:text-base text-brand font-semibold mb-4 uppercase tracking-wide"></p>
+            <p id="team-modal-bio" class="text-sm md:text-base text-muted mb-6 leading-relaxed px-2"></p>
+            <div id="team-modal-socials" class="flex justify-center space-x-6">
+                <!-- Social icons injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Three.js and App Logic -->
+    <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }</script>
+   
+   <script type="module">
+        import * as THREE from 'three';
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, getDocs, query } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // === BASH TERMINAL LOGIC ===
+        const bashTerminal = document.getElementById('bash-terminal');
+        const bashContent = document.getElementById('bash-content');
+        
+        window.logToBash = (message, type = 'info') => {
+            if (!bashContent) return;
+            const now = new Date();
+            const timeString = `[${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}]`;
+            
+            const line = document.createElement('div');
+            line.className = 'bash-line';
+            
+            let typeClass = 'bash-msg-info';
+            if (type === 'error') typeClass = 'bash-msg-error';
+            if (type === 'warning') typeClass = 'bash-msg-warning';
+            if (type === 'success') typeClass = 'bash-msg-success';
+
+            line.innerHTML = `
+                <span class="bash-time">${timeString}</span>
+                <span class="bash-prompt">$</span>
+                <span class="${typeClass}">${message}</span>
+            `;
+            bashContent.appendChild(line);
+            bashContent.scrollTop = bashContent.scrollHeight; 
+        };
+
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === '`') {
+                bashTerminal.classList.toggle('open');
+                window.logToBash(bashTerminal.classList.contains('open') ? 'Terminal session opened.' : 'Terminal session hidden.');
+            }
+        });
+
+        window.logToBash('System boot sequence initiated...', 'warning');
+        window.logToBash('Loading Ama Thrift Core Modules...', 'info');
+
+        // === FIREBASE & PAYSTACK SETUP ===
+        const firebaseConfig = {
+            apiKey: "AIzaSyDbgMwGvLZM__NFslkTMu1BKEvbrq70zZc",
+            authDomain: "ama-thrift.firebaseapp.com",
+            projectId: "ama-thrift",
+            storageBucket: "ama-thrift.firebasestorage.app",
+            messagingSenderId: "1080253552308",
+            appId: "1:1080253552308:web:2f770d2b3e6f7aa1a029e1",
+            measurementId: "G-CKL6X0PFB5"
+        };
+        const PAYSTACK_PUBLIC_KEY = 'YOUR_PAYSTACK_PUBLIC_KEY'; 
+        
+        let app, db;
+        try {
+            app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            window.logToBash('Firebase Client: Connected.', 'success');
+        } catch (error) {
+            window.logToBash('Firebase Connection Failed!', 'error');
+        }
+
+        // --- 3D Background Scene ---
+        let scene, camera, renderer, crystal, particles;
+        let mouseX = 0, mouseY = 0;
+        const windowHalfX = window.innerWidth / 2;
+        const windowHalfY = window.innerHeight / 2;
+
+        function init3D() {
+            try {
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.z = 5;
+
+                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(window.devicePixelRatio);
+                document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+                scene.add(ambientLight);
+                const pointLight = new THREE.PointLight(0x4ade80, 1.5, 100);
+                pointLight.position.set(5, 5, 5);
+                scene.add(pointLight);
+
+                const geometry = new THREE.IcosahedronGeometry(1.5, 1);
+                const material = new THREE.MeshStandardMaterial({
+                    color: 0x4ade80, roughness: 0.1, metalness: 0.9, transparent: true, opacity: 0.6, emissive: 0x111111
+                });
+                crystal = new THREE.Mesh(geometry, material);
+                scene.add(crystal);
+
+                const particlesGeometry = new THREE.BufferGeometry();
+                const particlesCount = 5000;
+                const posArray = new Float32Array(particlesCount * 3);
+                for (let i = 0; i < particlesCount * 3; i++) {
+                    posArray[i] = (Math.random() - 0.5) * 25;
+                }
+                particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+                const particlesMaterial = new THREE.PointsMaterial({ size: 0.01, color: 0xffffff, transparent: true, opacity: 0.5 });
+                particles = new THREE.Points(particlesGeometry, particlesMaterial);
+                scene.add(particles);
+
+                document.addEventListener('mousemove', onDocumentMouseMove, false);
+                document.addEventListener('touchmove', onDocumentTouchMove, {passive: true});
+                window.addEventListener('resize', onWindowResize, false);
+                window.logToBash('3D Engine: Initialized.', 'success');
+            } catch (err) {
+                const canvasContainer = document.getElementById('canvas-container');
+                if(canvasContainer) canvasContainer.style.display = 'none';
+                window.logToBash('3D Engine Initialization Failed.', 'error');
+            }
+        }
+
+        function onWindowResize() {
+            if (camera && renderer) {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+        }
+
+        function onDocumentMouseMove(event) {
+            mouseX = (event.clientX - windowHalfX) / 200;
+            mouseY = (event.clientY - windowHalfY) / 200;
+        }
+
+        function onDocumentTouchMove(event) {
+            if(event.touches.length > 0) {
+                mouseX = (event.touches[0].clientX - windowHalfX) / 200;
+                mouseY = (event.touches[0].clientY - windowHalfY) / 200;
+            }
+        }
+
+        function animate3D() {
+            requestAnimationFrame(animate3D);
+            if (crystal && particles && camera && renderer && scene) {
+                crystal.rotation.x += 0.001;
+                crystal.rotation.y += 0.0015;
+                particles.rotation.y += 0.0003;
+                camera.position.x += (mouseX - camera.position.x) * 0.05;
+                camera.position.y += (-mouseY - camera.position.y) * 0.05;
+                camera.lookAt(scene.position);
+                renderer.render(scene, camera);
+            }
+        }
+
+        // --- Application State ---
+        let products = [
+             { id: 101, name: "Emerald Silk Evening Dress", category: "Female", price: 150.00, image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=600", gallery: ["https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&q=80&w=600"], description: "Elegant emerald green slip dress, perfect for evening events. Features an open back and adjustable straps.", fabric: "100% Silk", size: "M (UK 10)", quality: "Like New", longevity: "True to size", new_arrival: true, trending: true },
+             { id: 102, name: "Floral Summer Sundress", category: "Female", price: 95.00, originalPrice: 120.00, image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&q=80&w=600", gallery: ["https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1550639525-c97d455acf70?auto=format&fit=crop&q=80&w=600"], description: "Breezy and light floral dress perfect for sunny days. Has hidden side pockets.", fabric: "Cotton Blend", size: "S (UK 8)", quality: "Gently Used", longevity: "Relaxed fit", new_arrival: true },
+             { id: 103, name: "Vintage Oversized Denim Jacket", category: "Unisex", price: 180.00, image: "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&q=80&w=600", gallery: ["https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&q=80&w=600"], description: "Classic 90s retro oversized denim jacket. Essential for layering in any season.", fabric: "100% Heavy Cotton", size: "L", quality: "Vintage Fade", longevity: "Oversized fit", new_arrival: false, trending: true },
+             { id: 104, name: "Kids Denim Overalls", category: "Kids", price: 65.00, originalPrice: 85.00, image: "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&q=80&w=600", gallery: ["https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&q=80&w=600"], description: "Durable and playful kids overalls with adjustable suspenders.", fabric: "Heavy Cotton Denim", size: "4T", quality: "Good", longevity: "Generous fit", new_arrival: true },
+             { id: 105, name: "Mens Casual Linen Shirt", category: "Male", price: 85.00, image: "https://images.unsplash.com/photo-1596755094514-f87e32f85e23?auto=format&fit=crop&q=80&w=600", gallery: ["https://images.unsplash.com/photo-1596755094514-f87e32f85e23?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&q=80&w=600"], description: "Breathable linen shirt, great for casual outings or beachwear.", fabric: "100% Linen", size: "M", quality: "Excellent", longevity: "Regular fit", new_arrival: false, trending: true },
+             { id: 106, name: "Classic Pleated Trousers", category: "Male", price: 110.00, originalPrice: 140.00, image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=600", gallery: ["https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=600"], description: "Tailored vintage pleated trousers for a sharp, sophisticated look.", fabric: "Wool Blend", size: "32W 30L", quality: "Like New", longevity: "Tailored fit", new_arrival: false },
+             { id: 107, name: "Boho Chic Midi Dress", category: "Female", price: 130.00, image: "https://images.unsplash.com/photo-1612336307429-8a898d10e223?auto=format&fit=crop&q=80&w=600", gallery: ["https://images.unsplash.com/photo-1612336307429-8a898d10e223?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&q=80&w=600"], description: "Gorgeous bohemian midi dress featuring intricate embroidery and bell sleeves.", fabric: "Viscose", size: "L (UK 12)", quality: "Excellent", longevity: "Flowy fit", new_arrival: true, trending: false }
+        ];
+        let testimonials = [
+            {name: "Sarah M.", comment: "Best thrift store in Accra! The quality is amazing."},
+            {name: "John K.", comment: "Found some incredible vintage pieces here."}
+        ];
+        
+        let cart = [];
+        let wishlist = [];
+        let recentSearches = [];
+        let heroImageIndex = 0;
+        let currentDeliveryDetails = {};
+        let currentDeliveryFee = 0;
+        
+        // Auth State Setup
+        let currentUser = JSON.parse(localStorage.getItem('ama_thrift_user')) || null;
+
+        // Helper to format pricing everywhere
+        function formatPrice(price) {
+            return `GH₵${parseFloat(price).toFixed(2)}`;
+        }
+
+        // --- Theme Logic ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('theme-icon-sun');
+        const moonIcon = document.getElementById('theme-icon-moon');
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                sunIcon.classList.remove('hidden'); moonIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                sunIcon.classList.add('hidden'); moonIcon.classList.remove('hidden');
+            }
+            window.logToBash(`Theme changed to: ${theme.toUpperCase()}`, 'info');
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            applyTheme(newTheme);
+        }
+
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) { applyTheme(savedTheme); } else { applyTheme('dark'); }
+        }
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) { applyTheme(e.matches ? 'dark' : 'light'); }
+        });
+        themeToggle.addEventListener('click', toggleTheme);
+        
+        // --- AUTHENTICATION AND USER MENU LOGIC ---
+        function updateUserUI() {
+            const userDropdown = document.getElementById('user-dropdown');
+            
+            if (currentUser) {
+                userDropdown.innerHTML = `
+                    <div class="px-4 py-3 text-sm border-b border-gray-200 dark:border-gray-700 bg-black/5 dark:bg-white/5">
+                        <p class="text-xs text-muted font-bold uppercase mb-1">Signed in as</p>
+                        <p class="text-brand font-bold truncate">${currentUser.name}</p>
+                    </div>
+                    <button id="my-account-btn" class="w-full text-left px-4 py-3 text-sm hover:text-green-500 hover:bg-black/5 dark:hover:bg-white/5 font-semibold transition-colors">My Account & Orders</button>
+                    <button id="logout-btn" class="w-full text-left px-4 py-3 text-sm hover:text-red-500 hover:bg-red-500/10 font-semibold text-gray-500 transition-colors">Log Out</button>
+                `;
+            } else {
+                userDropdown.innerHTML = `
+                    <button id="mock-login-btn" class="w-full text-left px-4 py-3 text-sm hover:text-green-500 font-semibold">Login / Sign Up</button>
+                `;
+            }
+        }
+
+        document.getElementById('user-dropdown').addEventListener('click', (e) => {
+            if (e.target.id === 'mock-login-btn') {
+                document.getElementById('user-dropdown').classList.add('hidden');
+                document.getElementById('login-modal').classList.remove('hidden');
+            } else if (e.target.id === 'logout-btn') {
+                currentUser = null;
+                localStorage.removeItem('ama_thrift_user');
+                updateUserUI();
+                navigateToPage('home');
+                showPopupMessage("Logged out successfully.");
+                document.getElementById('user-dropdown').classList.add('hidden');
+                window.logToBash('User session terminated.', 'info');
+            } else if (e.target.id === 'my-account-btn') {
+                document.getElementById('user-dropdown').classList.add('hidden');
+                renderAccountPage();
+                navigateToPage('account');
+            }
+        });
+
+        // Account Page Rendering
+        function renderAccountPage() {
+            if (!currentUser) return;
+            document.getElementById('profile-name').value = currentUser.name || '';
+            document.getElementById('profile-email').value = currentUser.email || '';
+            document.getElementById('profile-phone').value = currentUser.phone || '';
+            document.getElementById('profile-password').value = '';
+
+            const orderList = document.getElementById('order-history-list');
+            if (!currentUser.orders || currentUser.orders.length === 0) {
+                orderList.innerHTML = '<p class="text-muted text-sm italic py-4">No recent purchases found. Start shopping!</p>';
+                return;
+            }
+
+            orderList.innerHTML = currentUser.orders.map(order => `
+                <div class="bg-section-muted p-4 md:p-5 rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-sm transition-transform hover:-translate-y-1">
+                    <div class="flex justify-between items-center mb-2 border-b border-gray-200/50 dark:border-gray-700/50 pb-2">
+                        <span class="font-bold text-brand flex items-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 15 5 5 5-5"/><path d="M12 20v-7"/></svg>${order.orderId}</span>
+                        <span class="text-xs text-muted font-semibold bg-black/5 dark:bg-white/5 px-2 py-1 rounded">${order.date}</span>
+                    </div>
+                    <div class="flex justify-between items-end mt-3">
+                        <div>
+                            <p class="text-xs text-muted font-bold uppercase mb-1">Items</p>
+                            <p class="text-sm font-medium">${order.items.length} item(s) purchased</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xs text-muted font-bold uppercase mb-1">Total</p>
+                            <p class="text-base md:text-lg font-bold" style="color: var(--text-color);">${order.total}</p>
+                        </div>
+                    </div>
+                </div>
+            `).reverse().join('');
+        }
+
+        // --- Recent Searches Handling ---
+        function renderRecentSearches() {
+            const container = document.getElementById('recent-searches-container');
+            const list = document.getElementById('recent-searches-list');
+            if (!container || !list) return;
+            
+            if (recentSearches.length === 0) {
+                container.classList.add('hidden');
+                return;
+            }
+            
+            container.classList.remove('hidden');
+            list.innerHTML = recentSearches.map(term => `
+                <span class="recent-search-tag cursor-pointer bg-gray-200/50 dark:bg-gray-700/50 backdrop-blur text-[10px] md:text-xs px-3 py-1 rounded-full hover:bg-green-500 hover:text-black transition-colors" data-term="${term}">${term}</span>
+            `).join('');
+        }
+
+        // --- Wishlist Handling ---
+        function toggleWishlist(productId) {
+            const idx = wishlist.indexOf(productId);
+            if (idx > -1) {
+                wishlist.splice(idx, 1);
+                showPopupMessage("Removed from wishlist.");
+            } else {
+                wishlist.push(productId);
+                showPopupMessage("Added to wishlist!");
+            }
+            updateWishlistUI();
+        }
+
+        function updateWishlistUI() {
+            // Update Nav Badge
+            const badge = document.getElementById('wishlist-badge');
+            badge.textContent = wishlist.length;
+            if(wishlist.length > 0) badge.classList.remove('hidden');
+            else badge.classList.add('hidden');
+            
+            // Update Heart Icons on all rendered cards
+            document.querySelectorAll(`.wishlist-btn`).forEach(btn => {
+                const id = parseInt(btn.dataset.id);
+                if(wishlist.includes(id)) {
+                    btn.classList.add('text-red-500', 'fill-current');
+                    btn.classList.remove('text-gray-400');
+                } else {
+                    btn.classList.remove('text-red-500', 'fill-current');
+                    btn.classList.add('text-gray-400');
+                }
+            });
+            
+            // Re-render Wishlist Page if active
+            const activePage = document.querySelector('.page.active');
+            if(activePage && activePage.id === 'wishlist-page') {
+                renderWishlistPage();
+            }
+        }
+        
+        function renderWishlistPage() {
+            const list = document.getElementById('wishlist-list');
+            if(!list) return;
+            if(wishlist.length === 0) {
+                list.innerHTML = `<p class="text-muted text-center col-span-full py-12 text-sm md:text-lg font-semibold border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-2xl bg-card">Your wishlist is currently empty. Discover something you love!</p>`;
+                return;
+            }
+            const wishedProducts = wishlist.map(id => products.find(p => p.id === id)).filter(Boolean);
+            renderProducts(wishedProducts, 'wishlist-list');
+        }
+
+        // --- Helper Functions ---
+        function renderProducts(productsToRender, containerId) {
+            const productList = document.getElementById(containerId);
+             if (!productList) return;
+            productList.innerHTML = '';
+            if (!productsToRender || productsToRender.length === 0) {
+                productList.innerHTML = `<p class="text-muted text-center col-span-full">No items found.</p>`;
+                return;
+            }
+            productsToRender.forEach(product => {
+                const isWished = wishlist.includes(product.id) ? 'text-red-500 fill-current' : 'text-gray-400';
+                
+                // Badges
+                const badgeHTML = product.originalPrice ? `<span class="absolute top-3 left-3 md:top-4 md:left-4 bg-red-500 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded shadow z-10">SALE</span>` : 
+                                  (product.trending ? `<span class="absolute top-3 left-3 md:top-4 md:left-4 bg-amber-500 text-black text-[10px] md:text-xs font-bold px-2 py-1 rounded shadow z-10">TRENDING</span>` : '');
+                
+                // Price Display (With strike-through if on sale)
+                const priceHTML = product.originalPrice ? 
+                    `<p class="text-lg sm:text-xl font-bold text-brand mb-4"><span class="text-[10px] sm:text-sm line-through text-gray-500 mr-2">${formatPrice(product.originalPrice)}</span>${formatPrice(product.price)}</p>` : 
+                    `<p class="text-lg sm:text-xl font-bold text-brand mb-4">${formatPrice(product.price)}</p>`;
+
+                const productCard = `
+                    <div class="product-card relative cursor-pointer bg-card rounded-2xl p-4 flex flex-col items-center text-center transform hover:-translate-y-2 transition-all duration-300 shadow-lg border border-gray-200 dark:border-gray-800" data-product-id="${product.id}">
+                        ${badgeHTML}
+                        
+                        <!-- Heart Wishlist Button -->
+                        <button class="wishlist-btn absolute top-4 right-4 md:top-5 md:right-5 z-10 p-2 bg-white/80 dark:bg-black/60 backdrop-blur-md rounded-full hover:scale-110 transition-all shadow-sm ${isWished}" data-id="${product.id}" title="Toggle Wishlist">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="heart-icon md:w-5 md:h-5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                        </button>
+                        
+                        <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://placehold.co/300x300/1a1a1a/4ade80?text=Style'">
+                        <h3 class="text-base sm:text-lg font-semibold logo-font leading-tight mb-1">${product.name}</h3>
+                        <p class="text-[11px] sm:text-xs text-muted mb-2 font-medium">${product.category} • <span class="border border-green-500/50 rounded px-1.5 ml-1">${product.size}</span></p>
+                        ${priceHTML}
+                        <button class="add-to-cart-btn w-full bg-button text-button font-bold py-2 md:py-3 px-4 rounded-full text-sm md:text-base hover:bg-button-hover transition-colors duration-300 shadow-sm">Add to Bag</button>
+                    </div>
+                `;
+                productList.innerHTML += productCard;
+            });
+        }
+        
+        function renderProductDetail(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) { navigateToPage('explore'); return; }
+
+            // Render Main Image & Interactive Thumbnail Gallery (Various Angles)
+            let galleryHTML = '';
+            const images = product.gallery && product.gallery.length > 0 ? product.gallery : [product.image];
+            
+            if (images.length > 1) {
+                galleryHTML = `<div class="flex gap-2 sm:gap-3 overflow-x-auto py-2 px-1">` + 
+                    images.map(img => `<img src="${img}" class="w-16 h-20 sm:w-24 sm:h-32 object-cover rounded-xl cursor-pointer border-2 border-transparent hover:border-green-500 transition-all shadow-sm" onclick="document.getElementById('pdp-main-image').src='${img}'" onerror="this.src='https://placehold.co/100x100/1a1a1a/4ade80?text=IMG'">`).join('') +
+                `</div>`;
+            }
+
+            document.getElementById('pdp-image-container').innerHTML = `
+                <div class="rounded-2xl overflow-hidden shadow-xl bg-black/5 dark:bg-white/5 border border-gray-200/50 dark:border-gray-800/50">
+                    <img id="pdp-main-image" src="${images[0]}" alt="${product.name}" class="w-full h-auto min-h-[300px] md:min-h-[400px] max-h-[500px] md:max-h-[600px] object-cover transition-opacity duration-300" onerror="this.src='https://placehold.co/600x600/1a1a1a/4ade80?text=Style'" />
+                </div>
+                ${galleryHTML}
+            `;
+            
+            document.getElementById('pdp-name').textContent = product.name;
+            document.getElementById('pdp-category').textContent = product.category;
+            
+            document.getElementById('pdp-price').innerHTML = product.originalPrice ? 
+                `<span class="text-lg md:text-2xl line-through text-gray-500 mr-3 font-medium">${formatPrice(product.originalPrice)}</span>${formatPrice(product.price)}` : 
+                formatPrice(product.price);
+                
+            document.getElementById('pdp-description').textContent = product.description;
+            
+            // Render specific dress/thrift attributes
+            document.getElementById('pdp-size').textContent = product.size || 'N/A';
+            document.getElementById('pdp-quality').textContent = product.quality || 'Pre-loved';
+            document.getElementById('pdp-fabric').textContent = product.fabric || product.ingredients || 'Mixed Blend';
+            
+            document.getElementById('pdp-add-to-cart-btn').dataset.id = product.id;
+
+            // --- INTELLIGENT "YOU MAY ALSO LIKE" ALGORITHM ---
+            
+            // 1. Break the product name into keywords to find "similar features"
+            const nameWords = product.name.toLowerCase().split(' ').filter(w => w.length > 3);
+            
+            // 2. Score all OTHER products based on category match & keyword match
+            let scoredProducts = products.filter(p => p.id !== product.id).map(p => {
+                let score = 0;
+                // High Priority: Exact Category Match (e.g. UNISEX matches UNISEX)
+                if (p.category === product.category) score += 20; 
+                
+                // Secondary Priority: Similar features from the item name (e.g. "Denim", "Dress")
+                const pNameWords = p.name.toLowerCase();
+                nameWords.forEach(word => {
+                    if (pNameWords.includes(word)) score += 5;
+                });
+                return { ...p, matchScore: score };
+            });
+
+            // 3. Sort by highest score first. If scores tie, randomize to keep it fresh
+            scoredProducts.sort((a, b) => {
+                if (b.matchScore !== a.matchScore) return b.matchScore - a.matchScore;
+                return 0.5 - Math.random();
+            });
+
+            // 4. Take the top 4
+            const similarProducts = scoredProducts.slice(0, 4);
+            
+            const similarContainer = document.getElementById('similar-items-section');
+            if (similarProducts.length > 0) {
+                similarContainer.classList.remove('hidden');
+                renderProducts(similarProducts, 'similar-items-list');
+                window.logToBash(`Loaded intelligent similar items for category: [${product.category}]`, 'success');
+            } else {
+                similarContainer.classList.add('hidden');
+            }
+            
+            window.logToBash(`Viewed Item: ${product.name} (ID: ${product.id})`, 'info');
+            navigateToPage('product-detail');
+        }
+
+        function updateCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartSummaryContainer = document.getElementById('cart-summary');
+            const cartBadge = document.getElementById('cart-badge');
+            if (!cartItemsContainer || !cartSummaryContainer || !cartBadge) return;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `<p class="text-muted text-center py-6 text-sm md:text-base font-semibold">Your shopping bag is empty.</p>`;
+                cartSummaryContainer.innerHTML = '';
+                cartBadge.classList.add('hidden');
+                return;
+            }
+
+            let itemsHtml = '';
+            let subtotalGH = 0;
+            let totalItems = 0;
+
+            cart.forEach(item => {
+                const product = products.find(p => p.id === item.id);
+                if (!product) return;
+                
+                let itemPrice = parseFloat(product.price);
+                if (isNaN(itemPrice)) itemPrice = 0;
+
+                itemsHtml += `
+                    <div class="flex items-center justify-between py-4 border-b last:border-b-0 border-gray-200/50 dark:border-gray-700/50">
+                        <div class="flex items-center flex-1">
+                            <img src="${product.image}" alt="${product.name}" class="w-14 h-14 md:w-20 md:h-20 object-cover rounded-lg mr-3 md:mr-4 shadow-sm" onerror="this.src='https://placehold.co/64x64/1a1a1a/4ade80?text=Img'">
+                            <div class="pr-2"><h4 class="font-bold text-sm md:text-lg leading-tight mb-1">${product.name}</h4><p class="text-muted font-medium text-xs md:text-sm">${formatPrice(itemPrice)}</p></div>
+                        </div>
+                        <div class="flex items-center space-x-2 md:space-x-4">
+                            <div class="flex items-center border rounded-full font-bold bg-white/50 dark:bg-black/50" style="border-color: var(--border-input);">
+                                <button class="quantity-change-btn p-1 md:p-2 hover:text-green-500 w-6 md:w-8 text-sm md:text-base" data-id="${product.id}" data-change="-1">-</button>
+                                <span class="px-1 md:px-2 min-w-[1rem] md:min-w-[1.5rem] text-center text-xs md:text-sm">${item.quantity}</span>
+                                <button class="quantity-change-btn p-1 md:p-2 hover:text-green-500 w-6 md:w-8 text-sm md:text-base" data-id="${product.id}" data-change="1">+</button>
+                            </div>
+                            <p class="font-bold text-sm md:text-lg w-16 md:w-28 text-right hidden sm:block">${formatPrice(itemPrice * item.quantity)}</p>
+                            <button class="remove-from-cart-btn text-gray-500 hover:text-red-500 text-2xl md:text-3xl transition-colors px-1 md:px-2" data-id="${product.id}">×</button>
+                        </div>
+                    </div>
+                `;
+                subtotalGH += itemPrice * item.quantity;
+                totalItems += item.quantity;
+            });
+
+            cartItemsContainer.innerHTML = itemsHtml;
+            const taxGH = subtotalGH * 0.01;
+            const totalGH = subtotalGH + taxGH + currentDeliveryFee;
+
+            cartSummaryContainer.innerHTML = `
+                <div class="space-y-2 p-4 md:p-6 bg-card rounded-2xl border border-gray-200 dark:border-gray-800 shadow-md inline-block w-full sm:w-auto min-w-[280px] md:min-w-[320px]">
+                    <p class="text-muted text-sm md:text-base flex justify-between"><span>Subtotal:</span> <span class="font-bold" style="color: var(--text-color);">${formatPrice(subtotalGH)}</span></p>
+                    <p class="text-muted text-sm md:text-base flex justify-between"><span>Tax (1%):</span> <span class="font-bold" style="color: var(--text-color);">${formatPrice(taxGH)}</span></p>
+                    ${currentDeliveryFee > 0 ? `<p class="text-muted text-sm md:text-base flex justify-between"><span>Delivery:</span> <span class="font-bold text-red-400">${formatPrice(currentDeliveryFee)}</span></p>` : `<p class="text-muted text-sm md:text-base flex justify-between"><span>Delivery:</span> <span class="font-bold text-green-500">FREE</span></p>`}
+                    <div class="border-t pt-2 mt-2 border-gray-200/50 dark:border-gray-700/50"></div>
+                    <p class="text-brand text-xl md:text-2xl font-bold flex justify-between"><span>Total:</span> <span style="color: var(--text-color);">${formatPrice(totalGH)}</span></p>
+                </div>
+                <div class="mt-6 md:mt-8 flex flex-col sm:flex-row justify-end gap-3 md:gap-4">
+                     <button id="empty-cart-btn" class="bg-red-800/80 backdrop-blur text-white font-bold py-3 px-6 md:px-8 rounded-full text-sm md:text-lg hover:bg-red-700 transition-colors duration-300 shadow-md">Empty Cart</button>
+                     <button class="nav-link bg-button text-button font-bold py-3 px-6 md:px-8 rounded-full text-sm md:text-lg hover:bg-button-hover transition-colors duration-300 shadow-md" data-page="checkout">Proceed to Checkout</button>
+                </div>
+            `;
+            
+            renderCheckoutSummary();
+            cartBadge.textContent = totalItems;
+            cartBadge.classList.remove('hidden');
+        }
+        
+        function renderCheckoutSummary() {
+            const checkoutSummaryContainer = document.getElementById('checkout-summary');
+            if (!checkoutSummaryContainer) return;
+            if(cart.length === 0) { checkoutSummaryContainer.innerHTML = `<p class="text-muted text-center font-semibold py-4 text-sm md:text-base">Your cart is empty.</p>`; return; }
+            
+            let itemsHtml = '<div class="space-y-3 md:space-y-4 mb-6">';
+            let subtotalGH = 0;
+            cart.forEach(item => {
+                const product = products.find(p => p.id === item.id);
+                if (!product) return;
+                let itemPrice = parseFloat(product.price);
+                itemsHtml += `<div class="flex justify-between items-center text-xs md:text-sm border-b border-gray-200/50 dark:border-gray-800/50 pb-2"><p class="text-muted font-medium">${product.name} <span class="text-green-500 font-bold ml-1 md:ml-2">x${item.quantity}</span></p><p class="font-bold text-sm md:text-base">${formatPrice(itemPrice * item.quantity)}</p></div>`;
+                 subtotalGH += itemPrice * item.quantity;
+            });
+             itemsHtml += '</div>';
+             
+            const taxGH = subtotalGH * 0.01;
+            const totalGH = subtotalGH + taxGH + currentDeliveryFee;
+            
+            checkoutSummaryContainer.innerHTML = `
+            ${itemsHtml}
+            <div class="bg-section-muted p-4 md:p-5 rounded-xl space-y-2 border border-gray-200/50 dark:border-gray-700/50">
+                <p class="flex justify-between text-muted text-sm md:text-base">Subtotal: <span class="font-bold" style="color: var(--text-color);">${formatPrice(subtotalGH)}</span></p>
+                <p class="flex justify-between text-muted text-sm md:text-base">Tax (1%): <span class="font-bold" style="color: var(--text-color);">${formatPrice(taxGH)}</span></p>
+                <p class="flex justify-between text-muted text-sm md:text-base border-b border-gray-200/50 dark:border-gray-700/50 pb-2">Delivery: <span class="font-bold ${currentDeliveryFee > 0 ? 'text-red-500' : 'text-green-500'}">${currentDeliveryFee > 0 ? formatPrice(currentDeliveryFee) : 'FREE'}</span></p>
+                <p class="flex justify-between text-brand text-xl md:text-2xl font-bold mt-2 pt-2">Total: <span style="color: var(--text-color);">${formatPrice(totalGH)}</span></p>
+            </div>`;
+        }
+
+        function showPopupMessage(message) {
+            const popup = document.getElementById('popup-message');
+            if (popup) {
+                popup.querySelector('p').textContent = message;
+                popup.classList.remove('hidden');
+                setTimeout(() => { popup.classList.add('popup-show'); }, 10);
+                setTimeout(() => { popup.classList.remove('popup-show'); setTimeout(() => { popup.classList.add('hidden'); }, 400); }, 2500); 
+            }
+        }
+
+        function addToCart(productId) {
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) { existingItem.quantity++; } else { cart.push({ id: productId, quantity: 1 }); }
+            const product = products.find(p => p.id === productId);
+            if(product) window.logToBash(`Added to Cart: ${product.name}`, 'success');
+            updateCart();
+        }
+        
+        function emptyCart() { cart = []; updateCart(); window.logToBash('Cart emptied.', 'warning'); }
+
+        function handleQuantityChange(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) { cart = cart.filter(cartItem => cartItem.id !== productId); }
+            }
+            updateCart();
+        }
+
+        function removeFromCart(productId) { cart = cart.filter(item => item.id !== productId); updateCart(); }
+        
+        function renderTestimonials() {
+            const marqueeContent = document.getElementById('marquee-content');
+            if (!marqueeContent) return;
+            marqueeContent.innerHTML = '';
+            if (!testimonials || testimonials.length === 0) { marqueeContent.innerHTML = `<p class="text-muted text-center w-full text-sm">Be the first to leave a review!</p>`; return; }
+            const testimonialsHtml = testimonials.map(t => `<div class="testimonial-card bg-card backdrop-blur-md border-l-4 border-l-green-500 rounded-xl p-4 md:p-6 w-72 md:w-96 mx-3 md:mx-4 flex-shrink-0 shadow-lg border-y border-r border-gray-200/50 dark:border-gray-800/50"><p class="text-muted italic mb-3 text-sm md:text-base leading-relaxed">"${t.comment}"</p><p class="font-bold text-brand text-xs md:text-sm uppercase tracking-wide">- ${t.name}</p></div>`).join('');
+            marqueeContent.innerHTML = testimonialsHtml + testimonialsHtml; 
+        }
+
+        function navigateToPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            const targetPage = document.getElementById(`${pageId}-page`);
+            if(targetPage) { targetPage.classList.add('active'); } else { document.getElementById('home-page').classList.add('active'); }
+
+            document.querySelectorAll('.nav-link').forEach(link => { link.classList.toggle('active', link.dataset.page === pageId); });
+            document.querySelectorAll('.nav-link-mobile').forEach(link => { link.classList.toggle('active', link.dataset.page === pageId); });
+            window.scrollTo(0, 0);
+            
+            if(pageId === 'wishlist') renderWishlistPage();
+            
+            window.logToBash(`Mapped to: /${pageId}`, 'info');
+        }
+
+        function handleSearch() {
+            const searchInput = document.getElementById('search-input');
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            const searchDropdown = document.getElementById('search-dropdown');
+            
+            if (searchTerm && !recentSearches.includes(searchTerm)) {
+                recentSearches.unshift(searchTerm);
+                if (recentSearches.length > 8) recentSearches.pop();
+                renderRecentSearches();
+            }
+
+            const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchTerm) || product.category.toLowerCase().includes(searchTerm));
+            renderProducts(filteredProducts, 'product-list');
+            window.logToBash(`Searching for: "${searchTerm}" - Found ${filteredProducts.length} results`, 'info');
+            navigateToPage('explore');
+            searchDropdown.classList.add('hidden');
+            searchInput.value = '';
+        }
+
+        function startHeroCarousel() {
+            const heroCarousel = document.getElementById('hero-carousel');
+            if (!products || products.length === 0) return;
+            let heroImages = products.filter(p => p.category === 'Female' || p.category === 'Male').slice(0, 5).map(p => p.image);
+            if(heroImages.length === 0) { heroImages = products.slice(0, 5).map(p => p.image); }
+            if (!heroCarousel || heroImages.length === 0) return;
+            heroCarousel.innerHTML = ''; 
+            heroImages.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = "Featured Clothing";
+                if (index === 0) img.classList.add('active');
+                heroCarousel.appendChild(img);
+            });
+            const images = heroCarousel.querySelectorAll('img');
+            if (images.length < 2) return; 
+            setInterval(() => {
+                images[heroImageIndex].classList.remove('active');
+                heroImageIndex = (heroImageIndex + 1) % images.length;
+                images[heroImageIndex].classList.add('active');
+            }, 6000);
+        }
+
+        // --- Event Listeners ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const preloader = document.getElementById('preloader');
+            function hidePreloader() { if (preloader) { preloader.style.opacity = '0'; setTimeout(() => preloader.style.display = 'none', 500); } }
+            
+            async function loadData() {
+                if (db) {
+                    try {
+                        window.logToBash('Fetching DB catalog from Firestore...', 'info');
+                        
+                        const productsRef = collection(db, 'products');
+                        const productsQuery = query(productsRef);
+                        const productsSnapshot = await getDocs(productsQuery);
+                        const fetchedProducts = productsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                        
+                        const testimonialsRef = collection(db, 'testimonials');
+                        const testimonialsQuery = query(testimonialsRef);
+                        const testimonialsSnapshot = await getDocs(testimonialsQuery);
+                        const fetchedTestimonials = testimonialsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+                        if (fetchedProducts.length > 0) products = fetchedProducts;
+                        if (fetchedTestimonials.length > 0) testimonials = fetchedTestimonials;
+                        
+                        window.logToBash('Firestore Sync Complete.', 'success');
+                    } catch(e) { window.logToBash('Firestore Sync Failed. Using local offline cache.', 'error'); }
+                }
+                
+                renderProducts(products.filter(p => p.new_arrival).slice(0, 4) || products.slice(0, 4), 'featured-product-list');
+                renderProducts(products.filter(p => p.trending), 'trending-product-list');
+                renderProducts(products.filter(p => p.originalPrice), 'deals-product-list');
+                renderProducts(products, 'product-list');
+                renderProducts(products.filter(p => p.new_arrival), 'new-arrivals-list');
+                
+                startHeroCarousel(); 
+                renderTestimonials();
+                hidePreloader();
+                window.logToBash(`System Ready. Loaded ${products.length} items.`, 'success');
+            }
+            
+            initializeTheme();
+            updateUserUI(); // Load authentication status visually
+            init3D();
+            animate3D();
+            loadData();
+            updateCart();
+            navigateToPage('home');
+            
+            // UI Elements
+            const searchIcon = document.getElementById('search-icon');
+            const searchDropdown = document.getElementById('search-dropdown');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const searchInput = document.getElementById('search-input');
+            const searchButton = document.getElementById('search-button');
+            const checkoutForm = document.getElementById('checkout-form');
+            const trackingForm = document.getElementById('tracking-form');
+            const addTestimonialBtn = document.getElementById('add-testimonial-btn');
+            const testimonialFormContainer = document.getElementById('testimonial-form-container');
+            const testimonialForm = document.getElementById('testimonial-form');
+            const getDirectionsBtn = document.getElementById('get-directions-btn');
+            const backToExploreBtn = document.getElementById('back-to-explore-btn');
+            
+            // New Dropdowns and Features
+            const userIcon = document.getElementById('user-icon');
+            const userDropdown = document.getElementById('user-dropdown');
+            const loginModal = document.getElementById('login-modal');
+            const visualSearchBtn = document.getElementById('visual-search-btn');
+            const visualSearchInput = document.getElementById('visual-search-input');
+            
+            // Auth Form Elements
+            const authForm = document.getElementById('auth-form');
+            const authToggleBtn = document.getElementById('auth-toggle-btn');
+            const authTitle = document.getElementById('auth-title');
+            const authNameInput = document.getElementById('auth-name');
+            const authSubmitBtn = document.getElementById('auth-submit-btn');
+            const authSwitchText = document.getElementById('auth-switch-text');
+            let isSignUpMode = false;
+
+            // Form Elements
+            const careerForm = document.getElementById('career-application-form');
+            const contactForm = document.getElementById('contact-form');
+            const profileForm = document.getElementById('profile-form');
+
+            // Team Data for Modals
+            const teamData = {
+                'ama': {
+                    name: 'Ama Thrift',
+                    role: 'Founder & Head Stylist',
+                    img: 'https://tatxyrbbezljpcvubueu.supabase.co/storage/v1/object/public/ADMINS/ADEL.jpg',
+                    bio: 'Ama is the visionary behind Ama Thrift and Clothing. With over a decade of experience in fashion styling, she curates pieces that empower individuals to express their true selves sustainably.',
+                    socials: { instagram: '#', twitter: '#' }
+                },
+                'kb': {
+                    name: 'K.B. Asante',
+                    role: 'Head of Collection & Sourcing',
+                    img: 'https://placehold.co/200x200/0a0a0a/4ade80?text=K.B.',
+                    bio: 'K.B. has an eagle eye for vintage treasures. He travels extensively to source the highest quality pre-loved garments, ensuring every piece meets our strict standards.',
+                    socials: { linkedin: '#', instagram: '#' }
+                },
+                'dontus': {
+                    name: 'Dontus Ernest Mensah',
+                    role: 'Customer Experience Lead',
+                    img: 'https://tatxyrbbezljpcvubueu.supabase.co/storage/v1/object/public/ADMINS/DONATUS%20(1).jpg',
+                    bio: 'Dontus ensures that every interaction with Ama Thrift is seamless and delightful. From order tracking to styling advice, he is dedicated to supporting our amazing community.',
+                    socials: { twitter: '#', facebook: '#' }
+                }
+            };
+            
+            const teamModal = document.getElementById('team-modal');
+            const closeTeamModal = document.getElementById('close-team-modal');
+
+            // User Dropdown Toggle
+            if (userIcon) {
+                userIcon.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    userDropdown.classList.toggle('hidden');
+                    searchDropdown.classList.add('hidden');
+                });
+            }
+
+            // Auth Toggle (Sign in vs Sign up)
+            if (authToggleBtn) {
+                authToggleBtn.addEventListener('click', () => {
+                    isSignUpMode = !isSignUpMode;
+                    if (isSignUpMode) {
+                        authTitle.textContent = "Create an Account";
+                        authNameInput.classList.remove('hidden');
+                        authNameInput.required = true;
+                        authSubmitBtn.textContent = "Sign Up";
+                        authSwitchText.textContent = "Already have an account?";
+                        authToggleBtn.textContent = "Log In";
+                    } else {
+                        authTitle.textContent = "Welcome Back";
+                        authNameInput.classList.add('hidden');
+                        authNameInput.required = false;
+                        authSubmitBtn.textContent = "Sign In";
+                        authSwitchText.textContent = "Don't have an account?";
+                        authToggleBtn.textContent = "Sign up";
+                    }
+                });
+            }
+
+            // Auth Submission
+            if (authForm) {
+                authForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('auth-email').value;
+                    const password = document.getElementById('auth-password').value;
+                    
+                    if (isSignUpMode) {
+                        const name = document.getElementById('auth-name').value;
+                        currentUser = { name, email, password, phone: '', orders: [] };
+                        showPopupMessage("Account created successfully!");
+                        window.logToBash(`New account registered: ${email}`, 'success');
+                    } else {
+                        // Mock Login (accepts any for demo, or reads existing)
+                        currentUser = JSON.parse(localStorage.getItem('ama_thrift_user')) || { name: email.split('@')[0], email, password, phone: '', orders: [] };
+                        showPopupMessage("Logged in successfully!");
+                        window.logToBash(`User logged in: ${email}`, 'success');
+                    }
+                    
+                    localStorage.setItem('ama_thrift_user', JSON.stringify(currentUser));
+                    updateUserUI();
+                    loginModal.classList.add('hidden');
+                    authForm.reset();
+                });
+            }
+
+            if (profileForm) {
+                profileForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (!currentUser) return;
+                    const newName = document.getElementById('profile-name').value;
+                    const newPhone = document.getElementById('profile-phone').value;
+                    const newPass = document.getElementById('profile-password').value;
+                    
+                    currentUser.name = newName;
+                    currentUser.phone = newPhone;
+                    if (newPass) currentUser.password = newPass;
+
+                    localStorage.setItem('ama_thrift_user', JSON.stringify(currentUser));
+                    showPopupMessage("Profile updated successfully!");
+                    updateUserUI(); // update header name
+                    document.getElementById('profile-password').value = '';
+                    window.logToBash(`Profile updated for user: ${currentUser.email}`, 'info');
+                });
+            }
+
+            if (loginModal) {
+                loginModal.addEventListener('click', (e) => {
+                    if(e.target === loginModal || e.target.id === 'close-login-modal') {
+                        loginModal.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Team Member Modal Logic
+            document.querySelectorAll('.team-member-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const memberId = card.dataset.member;
+                    const data = teamData[memberId];
+                    if (data && teamModal) {
+                        document.getElementById('team-modal-img').src = data.img;
+                        document.getElementById('team-modal-name').textContent = data.name;
+                        document.getElementById('team-modal-role').textContent = data.role;
+                        document.getElementById('team-modal-bio').textContent = data.bio;
+                        
+                        let socialsHtml = '';
+                        if (data.socials.instagram) socialsHtml += `<a href="${data.socials.instagram}" class="text-gray-500 hover:text-brand transition-colors"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>`;
+                        if (data.socials.twitter) socialsHtml += `<a href="${data.socials.twitter}" class="text-gray-500 hover:text-brand transition-colors"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a>`;
+                        if (data.socials.linkedin) socialsHtml += `<a href="${data.socials.linkedin}" class="text-gray-500 hover:text-brand transition-colors"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>`;
+                        if (data.socials.facebook) socialsHtml += `<a href="${data.socials.facebook}" class="text-gray-500 hover:text-brand transition-colors"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>`;
+                        
+                        document.getElementById('team-modal-socials').innerHTML = socialsHtml;
+                        teamModal.classList.remove('hidden');
+                        window.logToBash(`Viewed team member: ${data.name}`, 'info');
+                    }
+                });
+            });
+            
+            if (closeTeamModal) {
+                closeTeamModal.addEventListener('click', () => {
+                    teamModal.classList.add('hidden');
+                });
+            }
+            
+            if (teamModal) {
+                teamModal.addEventListener('click', (e) => {
+                    if (e.target === teamModal) {
+                        teamModal.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Visual Image Search (Camera/Sparkle)
+            if (visualSearchBtn && visualSearchInput) {
+                visualSearchBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    visualSearchInput.click();
+                });
+                
+                visualSearchInput.addEventListener('change', (e) => {
+                    if(e.target.files && e.target.files.length > 0) {
+                        const file = e.target.files[0];
+                        window.logToBash(`Visual Search initiated for file: ${file.name}`, 'warning');
+                        
+                        // Mock Processing delay
+                        searchInput.value = "Analyzing image styling...";
+                        setTimeout(() => {
+                            // Pick a random category to simulate finding similar clothing
+                            const categories = ['Female', 'Male', 'Unisex', 'Vintage'];
+                            const randomCat = categories[Math.floor(Math.random() * categories.length)];
+                            searchInput.value = `Similar to: ${randomCat}`;
+                            
+                            const filtered = products.filter(p => p.category === randomCat);
+                            renderProducts(filtered, 'product-list');
+                            navigateToPage('explore');
+                            searchDropdown.classList.add('hidden');
+                            
+                            window.logToBash(`Visual match found: ${randomCat} items`, 'success');
+                            showPopupMessage(`Found ${filtered.length} similar items!`);
+                        }, 2000);
+                    }
+                });
+            }
+
+            // Global Click to close dropdowns
+            document.addEventListener('click', (event) => {
+                if (searchDropdown && !searchIcon.contains(event.target) && !searchDropdown.contains(event.target)) {
+                    searchDropdown.classList.add('hidden');
+                }
+                if (userDropdown && !userIcon.contains(event.target) && !userDropdown.contains(event.target)) {
+                    userDropdown.classList.add('hidden');
+                }
+            });
+
+            if (searchIcon) {
+                searchIcon.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    searchDropdown.classList.toggle('hidden');
+                    userDropdown.classList.add('hidden');
+                    if (!searchDropdown.classList.contains('hidden')) { searchInput.focus(); }
+                });
+            }
+
+            if (searchButton) searchButton.addEventListener('click', handleSearch);
+            if (searchInput) { searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSearch(); }); }
+
+            if (mobileMenuButton) { mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); }); }
+            
+            document.addEventListener('click', (e) => {
+                 if (e.target.closest('.nav-link') || e.target.closest('.nav-link-mobile')) {
+                    e.preventDefault();
+                    const link = e.target.closest('.nav-link, .nav-link-mobile');
+                    
+                    // Don't intercept inner actions
+                    if (e.target.closest('.wishlist-btn')) return;
+                    
+                    const pageId = link.dataset.page;
+                    if (pageId === 'explore') { renderProducts(products, 'product-list'); }
+                    
+                    // Purchase Auth Walls
+                    if (pageId === 'cart' && !currentUser) {
+                        showPopupMessage("Please log in to view your bag.");
+                        loginModal.classList.remove('hidden');
+                        return;
+                    }
+                    if (pageId === 'checkout' && !currentUser) {
+                        showPopupMessage("Please log in to proceed to checkout.");
+                        loginModal.classList.remove('hidden');
+                        return;
+                    }
+                    if (pageId === 'checkout' && cart.length === 0){ showPopupMessage("Your bag is empty!"); return; }
+                    
+                    if (pageId === 'account') {
+                        if (!currentUser) {
+                            showPopupMessage("Please log in to view your account.");
+                            loginModal.classList.remove('hidden');
+                            return;
+                        } else {
+                            renderAccountPage(); // refresh details
+                        }
+                    }
+
+                    if (pageId === 'application') {
+                        const jobTitle = link.dataset.jobTitle || 'General Application';
+                        const titleInput = document.getElementById('career-job-title-display');
+                        if (titleInput) titleInput.value = jobTitle;
+                    }
+                    
+                    navigateToPage(pageId);
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) { mobileMenu.classList.add('hidden'); }
+                 }
+            });
+
+            document.querySelectorAll('.category-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    const category = e.currentTarget.dataset.category;
+                    const filtered = products.filter(p => p.category === category);
+                    renderProducts(filtered, 'product-list');
+                    navigateToPage('explore');
+                });
+            });
+            
+            document.addEventListener('click', (e) => {
+                // Intercept Wishlist Heart Clicks
+                if (e.target.closest('.wishlist-btn')) {
+                    e.stopPropagation(); // Stop opening the detail page
+                    const btn = e.target.closest('.wishlist-btn');
+                    const productId = parseInt(btn.dataset.id);
+                    if (!isNaN(productId)) { toggleWishlist(productId); }
+                    return;
+                }
+                
+                 if (e.target.closest('.product-card')) {
+                    if (e.target.closest('.add-to-cart-btn')) return; // handled below
+                    const card = e.target.closest('.product-card');
+                    const productId = parseInt(card.dataset.productId);
+                    if (!isNaN(productId)) { renderProductDetail(productId); }
+                 }
+            });
+            
+            if(backToExploreBtn) {
+                backToExploreBtn.addEventListener('click', (e) => {
+                    renderProducts(products, 'product-list'); 
+                    navigateToPage('explore');
+                });
+            }
+
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.add-to-cart-btn')) {
+                    // Purchase Auth Wall
+                    if (!currentUser) {
+                        showPopupMessage("Please log in or sign up to shop.");
+                        loginModal.classList.remove('hidden');
+                        return;
+                    }
+
+                    const button = e.target.closest('.add-to-cart-btn');
+                    const productId = parseInt(button.dataset.id);
+                    if (isNaN(productId)) return;
+                    const product = products.find(p => p.id === productId);
+                    if (!product) return;
+                    addToCart(productId);
+                    button.innerHTML = `Added ✓`;
+                    setTimeout(() => { button.innerHTML = 'Add to Bag'; }, 1500);
+                    showPopupMessage(`${product.name} added to your bag!`);
+                }
+                if (e.target.closest('#empty-cart-btn')) { emptyCart(); }
+            });
+
+            const cartItemsEl = document.getElementById('cart-items');
+            if (cartItemsEl) {
+                cartItemsEl.addEventListener('click', (e) => {
+                    if (e.target.closest('.quantity-change-btn')) {
+                        const btn = e.target.closest('.quantity-change-btn');
+                        const productId = parseInt(btn.dataset.id);
+                        const change = parseInt(btn.dataset.change);
+                        handleQuantityChange(productId, change);
+                    }
+                    if (e.target.closest('.remove-from-cart-btn')) {
+                        const productId = parseInt(e.target.closest('.remove-from-cart-btn').dataset.id);
+                        removeFromCart(productId);
+                    }
+                });
+            }
+            
+            // Delivery Radio Listeners
+            const deliveryRadios = document.querySelectorAll('input[name="delivery_zone"]');
+            const outsideLocationContainer = document.getElementById('outside-location-container');
+            const deliveryLocationInput = document.getElementById('delivery-location');
+
+            deliveryRadios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    if (e.target.value === 'outside') {
+                        outsideLocationContainer.classList.remove('hidden');
+                        deliveryLocationInput.required = true;
+                        currentDeliveryFee = 50; 
+                    } else {
+                        outsideLocationContainer.classList.add('hidden');
+                        deliveryLocationInput.required = false;
+                        deliveryLocationInput.value = '';
+                        currentDeliveryFee = 0;
+                    }
+                    updateCart(); // Recalculate Totals
+                });
+            });
+
+            // Verification & Checkout Form Submit
+            if (checkoutForm) {
+                checkoutForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const phoneInput = document.getElementById('phone').value.trim();
+                    const phoneError = document.getElementById('phone-error');
+                    
+                    // Phone Verification Layer
+                    const phoneRegex = /^[+]?[\d\s-]{10,15}$/;
+                    if (!phoneRegex.test(phoneInput)) {
+                        phoneError.classList.remove('hidden');
+                        window.logToBash('Validation Failed: Invalid Phone format.', 'error');
+                        return;
+                    }
+                    phoneError.classList.add('hidden');
+                    
+                    const deliveryZone = document.querySelector('input[name="delivery_zone"]:checked').value;
+                    const finalLocationStr = deliveryZone === 'outside' ? document.getElementById('delivery-location').value.trim() : 'Within Accra';
+                    const finalAddressStr = `${document.getElementById('address').value} \n[Zone: ${finalLocationStr}]`;
+
+                    currentDeliveryDetails = {
+                        name: document.getElementById('fullname').value,
+                        email: document.getElementById('email').value,
+                        phone: phoneInput,
+                        address: finalAddressStr,
+                    };
+
+                    document.getElementById('confirm-name').textContent = currentDeliveryDetails.name;
+                    document.getElementById('confirm-email').textContent = currentDeliveryDetails.email;
+                    document.getElementById('confirm-phone').textContent = currentDeliveryDetails.phone;
+                    document.getElementById('confirm-address').textContent = currentDeliveryDetails.address;
+                    
+                    document.getElementById('checkout-content').classList.add('hidden');
+                    document.getElementById('details-confirmation').classList.remove('hidden');
+                    window.logToBash('Phone number verified. Delivery details confirmed locally.', 'info');
+                });
+            }
+            
+            const editDetailsBtn = document.getElementById('edit-details-btn');
+            if (editDetailsBtn) {
+                editDetailsBtn.addEventListener('click', () => {
+                    document.getElementById('details-confirmation').classList.add('hidden');
+                    document.getElementById('checkout-content').classList.remove('hidden');
+                });
+            }
+            
+            // Paystack Payment integration
+            const confirmOrderBtn = document.getElementById('confirm-order-btn');
+            if (confirmOrderBtn) {
+                confirmOrderBtn.addEventListener('click', () => {
+                    let subtotalGH = 0;
+                    cart.forEach(item => {
+                        const product = products.find(p => p.id === item.id);
+                        if(product) subtotalGH += parseFloat(product.price) * item.quantity;
+                    });
+                    const taxGH = subtotalGH * 0.01;
+                    const totalGH = subtotalGH + taxGH + currentDeliveryFee;
+                    
+                    let nextOrderIdNumber = Math.floor(Math.random() * 900000) + 100000;
+                    const orderId = `AMAT-${nextOrderIdNumber}`;
+                    
+                    window.logToBash(`Initiating Paystack Gateway for Order ${orderId}...`, 'warning');
+
+                    // Standard Paystack Pop setup (Amounts passed in GHS strictly)
+                    let handler = PaystackPop.setup({
+                        key: PAYSTACK_PUBLIC_KEY, 
+                        email: currentDeliveryDetails.email,
+                        amount: Math.round(totalGH * 100), // convert to pesewas
+                        currency: 'GHS',
+                        ref: orderId,
+                        callback: async function(response){
+                            window.logToBash(`Payment successful! Reference: ${response.reference}`, 'success');
+                            
+                            // Save Order to Current User's Purchase History
+                            if (currentUser) {
+                                if(!currentUser.orders) currentUser.orders = [];
+                                currentUser.orders.push({
+                                    orderId: orderId,
+                                    date: new Date().toLocaleDateString(),
+                                    items: [...cart],
+                                    total: formatPrice(totalGH)
+                                });
+                                localStorage.setItem('ama_thrift_user', JSON.stringify(currentUser));
+                            }
+                            
+                            document.getElementById('details-confirmation').classList.add('hidden');
+                            document.getElementById('order-confirmation').classList.remove('hidden');
+                            document.getElementById('confirmed-order-id').textContent = orderId;
+                            emptyCart();
+                        },
+                        onClose: function(){
+                            showPopupMessage('Payment was cancelled.');
+                            window.logToBash('Paystack window closed by user.', 'warning');
+                        }
+                    });
+
+                    // Check if Paystack keys are set, if not just skip to success for Demo
+                    if (PAYSTACK_PUBLIC_KEY === 'YOUR_PAYSTACK_PUBLIC_KEY') {
+                        showPopupMessage('Demo Mode: Paystack Key Missing. Simulating Success...');
+                        setTimeout(() => {
+                            // Save Order to Current User's Purchase History
+                            if (currentUser) {
+                                if(!currentUser.orders) currentUser.orders = [];
+                                currentUser.orders.push({
+                                    orderId: orderId,
+                                    date: new Date().toLocaleDateString(),
+                                    items: [...cart],
+                                    total: formatPrice(totalGH)
+                                });
+                                localStorage.setItem('ama_thrift_user', JSON.stringify(currentUser));
+                            }
+
+                            document.getElementById('details-confirmation').classList.add('hidden');
+                            document.getElementById('order-confirmation').classList.remove('hidden');
+                            document.getElementById('confirmed-order-id').textContent = orderId;
+                            emptyCart();
+                        }, 2000);
+                    } else {
+                        handler.openIframe();
+                    }
+                });
+            }
+            
+            // Restored Form Implementations
+            if(careerForm) {
+                careerForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const confirmationMsg = document.getElementById('application-confirmation');
+                    confirmationMsg.classList.remove('hidden');
+                    careerForm.reset();
+                    window.scrollTo(0, confirmationMsg.offsetTop - 100);
+                     setTimeout(() => { confirmationMsg.classList.add('hidden'); }, 4000);
+                });
+            }
+
+            if(contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const confirmationMsg = document.getElementById('contact-confirmation');
+                    confirmationMsg.classList.remove('hidden');
+                    contactForm.reset();
+                    window.scrollTo(0, confirmationMsg.offsetTop - 100);
+                     setTimeout(() => { confirmationMsg.classList.add('hidden'); }, 4000);
+                });
+            }
+
+            if (trackingForm) {
+                trackingForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const input = document.getElementById('order-id-input');
+                    const id = (input?.value || '').trim();
+                    const container = document.getElementById('tracking-results');
+                    if (!id) {
+                        if (container) container.innerHTML = `<div class="p-4 bg-card rounded-lg text-center text-red-400 font-bold">Please enter an Order ID.</div>`;
+                        return;
+                    }
+                    container.innerHTML = `<div class="p-4 bg-card rounded-lg text-center text-green-500 font-bold text-sm md:text-base">Searching for Order: ${id}... Database connection required to fetch live status.</div>`;
+                    window.logToBash(`Tracking query initiated for: ${id}`, 'info');
+                });
+            }
+
+            if(addTestimonialBtn) {
+                addTestimonialBtn.addEventListener('click', () => {
+                    testimonialFormContainer.classList.toggle('hidden');
+                    if (!testimonialFormContainer.classList.contains('hidden')) { testimonialFormContainer.scrollIntoView({ behavior: 'smooth' }); }
+                });
+            }
+
+            if(testimonialForm) {
+                testimonialForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const name = document.getElementById('testimonial-name').value.trim();
+                    const comment = document.getElementById('testimonial-comment').value.trim();
+                    if (name && comment) {
+                        testimonials.unshift({name, comment});
+                        renderTestimonials();
+                        testimonialForm.reset();
+                        testimonialFormContainer.classList.add('hidden');
+                        const confirmationMsg = document.getElementById('testimonial-confirmation');
+                        confirmationMsg.classList.remove('hidden');
+                        setTimeout(() => confirmationMsg.classList.add('hidden'), 3000);
+                        window.logToBash(`Review added by ${name}.`, 'success');
+                    }
+                });
+            }
+
+            if(getDirectionsBtn) {
+                getDirectionsBtn.addEventListener('click', () => {
+                    const destinationUrl = `https://www.google.com/maps/dir/?api=1&destination=6.088829,-0.276848`;
+                    window.open(destinationUrl, '_blank');
+                    window.logToBash('Opening Google Maps navigation...', 'info');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
