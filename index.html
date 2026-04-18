@@ -81,7 +81,7 @@
             --border-input: rgba(0, 0, 0, 0.1);
             --input-focus-ring: #4ade80;
 
-            --bg-section-muted: rgba(240, 253, 244, 0.5); /* Very light, transparent green tint */
+            --bg-section-muted: rgba(240, 253, 244, 0.5); 
             
             --bg-button: #4ade80;
             --text-button: #000000;
@@ -114,7 +114,6 @@
             --text-color-logo: #ffffff;
             --text-color-logo-brand: #4ade80;
 
-            /* Enhanced Transparency */
             --bg-glass-effect: rgba(10, 10, 10, 0.65);
             --border-glass-effect: rgba(74, 222, 128, 0.1);
 
@@ -664,11 +663,8 @@
                             </div>
                             <div>
                                 <label class="text-xs text-muted font-bold uppercase">Phone Number</label>
-                                <input type="tel" id="profile-phone" placeholder="e.g. 024XXXXXXX" class="w-full px-3 py-2 text-sm bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500 border border-gray-300 dark:border-gray-700">
-                            </div>
-                            <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
-                                <label class="text-xs text-muted font-bold uppercase">Change Password</label>
-                                <input type="password" id="profile-password" placeholder="Leave blank to keep current" class="w-full px-3 py-2 mt-1 text-sm bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500 border border-gray-300 dark:border-gray-700">
+                                <input type="tel" id="profile-phone" placeholder="e.g. 024XXXXXXX" class="w-full px-3 py-2 text-sm bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500 border border-gray-300 dark:border-gray-700" readonly>
+                                <p class="text-[10px] text-green-500 mt-1 flex items-center"><svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Verified</p>
                             </div>
                             <button type="submit" class="w-full bg-button text-button font-bold py-3 rounded-full hover:bg-button-hover transition-colors shadow-md">Update Profile</button>
                         </form>
@@ -738,7 +734,7 @@
                  <div class="text-center">
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font mb-8 md:mb-12">Open Positions</h2>
                     <div id="application-confirmation" class="hidden max-w-md mx-auto text-center bg-green-900/50 border border-green-500 p-4 md:p-6 rounded-xl mb-8 shadow-md">
-                        <p class="text-green-400 font-semibold text-sm md:text-base">Thank you! Your application details are being opened in your email client.</p>
+                        <p class="text-green-400 font-semibold text-sm md:text-base">Thank you! Your application details have been submitted successfully.</p>
                     </div>
                     <div class="space-y-6 max-w-3xl mx-auto text-left">
                         <div class="bg-card p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800">
@@ -776,7 +772,7 @@
                          <div class="pt-2">
                              <label for="career-resume" class="block text-sm md:text-base text-muted font-semibold mb-2">Upload Your Resume</label>
                              <input id="career-resume" type="file" required class="w-full text-sm text-muted file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs md:file:text-sm file:font-semibold file:bg-button file:text-button hover:file:bg-button-hover cursor-pointer"/>
-                             <p class="text-[10px] md:text-xs text-muted mt-2 italic">Note: You will be asked to attach this file in the email client that opens.</p>
+                             <p class="text-[10px] md:text-xs text-muted mt-2 italic">Note: File upload tracking is recorded with your application submission.</p>
                          </div>
                          <textarea id="career-message" placeholder="Tell us why you're a great fit..." required rows="4" class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500"></textarea>
                          <button type="submit" class="w-full mt-4 bg-button text-button font-bold py-3 md:py-4 px-8 rounded-full text-base md:text-lg hover:bg-button-hover transition-all duration-300 shadow-md transform hover:scale-[1.02]">Submit Application</button>
@@ -827,9 +823,23 @@
                     <div class="bg-card p-6 md:p-8 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800">
                         <h3 class="text-xl md:text-2xl font-semibold logo-font mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">Delivery Details</h3>
                         <form id="checkout-form" class="space-y-4 md:space-y-5">
-                             <input id="fullname" type="text" placeholder="Full Name" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500">
-                             <input id="email" type="email" placeholder="Email Address" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500">
-                             <input id="phone" type="tel" placeholder="Phone Number (e.g. 024XXXXXXX)" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500">
+                             <input id="fullname" type="text" placeholder="Full Name" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500" readonly>
+                             <input id="email" type="email" placeholder="Email Address" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500" readonly>
+                             
+                             <div class="space-y-3 mt-4 bg-section-muted p-4 rounded-xl border border-gray-200/50 dark:border-gray-700/50">
+                                <label class="block text-sm md:text-base font-semibold mb-1 text-brand">Payment / Contact Preference</label>
+                                <div class="flex flex-col space-y-3">
+                                    <label class="flex items-center cursor-pointer p-3 bg-card rounded-lg border border-transparent hover:border-green-400 transition-all shadow-sm">
+                                        <input type="radio" name="phone_pref" value="saved" id="phone-pref-saved" checked class="mr-3 w-5 h-5 text-green-500 cursor-pointer accent-green-500">
+                                        <span class="text-sm md:text-base font-medium">Use registered number</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer p-3 bg-card rounded-lg border border-transparent hover:border-green-400 transition-all shadow-sm">
+                                        <input type="radio" name="phone_pref" value="different" id="phone-pref-diff" class="mr-3 w-5 h-5 text-green-500 cursor-pointer accent-green-500">
+                                        <span class="text-sm md:text-base font-medium">Use a different number</span>
+                                    </label>
+                                </div>
+                                <input id="phone" type="tel" placeholder="Phone Number (e.g. +233...)" required class="w-full mt-2 px-4 py-3 text-sm md:text-base bg-input rounded-md outline-none focus:ring-2 focus:ring-green-500">
+                             </div>
                              
                              <div class="space-y-3 mt-4 bg-section-muted p-4 rounded-xl border border-gray-200/50 dark:border-gray-700/50">
                                 <label class="block text-sm md:text-base font-semibold mb-1 text-brand">Delivery Region</label>
@@ -951,7 +961,7 @@
                     <div class="space-y-8 text-muted pt-4 md:pl-6">
                         <h3 class="text-xl md:text-2xl font-semibold logo-font mb-6" style="color: var(--text-color);">Contact Information</h3>
                          <div class="bg-section-muted p-5 rounded-xl shadow-sm border border-gray-200/50 dark:border-gray-700/50"><h4 class="font-bold text-brand text-base md:text-lg flex items-center"><span class="mr-2">📍</span>Address</h4><p class="pl-8 text-sm md:text-base mt-1">OLD ESTATE SSNIT TRAFFIC - Koforidua, Ghana</p></div>
-                        <div class="bg-section-muted p-5 rounded-xl shadow-sm border border-gray-200/50 dark:border-gray-700/50"><h4 class="font-bold text-brand text-base md:text-lg flex items-center"><span class="mr-2">📞</span>Phone</h4><p class="pl-8 text-sm md:text-base mt-1">+233 54 020 3780</p></div>
+                        <div class="bg-section-muted p-5 rounded-xl shadow-sm border border-gray-200/50 dark:border-gray-700/50"><h4 class="font-bold text-brand text-base md:text-lg flex items-center"><span class="mr-2">📞</span>Phone</h4><p class="pl-8 text-sm md:text-base mt-1">+233 53 445 7430</p></div>
                         <div class="bg-section-muted p-5 rounded-xl shadow-sm border border-gray-200/50 dark:border-gray-700/50"><h4 class="font-bold text-brand text-base md:text-lg flex items-center"><span class="mr-2">📧</span>Email</h4><p class="pl-8 text-sm md:text-base mt-1"><a href="mailto:nyaa4266@gmail.com" class="hover:underline text-brand font-medium">nyaa4266@gmail.com</a></p></div>
                     </div>
                 </div>
@@ -969,7 +979,7 @@
                             <h3 class="text-xl md:text-2xl font-semibold logo-font text-brand mb-4">Store Details</h3>
                             <div class="space-y-3 text-sm md:text-base text-muted">
                                 <p class="flex items-start"><span class="text-brand mr-3 mt-1 text-lg">📍</span> <span>OLD ESTATE SSNIT TRAFFIC <br> Koforidua, Ghana</span></p>
-                                <p class="flex items-start"><span class="text-brand mr-3 mt-1 text-lg">📞</span> <span>+233 54 020 3780</span></p>
+                                <p class="flex items-start"><span class="text-brand mr-3 mt-1 text-lg">📞</span> <span>+233 53 445 7430</span></p>
                                  <p class="flex items-start"><span class="text-brand mr-3 mt-1 text-lg">📧</span> <a href="mailto:nyaa4266@gmail.com" class="hover:underline text-brand font-medium">nyaa4266@gmail.com</a></p>
                             </div>
                         </div>
@@ -1034,21 +1044,61 @@
         <p>Item action completed!</p>
     </div>
 
-    <!-- Auth Modal (Sign Up / Sign In) -->
+    <!-- Auth Modal (Sign Up / Sign In / Phone Verification) -->
     <div id="login-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center animation-fade-in px-4">
         <div class="bg-card p-6 md:p-8 rounded-2xl shadow-2xl max-w-sm w-full relative border border-gray-200 dark:border-gray-800">
             <button id="close-login-modal" class="absolute top-4 right-4 text-gray-500 hover:text-red-500 font-bold text-xl">×</button>
-            <h3 id="auth-title" class="text-xl md:text-2xl font-bold logo-font text-center mb-6">Welcome Back</h3>
-            <form id="auth-form" class="space-y-4">
-                <input type="text" id="auth-name" placeholder="Full Name" class="hidden w-full px-4 py-3 text-sm md:text-base bg-input rounded-md border border-gray-300 dark:border-gray-700 outline-none focus:ring-2 focus:ring-green-500">
-                <input type="email" id="auth-email" placeholder="Email Address" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md border border-gray-300 dark:border-gray-700 outline-none focus:ring-2 focus:ring-green-500">
-                <input type="password" id="auth-password" placeholder="Password" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md border border-gray-300 dark:border-gray-700 outline-none focus:ring-2 focus:ring-green-500">
-                <button type="submit" id="auth-submit-btn" class="w-full bg-button text-button font-bold py-3 rounded-full text-sm md:text-base hover:bg-button-hover transition-colors shadow-md">Sign In</button>
-                <p class="text-center text-xs md:text-sm text-muted mt-4">
-                    <span id="auth-switch-text">Don't have an account?</span> 
-                    <button type="button" id="auth-toggle-btn" class="text-brand hover:underline font-semibold">Sign up</button>
-                </p>
-            </form>
+            
+            <!-- Standard / Social Auth View -->
+            <div id="standard-auth-view">
+                <h3 id="auth-title" class="text-xl md:text-2xl font-bold logo-font text-center mb-6">Welcome Back</h3>
+                
+                <form id="auth-form" class="space-y-4">
+                    <input type="text" id="auth-name" placeholder="Full Name" class="hidden w-full px-4 py-3 text-sm md:text-base bg-input rounded-md border border-gray-300 dark:border-gray-700 outline-none focus:ring-2 focus:ring-green-500">
+                    <input type="tel" id="auth-phone" placeholder="Phone Number (e.g. +233...)" class="hidden w-full px-4 py-3 text-sm md:text-base bg-input rounded-md border border-gray-300 dark:border-gray-700 outline-none focus:ring-2 focus:ring-green-500">
+                    <input type="email" id="auth-email" placeholder="Email Address" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md border border-gray-300 dark:border-gray-700 outline-none focus:ring-2 focus:ring-green-500">
+                    <input type="password" id="auth-password" placeholder="Password" required class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md border border-gray-300 dark:border-gray-700 outline-none focus:ring-2 focus:ring-green-500">
+                    <button type="submit" id="auth-submit-btn" class="w-full bg-button text-button font-bold py-3 rounded-full text-sm md:text-base hover:bg-button-hover transition-colors shadow-md">Sign In</button>
+                    <p class="text-center text-xs md:text-sm text-muted mt-4">
+                        <span id="auth-switch-text">Don't have an account?</span> 
+                        <button type="button" id="auth-toggle-btn" class="text-brand hover:underline font-semibold">Sign up</button>
+                    </p>
+                </form>
+
+                <!-- Social Authentication Options -->
+                <div id="social-auth" class="mt-4 space-y-3">
+                    <div class="relative flex items-center py-2">
+                        <div class="flex-grow border-t border-gray-300 dark:border-gray-700"></div>
+                        <span class="flex-shrink-0 mx-4 text-muted text-xs">Or continue with</span>
+                        <div class="flex-grow border-t border-gray-300 dark:border-gray-700"></div>
+                    </div>
+                    <button id="google-auth-btn" type="button" class="w-full flex items-center justify-center bg-white text-black border border-gray-300 font-bold py-2.5 rounded-full hover:bg-gray-100 transition-colors shadow-sm">
+                        <svg class="w-5 h-5 mr-2" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg> Google
+                    </button>
+                    <button id="yahoo-auth-btn" type="button" class="w-full flex items-center justify-center bg-[#430297] text-white font-bold py-2.5 rounded-full hover:bg-[#320170] transition-colors shadow-sm">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M22.456 0h-4.322L12 11.234 5.866 0H1.544l8.307 13.513v10.487h4.298V13.513L22.456 0z"/></svg> Yahoo
+                    </button>
+                </div>
+            </div>
+
+            <!-- Phone Verification View (Forced for new/unverified users) -->
+            <div id="phone-verification-view" class="hidden space-y-4">
+                <h3 class="text-xl md:text-2xl font-bold logo-font text-center mb-2">Verify Your Number</h3>
+                <p class="text-sm text-center text-muted mb-4">To complete your registration securely, please verify your mobile number.</p>
+                
+                <div id="phone-input-group">
+                    <input type="tel" id="verify-phone-number" placeholder="Phone Number (e.g. +233540203780)" class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md border border-gray-300 dark:border-gray-700 outline-none focus:ring-2 focus:ring-green-500 mb-3" required>
+                    <div id="recaptcha-container" class="mb-3 flex justify-center w-full overflow-hidden"></div>
+                    <button id="send-otp-btn" class="w-full bg-button text-button font-bold py-3 rounded-full text-sm md:text-base hover:bg-button-hover transition-colors shadow-md">Send SMS Code</button>
+                    <button id="skip-otp-dev-btn" class="w-full mt-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-bold py-3 rounded-full text-xs md:text-sm hover:bg-gray-300 transition-colors shadow-md hidden">Mock Verification (Fallback)</button>
+                </div>
+
+                <div id="otp-input-group" class="hidden">
+                    <p class="text-xs text-center text-brand mb-2">Code sent! Check your messages.</p>
+                    <input type="text" id="verify-otp-code" placeholder="Enter 6-digit code" class="w-full px-4 py-3 text-sm md:text-base bg-input rounded-md border border-gray-300 dark:border-gray-700 outline-none focus:ring-2 focus:ring-green-500 mb-3 tracking-widest text-center font-bold">
+                    <button id="confirm-otp-btn" class="w-full bg-button text-button font-bold py-3 rounded-full text-sm md:text-base hover:bg-button-hover transition-colors shadow-md">Verify & Complete</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1060,7 +1110,7 @@
             <h3 id="team-modal-name" class="text-2xl md:text-3xl font-bold logo-font mb-1" style="color: var(--text-color);"></h3>
             <p id="team-modal-role" class="text-sm md:text-base text-brand font-semibold mb-4 uppercase tracking-wide"></p>
             <p id="team-modal-bio" class="text-sm md:text-base text-muted mb-6 leading-relaxed px-2"></p>
-            <div id="team-modal-socials" class="flex justify-center space-x-6">
+            <div id="team-modal-socials" class="flex justify-center space-x-4">
                 <!-- Social icons injected here -->
             </div>
         </div>
@@ -1072,7 +1122,10 @@
    <script type="module">
         import * as THREE from 'three';
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, getDocs, query } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        // Firestore imports
+        import { getFirestore, collection, getDocs, query, addDoc, setDoc, doc, getDoc, updateDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        // Official Firebase Authentication imports
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, OAuthProvider, RecaptchaVerifier, linkWithPhoneNumber, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
         // === BASH TERMINAL LOGIC ===
         const bashTerminal = document.getElementById('bash-terminal');
@@ -1108,7 +1161,6 @@
         });
 
         window.logToBash('System boot sequence initiated...', 'warning');
-        window.logToBash('Loading Ama Thrift Core Modules...', 'info');
 
         // === FIREBASE & PAYSTACK SETUP ===
         const firebaseConfig = {
@@ -1122,11 +1174,12 @@
         };
         const PAYSTACK_PUBLIC_KEY = 'YOUR_PAYSTACK_PUBLIC_KEY'; 
         
-        let app, db;
+        let app, db, auth;
         try {
             app = initializeApp(firebaseConfig);
             db = getFirestore(app);
-            window.logToBash('Firebase Client: Connected.', 'success');
+            auth = getAuth(app);
+            window.logToBash('Firebase Client & Auth: Connected.', 'success');
         } catch (error) {
             window.logToBash('Firebase Connection Failed!', 'error');
         }
@@ -1175,11 +1228,9 @@
                 document.addEventListener('mousemove', onDocumentMouseMove, false);
                 document.addEventListener('touchmove', onDocumentTouchMove, {passive: true});
                 window.addEventListener('resize', onWindowResize, false);
-                window.logToBash('3D Engine: Initialized.', 'success');
             } catch (err) {
                 const canvasContainer = document.getElementById('canvas-container');
                 if(canvasContainer) canvasContainer.style.display = 'none';
-                window.logToBash('3D Engine Initialization Failed.', 'error');
             }
         }
 
@@ -1218,13 +1269,13 @@
 
         // --- Application State ---
         let products = [
-             { id: 101, name: "Emerald Silk Evening Dress", category: "Female", price: 150.00, image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=600", gallery: ["https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&q=80&w=600"], description: "Elegant emerald green slip dress, perfect for evening events. Features an open back and adjustable straps.", fabric: "100% Silk", size: "M (UK 10)", quality: "Like New", longevity: "True to size", new_arrival: true, trending: true },
-             { id: 102, name: "Floral Summer Sundress", category: "Female", price: 95.00, originalPrice: 120.00, image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&q=80&w=600", gallery: ["https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1550639525-c97d455acf70?auto=format&fit=crop&q=80&w=600"], description: "Breezy and light floral dress perfect for sunny days. Has hidden side pockets.", fabric: "Cotton Blend", size: "S (UK 8)", quality: "Gently Used", longevity: "Relaxed fit", new_arrival: true },
-             { id: 103, name: "Vintage Oversized Denim Jacket", category: "Unisex", price: 180.00, image: "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&q=80&w=600", gallery: ["https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&q=80&w=600"], description: "Classic 90s retro oversized denim jacket. Essential for layering in any season.", fabric: "100% Heavy Cotton", size: "L", quality: "Vintage Fade", longevity: "Oversized fit", new_arrival: false, trending: true },
-             { id: 104, name: "Kids Denim Overalls", category: "Kids", price: 65.00, originalPrice: 85.00, image: "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&q=80&w=600", gallery: ["https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&q=80&w=600"], description: "Durable and playful kids overalls with adjustable suspenders.", fabric: "Heavy Cotton Denim", size: "4T", quality: "Good", longevity: "Generous fit", new_arrival: true },
-             { id: 105, name: "Mens Casual Linen Shirt", category: "Male", price: 85.00, image: "https://images.unsplash.com/photo-1596755094514-f87e32f85e23?auto=format&fit=crop&q=80&w=600", gallery: ["https://images.unsplash.com/photo-1596755094514-f87e32f85e23?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&q=80&w=600"], description: "Breathable linen shirt, great for casual outings or beachwear.", fabric: "100% Linen", size: "M", quality: "Excellent", longevity: "Regular fit", new_arrival: false, trending: true },
-             { id: 106, name: "Classic Pleated Trousers", category: "Male", price: 110.00, originalPrice: 140.00, image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=600", gallery: ["https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=600"], description: "Tailored vintage pleated trousers for a sharp, sophisticated look.", fabric: "Wool Blend", size: "32W 30L", quality: "Like New", longevity: "Tailored fit", new_arrival: false },
-             { id: 107, name: "Boho Chic Midi Dress", category: "Female", price: 130.00, image: "https://images.unsplash.com/photo-1612336307429-8a898d10e223?auto=format&fit=crop&q=80&w=600", gallery: ["https://images.unsplash.com/photo-1612336307429-8a898d10e223?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&q=80&w=600"], description: "Gorgeous bohemian midi dress featuring intricate embroidery and bell sleeves.", fabric: "Viscose", size: "L (UK 12)", quality: "Excellent", longevity: "Flowy fit", new_arrival: true, trending: false }
+             { id: 101, name: "Emerald Silk Evening Dress", category: "Female", price: 150.00, image: "https://tatxyrbbezljpcvubueu.supabase.co/storage/v1/object/public/site/Screenshot%202026-04-17%20161910.png", video: "https://tatxyrbbezljpcvubueu.supabase.co/storage/v1/object/public/site/WhatsApp%20Video%202026-04-17%20at%2012.29.15%20AM.mp4", gallery: ["https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&q=80&w=600"], description: "Elegant emerald green slip dress, perfect for evening events. Features an open back and adjustable straps.", fabric: "100% Silk", size: "M (UK 10)", quality: "Like New", longevity: "True to size", new_arrival: true, trending: true },
+             { id: 102, name: "Floral Summer Sundress", category: "Female", price: 95.00, originalPrice: 120.00, image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&q=80&w=600", video: "https://assets.mixkit.co/videos/preview/mixkit-young-woman-in-a-yellow-dress-dancing-in-a-field-4286-large.mp4", gallery: ["https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1550639525-c97d455acf70?auto=format&fit=crop&q=80&w=600"], description: "Breezy and light floral dress perfect for sunny days. Has hidden side pockets.", fabric: "Cotton Blend", size: "S (UK 8)", quality: "Gently Used", longevity: "Relaxed fit", new_arrival: true },
+             { id: 103, name: "Vintage Oversized Denim Jacket", category: "Unisex", price: 180.00, image: "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&q=80&w=600", video: "https://assets.mixkit.co/videos/preview/mixkit-stylish-man-in-a-denim-jacket-and-sunglasses-4318-large.mp4", gallery: ["https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&q=80&w=600"], description: "Classic 90s retro oversized denim jacket. Essential for layering in any season.", fabric: "100% Heavy Cotton", size: "L", quality: "Vintage Fade", longevity: "Oversized fit", new_arrival: false, trending: true },
+             { id: 104, name: "Kids Denim Overalls", category: "Kids", price: 65.00, originalPrice: 85.00, image: "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&q=80&w=600", video: null, gallery: ["https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&q=80&w=600"], description: "Durable and playful kids overalls with adjustable suspenders.", fabric: "Heavy Cotton Denim", size: "4T", quality: "Good", longevity: "Generous fit", new_arrival: true },
+             { id: 105, name: "Mens Casual Linen Shirt", category: "Male", price: 85.00, image: "https://images.unsplash.com/photo-1596755094514-f87e32f85e23?auto=format&fit=crop&q=80&w=600", video: "https://assets.mixkit.co/videos/preview/mixkit-man-walking-in-a-fashion-suit-1647-large.mp4", gallery: ["https://images.unsplash.com/photo-1596755094514-f87e32f85e23?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&q=80&w=600"], description: "Breathable linen shirt, great for casual outings or beachwear.", fabric: "100% Linen", size: "M", quality: "Excellent", longevity: "Regular fit", new_arrival: false, trending: true },
+             { id: 106, name: "Classic Pleated Trousers", category: "Male", price: 110.00, originalPrice: 140.00, image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=600", video: null, gallery: ["https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=600"], description: "Tailored vintage pleated trousers for a sharp, sophisticated look.", fabric: "Wool Blend", size: "32W 30L", quality: "Like New", longevity: "Tailored fit", new_arrival: false },
+             { id: 107, name: "Boho Chic Midi Dress", category: "Female", price: 130.00, image: "https://images.unsplash.com/photo-1612336307429-8a898d10e223?auto=format&fit=crop&q=80&w=600", video: "https://assets.mixkit.co/videos/preview/mixkit-young-woman-in-a-fashion-photoshoot-39832-large.mp4", gallery: ["https://images.unsplash.com/photo-1612336307429-8a898d10e223?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&q=80&w=600"], description: "Gorgeous bohemian midi dress featuring intricate embroidery and bell sleeves.", fabric: "Viscose", size: "L (UK 12)", quality: "Excellent", longevity: "Flowy fit", new_arrival: true, trending: false }
         ];
         let testimonials = [
             {name: "Sarah M.", comment: "Best thrift store in Accra! The quality is amazing."},
@@ -1237,9 +1288,12 @@
         let heroImageIndex = 0;
         let currentDeliveryDetails = {};
         let currentDeliveryFee = 0;
+        let pendingCartAction = null; 
         
-        // Auth State Setup
-        let currentUser = JSON.parse(localStorage.getItem('ama_thrift_user')) || null;
+        // Unified Auth State
+        let currentUser = null; 
+        let currentAuthState = 'LOGIN'; // 'LOGIN', 'SIGNUP', 'PHONE_VERIFY'
+        let confirmationResultObj = null;
 
         // Helper to format pricing everywhere
         function formatPrice(price) {
@@ -1259,7 +1313,6 @@
                 document.documentElement.classList.remove('dark');
                 sunIcon.classList.add('hidden'); moonIcon.classList.remove('hidden');
             }
-            window.logToBash(`Theme changed to: ${theme.toUpperCase()}`, 'info');
         }
 
         function toggleTheme() {
@@ -1279,7 +1332,7 @@
         });
         themeToggle.addEventListener('click', toggleTheme);
         
-        // --- AUTHENTICATION AND USER MENU LOGIC ---
+        // --- SECURE AUTHENTICATION & UI LOGIC ---
         function updateUserUI() {
             const userDropdown = document.getElementById('user-dropdown');
             
@@ -1287,7 +1340,7 @@
                 userDropdown.innerHTML = `
                     <div class="px-4 py-3 text-sm border-b border-gray-200 dark:border-gray-700 bg-black/5 dark:bg-white/5">
                         <p class="text-xs text-muted font-bold uppercase mb-1">Signed in as</p>
-                        <p class="text-brand font-bold truncate">${currentUser.name}</p>
+                        <p class="text-brand font-bold truncate">${currentUser.name || currentUser.email}</p>
                     </div>
                     <button id="my-account-btn" class="w-full text-left px-4 py-3 text-sm hover:text-green-500 hover:bg-black/5 dark:hover:bg-white/5 font-semibold transition-colors">My Account & Orders</button>
                     <button id="logout-btn" class="w-full text-left px-4 py-3 text-sm hover:text-red-500 hover:bg-red-500/10 font-semibold text-gray-500 transition-colors">Log Out</button>
@@ -1299,14 +1352,82 @@
             }
         }
 
-        document.getElementById('user-dropdown').addEventListener('click', (e) => {
+        // Firebase Auth Listener with STRICT Database Check
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                try {
+                    const userDocRef = doc(db, "users", user.uid);
+                    const userDoc = await getDoc(userDocRef);
+                    
+                    if (userDoc.exists()) {
+                        const data = userDoc.data();
+                        // App heavily relies on database verified status, not just auth token
+                        if (data.phoneVerified) {
+                            currentUser = { uid: user.uid, email: user.email, ...data };
+                            updateUserUI();
+                            document.getElementById('login-modal').classList.add('hidden');
+                            
+                            // Process pending actions
+                            if (pendingCartAction) {
+                                addToCart(pendingCartAction);
+                                const p = products.find(prod => prod.id === pendingCartAction);
+                                if(p) showPopupMessage(`${p.name} added to your bag!`);
+                                pendingCartAction = null;
+                            }
+                        } else {
+                            // User exists but phone is not verified. Force Verification.
+                            document.getElementById('verify-phone-number').value = data.phone || '';
+                            showPhoneVerificationUI();
+                        }
+                    } else {
+                        // Edge case: Signed in via Auth but no DB document exists. Initialize and force Verification.
+                        await setDoc(userDocRef, {
+                            name: user.displayName || 'Thrift Shopper',
+                            email: user.email || '',
+                            phone: user.phoneNumber || '',
+                            phoneVerified: !!user.phoneNumber,
+                            orders: []
+                        });
+                        document.getElementById('verify-phone-number').value = user.phoneNumber || '';
+                        showPhoneVerificationUI();
+                    }
+                } catch(error) {
+                    window.logToBash(`Auth Sync Error: ${error.message}`, 'error');
+                }
+            } else {
+                currentUser = null;
+                updateUserUI();
+            }
+        });
+
+        // Toggle Auth Modal State
+        function switchAuthState(state) {
+            currentAuthState = state;
+            const standardView = document.getElementById('standard-auth-view');
+            const verifyView = document.getElementById('phone-verification-view');
+            
+            if (state === 'LOGIN' || state === 'SIGNUP') {
+                standardView.classList.remove('hidden');
+                verifyView.classList.add('hidden');
+            } else if (state === 'PHONE_VERIFY') {
+                standardView.classList.add('hidden');
+                verifyView.classList.remove('hidden');
+                initRecaptcha(); // Initialize recaptcha for SMS
+            }
+        }
+
+        function showPhoneVerificationUI() {
+            document.getElementById('login-modal').classList.remove('hidden');
+            switchAuthState('PHONE_VERIFY');
+        }
+
+        document.getElementById('user-dropdown').addEventListener('click', async (e) => {
             if (e.target.id === 'mock-login-btn') {
                 document.getElementById('user-dropdown').classList.add('hidden');
+                switchAuthState('LOGIN');
                 document.getElementById('login-modal').classList.remove('hidden');
             } else if (e.target.id === 'logout-btn') {
-                currentUser = null;
-                localStorage.removeItem('ama_thrift_user');
-                updateUserUI();
+                await signOut(auth);
                 navigateToPage('home');
                 showPopupMessage("Logged out successfully.");
                 document.getElementById('user-dropdown').classList.add('hidden');
@@ -1324,7 +1445,6 @@
             document.getElementById('profile-name').value = currentUser.name || '';
             document.getElementById('profile-email').value = currentUser.email || '';
             document.getElementById('profile-phone').value = currentUser.phone || '';
-            document.getElementById('profile-password').value = '';
 
             const orderList = document.getElementById('order-history-list');
             if (!currentUser.orders || currentUser.orders.length === 0) {
@@ -1383,13 +1503,11 @@
         }
 
         function updateWishlistUI() {
-            // Update Nav Badge
             const badge = document.getElementById('wishlist-badge');
             badge.textContent = wishlist.length;
             if(wishlist.length > 0) badge.classList.remove('hidden');
             else badge.classList.add('hidden');
             
-            // Update Heart Icons on all rendered cards
             document.querySelectorAll(`.wishlist-btn`).forEach(btn => {
                 const id = parseInt(btn.dataset.id);
                 if(wishlist.includes(id)) {
@@ -1401,7 +1519,6 @@
                 }
             });
             
-            // Re-render Wishlist Page if active
             const activePage = document.querySelector('.page.active');
             if(activePage && activePage.id === 'wishlist-page') {
                 renderWishlistPage();
@@ -1431,29 +1548,35 @@
             productsToRender.forEach(product => {
                 const isWished = wishlist.includes(product.id) ? 'text-red-500 fill-current' : 'text-gray-400';
                 
-                // Badges
                 const badgeHTML = product.originalPrice ? `<span class="absolute top-3 left-3 md:top-4 md:left-4 bg-red-500 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded shadow z-10">SALE</span>` : 
                                   (product.trending ? `<span class="absolute top-3 left-3 md:top-4 md:left-4 bg-amber-500 text-black text-[10px] md:text-xs font-bold px-2 py-1 rounded shadow z-10">TRENDING</span>` : '');
                 
-                // Price Display (With strike-through if on sale)
                 const priceHTML = product.originalPrice ? 
                     `<p class="text-lg sm:text-xl font-bold text-brand mb-4"><span class="text-[10px] sm:text-sm line-through text-gray-500 mr-2">${formatPrice(product.originalPrice)}</span>${formatPrice(product.price)}</p>` : 
                     `<p class="text-lg sm:text-xl font-bold text-brand mb-4">${formatPrice(product.price)}</p>`;
+
+                const mediaHTML = product.video ? `
+                    <div class="relative w-full h-[220px] md:h-[260px] mb-3 rounded-lg overflow-hidden group/vid" onmouseenter="const v = this.querySelector('video'); if(v) { const p = v.play(); if(p) p.catch(()=>{}); }" onmouseleave="const v = this.querySelector('video'); if(v) { v.pause(); v.currentTime=0; }">
+                        <img src="${product.image}" alt="${product.name}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover/vid:opacity-0" onerror="this.src='https://placehold.co/300x300/1a1a1a/4ade80?text=Style'">
+                        <video src="${product.video}" muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover/vid:opacity-100 transition-opacity duration-500" onerror="this.style.display='none'"></video>
+                    </div>
+                ` : `
+                    <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://placehold.co/300x300/1a1a1a/4ade80?text=Style'">
+                `;
 
                 const productCard = `
                     <div class="product-card relative cursor-pointer bg-card rounded-2xl p-4 flex flex-col items-center text-center transform hover:-translate-y-2 transition-all duration-300 shadow-lg border border-gray-200 dark:border-gray-800" data-product-id="${product.id}">
                         ${badgeHTML}
                         
-                        <!-- Heart Wishlist Button -->
                         <button class="wishlist-btn absolute top-4 right-4 md:top-5 md:right-5 z-10 p-2 bg-white/80 dark:bg-black/60 backdrop-blur-md rounded-full hover:scale-110 transition-all shadow-sm ${isWished}" data-id="${product.id}" title="Toggle Wishlist">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="heart-icon md:w-5 md:h-5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
                         </button>
                         
-                        <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://placehold.co/300x300/1a1a1a/4ade80?text=Style'">
+                        ${mediaHTML}
                         <h3 class="text-base sm:text-lg font-semibold logo-font leading-tight mb-1">${product.name}</h3>
                         <p class="text-[11px] sm:text-xs text-muted mb-2 font-medium">${product.category} • <span class="border border-green-500/50 rounded px-1.5 ml-1">${product.size}</span></p>
                         ${priceHTML}
-                        <button class="add-to-cart-btn w-full bg-button text-button font-bold py-2 md:py-3 px-4 rounded-full text-sm md:text-base hover:bg-button-hover transition-colors duration-300 shadow-sm">Add to Bag</button>
+                        <button class="add-to-cart-btn w-full bg-button text-button font-bold py-2 md:py-3 px-4 rounded-full text-sm md:text-base hover:bg-button-hover transition-colors duration-300 shadow-sm" data-id="${product.id}">Add to Bag</button>
                     </div>
                 `;
                 productList.innerHTML += productCard;
@@ -1464,7 +1587,6 @@
             const product = products.find(p => p.id === productId);
             if (!product) { navigateToPage('explore'); return; }
 
-            // Render Main Image & Interactive Thumbnail Gallery (Various Angles)
             let galleryHTML = '';
             const images = product.gallery && product.gallery.length > 0 ? product.gallery : [product.image];
             
@@ -1489,52 +1611,35 @@
                 formatPrice(product.price);
                 
             document.getElementById('pdp-description').textContent = product.description;
-            
-            // Render specific dress/thrift attributes
             document.getElementById('pdp-size').textContent = product.size || 'N/A';
             document.getElementById('pdp-quality').textContent = product.quality || 'Pre-loved';
             document.getElementById('pdp-fabric').textContent = product.fabric || product.ingredients || 'Mixed Blend';
             
             document.getElementById('pdp-add-to-cart-btn').dataset.id = product.id;
 
-            // --- INTELLIGENT "YOU MAY ALSO LIKE" ALGORITHM ---
-            
-            // 1. Break the product name into keywords to find "similar features"
             const nameWords = product.name.toLowerCase().split(' ').filter(w => w.length > 3);
-            
-            // 2. Score all OTHER products based on category match & keyword match
             let scoredProducts = products.filter(p => p.id !== product.id).map(p => {
                 let score = 0;
-                // High Priority: Exact Category Match (e.g. UNISEX matches UNISEX)
                 if (p.category === product.category) score += 20; 
-                
-                // Secondary Priority: Similar features from the item name (e.g. "Denim", "Dress")
                 const pNameWords = p.name.toLowerCase();
-                nameWords.forEach(word => {
-                    if (pNameWords.includes(word)) score += 5;
-                });
+                nameWords.forEach(word => { if (pNameWords.includes(word)) score += 5; });
                 return { ...p, matchScore: score };
             });
 
-            // 3. Sort by highest score first. If scores tie, randomize to keep it fresh
             scoredProducts.sort((a, b) => {
                 if (b.matchScore !== a.matchScore) return b.matchScore - a.matchScore;
                 return 0.5 - Math.random();
             });
 
-            // 4. Take the top 4
             const similarProducts = scoredProducts.slice(0, 4);
-            
             const similarContainer = document.getElementById('similar-items-section');
             if (similarProducts.length > 0) {
                 similarContainer.classList.remove('hidden');
                 renderProducts(similarProducts, 'similar-items-list');
-                window.logToBash(`Loaded intelligent similar items for category: [${product.category}]`, 'success');
             } else {
                 similarContainer.classList.add('hidden');
             }
             
-            window.logToBash(`Viewed Item: ${product.name} (ID: ${product.id})`, 'info');
             navigateToPage('product-detail');
         }
 
@@ -1648,8 +1753,6 @@
         function addToCart(productId) {
             const existingItem = cart.find(item => item.id === productId);
             if (existingItem) { existingItem.quantity++; } else { cart.push({ id: productId, quantity: 1 }); }
-            const product = products.find(p => p.id === productId);
-            if(product) window.logToBash(`Added to Cart: ${product.name}`, 'success');
             updateCart();
         }
         
@@ -1685,8 +1788,6 @@
             window.scrollTo(0, 0);
             
             if(pageId === 'wishlist') renderWishlistPage();
-            
-            window.logToBash(`Mapped to: /${pageId}`, 'info');
         }
 
         function handleSearch() {
@@ -1702,7 +1803,6 @@
 
             const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchTerm) || product.category.toLowerCase().includes(searchTerm));
             renderProducts(filteredProducts, 'product-list');
-            window.logToBash(`Searching for: "${searchTerm}" - Found ${filteredProducts.length} results`, 'info');
             navigateToPage('explore');
             searchDropdown.classList.add('hidden');
             searchInput.value = '';
@@ -1731,6 +1831,60 @@
             }, 6000);
         }
 
+        // --- Recaptcha Setup for Phone Auth ---
+        function initRecaptcha() {
+            if (!window.recaptchaVerifier) {
+                window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+                    'size': 'normal',
+                    'callback': (response) => {
+                        window.logToBash('reCAPTCHA solved.', 'success');
+                    },
+                    'expired-callback': () => {
+                        window.logToBash('reCAPTCHA expired. Please retry.', 'warning');
+                    }
+                });
+                window.recaptchaVerifier.render();
+            }
+        }
+
+        // --- Standard Login Processing & Linking Validation ---
+        async function processLoginSuccess(user, name = null) {
+            const userDocRef = doc(db, "users", user.uid);
+            const userDoc = await getDoc(userDocRef);
+
+            if (!userDoc.exists()) {
+                // New user - requires saving baseline and verification explicitly
+                await setDoc(userDocRef, {
+                    name: name || user.displayName || 'Thrift Shopper',
+                    email: user.email || '',
+                    phone: user.phoneNumber || '',
+                    phoneVerified: !!user.phoneNumber,
+                    orders: []
+                });
+            }
+
+            const updatedDoc = await getDoc(userDocRef);
+            const userData = updatedDoc.data();
+
+            if (userData.phoneVerified) {
+                // Already completely verified via database
+                currentUser = { uid: user.uid, email: user.email, ...userData };
+                updateUserUI();
+                document.getElementById('login-modal').classList.add('hidden');
+                
+                if (pendingCartAction) {
+                    addToCart(pendingCartAction);
+                    const p = products.find(prod => prod.id === pendingCartAction);
+                    if(p) showPopupMessage(`${p.name} added to your bag!`);
+                    pendingCartAction = null;
+                }
+            } else {
+                // Needs phone verification setup, forcing user to input number via UI
+                document.getElementById('verify-phone-number').value = userData.phone || '';
+                showPhoneVerificationUI();
+            }
+        }
+
         // --- Event Listeners ---
         document.addEventListener('DOMContentLoaded', () => {
             const preloader = document.getElementById('preloader');
@@ -1739,8 +1893,6 @@
             async function loadData() {
                 if (db) {
                     try {
-                        window.logToBash('Fetching DB catalog from Firestore...', 'info');
-                        
                         const productsRef = collection(db, 'products');
                         const productsQuery = query(productsRef);
                         const productsSnapshot = await getDocs(productsQuery);
@@ -1753,8 +1905,6 @@
 
                         if (fetchedProducts.length > 0) products = fetchedProducts;
                         if (fetchedTestimonials.length > 0) testimonials = fetchedTestimonials;
-                        
-                        window.logToBash('Firestore Sync Complete.', 'success');
                     } catch(e) { window.logToBash('Firestore Sync Failed. Using local offline cache.', 'error'); }
                 }
                 
@@ -1767,18 +1917,16 @@
                 startHeroCarousel(); 
                 renderTestimonials();
                 hidePreloader();
-                window.logToBash(`System Ready. Loaded ${products.length} items.`, 'success');
             }
             
             initializeTheme();
-            updateUserUI(); // Load authentication status visually
+            updateUserUI(); 
             init3D();
             animate3D();
             loadData();
             updateCart();
             navigateToPage('home');
             
-            // UI Elements
             const searchIcon = document.getElementById('search-icon');
             const searchDropdown = document.getElementById('search-dropdown');
             const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -1786,72 +1934,106 @@
             const searchInput = document.getElementById('search-input');
             const searchButton = document.getElementById('search-button');
             const checkoutForm = document.getElementById('checkout-form');
-            const trackingForm = document.getElementById('tracking-form');
-            const addTestimonialBtn = document.getElementById('add-testimonial-btn');
-            const testimonialFormContainer = document.getElementById('testimonial-form-container');
-            const testimonialForm = document.getElementById('testimonial-form');
             const getDirectionsBtn = document.getElementById('get-directions-btn');
             const backToExploreBtn = document.getElementById('back-to-explore-btn');
-            
-            // New Dropdowns and Features
             const userIcon = document.getElementById('user-icon');
             const userDropdown = document.getElementById('user-dropdown');
             const loginModal = document.getElementById('login-modal');
-            const visualSearchBtn = document.getElementById('visual-search-btn');
-            const visualSearchInput = document.getElementById('visual-search-input');
             
-            // Auth Form Elements
-            const authForm = document.getElementById('auth-form');
-            const authToggleBtn = document.getElementById('auth-toggle-btn');
-            const authTitle = document.getElementById('auth-title');
-            const authNameInput = document.getElementById('auth-name');
-            const authSubmitBtn = document.getElementById('auth-submit-btn');
-            const authSwitchText = document.getElementById('auth-switch-text');
-            let isSignUpMode = false;
-
-            // Form Elements
-            const careerForm = document.getElementById('career-application-form');
-            const contactForm = document.getElementById('contact-form');
-            const profileForm = document.getElementById('profile-form');
-
-            // Team Data for Modals
-            const teamData = {
+            // Team Member Modal Logic
+            const teamDetails = {
                 'ama': {
                     name: 'Ama Thrift',
                     role: 'Founder & Head Stylist',
-                    img: 'https://tatxyrbbezljpcvubueu.supabase.co/storage/v1/object/public/ADMINS/ADEL.jpg',
-                    bio: 'Ama is the visionary behind Ama Thrift and Clothing. With over a decade of experience in fashion styling, she curates pieces that empower individuals to express their true selves sustainably.',
-                    socials: { instagram: '#', twitter: '#' }
+                    img: 'https://placehold.co/200x200/0a0a0a/4ade80?text=A.M.',
+                    bio: 'Ama is the visionary behind Ama Thrift. With a deep passion for sustainable fashion and an impeccable eye for unique vintage pieces, she curates styles that empower individuals to express their true selves.',
+                    socials: [
+                        { link: '#', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>' },
+                        { link: '#', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>' }
+                    ]
                 },
                 'kb': {
                     name: 'K.B. Asante',
                     role: 'Head of Collection & Sourcing',
                     img: 'https://placehold.co/200x200/0a0a0a/4ade80?text=K.B.',
-                    bio: 'K.B. has an eagle eye for vintage treasures. He travels extensively to source the highest quality pre-loved garments, ensuring every piece meets our strict standards.',
-                    socials: { linkedin: '#', instagram: '#' }
+                    bio: 'K.B. travels extensively to source the highest quality pre-loved materials. His expertise ensures that every garment meets our rigorous standards for longevity, comfort, and style.',
+                    socials: [
+                        { link: '#', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>' },
+                        { link: '#', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>' }
+                    ]
                 },
                 'dontus': {
                     name: 'Dontus Ernest Mensah',
                     role: 'Customer Experience Lead',
                     img: 'https://tatxyrbbezljpcvubueu.supabase.co/storage/v1/object/public/ADMINS/DONATUS%20(1).jpg',
-                    bio: 'Dontus ensures that every interaction with Ama Thrift is seamless and delightful. From order tracking to styling advice, he is dedicated to supporting our amazing community.',
-                    socials: { twitter: '#', facebook: '#' }
+                    bio: 'Dontus is dedicated to making every customer\'s journey memorable. He handles client relations, ensuring smooth transactions and personalized styling assistance for everyone.',
+                    socials: [
+                        { link: '#', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>' },
+                        { link: '#', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>' }
+                    ]
                 }
             };
-            
+
             const teamModal = document.getElementById('team-modal');
             const closeTeamModal = document.getElementById('close-team-modal');
+            const teamModalImg = document.getElementById('team-modal-img');
+            const teamModalName = document.getElementById('team-modal-name');
+            const teamModalRole = document.getElementById('team-modal-role');
+            const teamModalBio = document.getElementById('team-modal-bio');
+            const teamModalSocials = document.getElementById('team-modal-socials');
 
-            // User Dropdown Toggle
-            if (userIcon) {
-                userIcon.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    userDropdown.classList.toggle('hidden');
-                    searchDropdown.classList.add('hidden');
+            document.querySelectorAll('.team-member-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const memberId = card.dataset.member;
+                    const data = teamDetails[memberId];
+                    if (data) {
+                        teamModalImg.src = data.img;
+                        teamModalName.textContent = data.name;
+                        teamModalRole.textContent = data.role;
+                        teamModalBio.textContent = data.bio;
+                        teamModalSocials.innerHTML = data.socials.map(social => 
+                            `<a href="${social.link}" target="_blank" class="flex items-center justify-center w-10 h-10 rounded-full bg-input border border-gray-200 dark:border-gray-800 text-muted hover:bg-green-500 hover:text-black hover:border-green-500 transition-all duration-300 shadow-sm hover:-translate-y-1">
+                                ${social.icon}
+                            </a>`
+                        ).join('');
+                        teamModal.classList.remove('hidden');
+                    }
+                });
+            });
+
+            if (closeTeamModal) {
+                closeTeamModal.addEventListener('click', () => teamModal.classList.add('hidden'));
+            }
+
+            if (teamModal) {
+                teamModal.addEventListener('click', (e) => {
+                    if (e.target === teamModal) teamModal.classList.add('hidden');
                 });
             }
 
-            // Auth Toggle (Sign in vs Sign up)
+            // Auth Form Elements
+            const authForm = document.getElementById('auth-form');
+            const authToggleBtn = document.getElementById('auth-toggle-btn');
+            const authTitle = document.getElementById('auth-title');
+            const authNameInput = document.getElementById('auth-name');
+            const authPhoneInput = document.getElementById('auth-phone');
+            const authSubmitBtn = document.getElementById('auth-submit-btn');
+            const authSwitchText = document.getElementById('auth-switch-text');
+            
+            // Social Auth Buttons
+            const googleAuthBtn = document.getElementById('google-auth-btn');
+            const yahooAuthBtn = document.getElementById('yahoo-auth-btn');
+            
+            // Phone Verify Elements
+            const sendOtpBtn = document.getElementById('send-otp-btn');
+            const confirmOtpBtn = document.getElementById('confirm-otp-btn');
+            const phoneInputGroup = document.getElementById('phone-input-group');
+            const otpInputGroup = document.getElementById('otp-input-group');
+            const skipOtpDevBtn = document.getElementById('skip-otp-dev-btn'); // Fallback dev tool
+            
+            let isSignUpMode = false;
+
+            // Auth Toggle
             if (authToggleBtn) {
                 authToggleBtn.addEventListener('click', () => {
                     isSignUpMode = !isSignUpMode;
@@ -1859,6 +2041,8 @@
                         authTitle.textContent = "Create an Account";
                         authNameInput.classList.remove('hidden');
                         authNameInput.required = true;
+                        authPhoneInput.classList.remove('hidden');
+                        authPhoneInput.required = true;
                         authSubmitBtn.textContent = "Sign Up";
                         authSwitchText.textContent = "Already have an account?";
                         authToggleBtn.textContent = "Log In";
@@ -1866,6 +2050,8 @@
                         authTitle.textContent = "Welcome Back";
                         authNameInput.classList.add('hidden');
                         authNameInput.required = false;
+                        authPhoneInput.classList.add('hidden');
+                        authPhoneInput.required = false;
                         authSubmitBtn.textContent = "Sign In";
                         authSwitchText.textContent = "Don't have an account?";
                         authToggleBtn.textContent = "Sign up";
@@ -1873,99 +2059,233 @@
                 });
             }
 
-            // Auth Submission
+            // Standard Email Auth Submission
             if (authForm) {
-                authForm.addEventListener('submit', (e) => {
+                authForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
+                    authSubmitBtn.textContent = "Processing...";
+                    authSubmitBtn.disabled = true;
+
                     const email = document.getElementById('auth-email').value;
                     const password = document.getElementById('auth-password').value;
                     
-                    if (isSignUpMode) {
-                        const name = document.getElementById('auth-name').value;
-                        currentUser = { name, email, password, phone: '', orders: [] };
-                        showPopupMessage("Account created successfully!");
-                        window.logToBash(`New account registered: ${email}`, 'success');
-                    } else {
-                        // Mock Login (accepts any for demo, or reads existing)
-                        currentUser = JSON.parse(localStorage.getItem('ama_thrift_user')) || { name: email.split('@')[0], email, password, phone: '', orders: [] };
-                        showPopupMessage("Logged in successfully!");
-                        window.logToBash(`User logged in: ${email}`, 'success');
+                    try {
+                        let userCredential;
+                        if (isSignUpMode) {
+                            const name = document.getElementById('auth-name').value;
+                            const phone = document.getElementById('auth-phone').value;
+                            
+                            userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                            
+                            // Initialize user in DB with unverified phone
+                            const userDocRef = doc(db, "users", userCredential.user.uid);
+                            await setDoc(userDocRef, {
+                                name: name || 'Thrift Shopper',
+                                email: email,
+                                phone: phone,
+                                phoneVerified: false,
+                                orders: []
+                            });
+                            
+                            window.logToBash(`Registered standard user: ${email}`, 'success');
+                            
+                            // Immediately switch to Phone Verify step
+                            document.getElementById('verify-phone-number').value = phone;
+                            showPhoneVerificationUI();
+                            
+                        } else {
+                            userCredential = await signInWithEmailAndPassword(auth, email, password);
+                            await processLoginSuccess(userCredential.user);
+                            window.logToBash(`User logged in via Email: ${email}`, 'success');
+                        }
+                    } catch (error) {
+                        window.logToBash(`Auth Error: ${error.message}`, 'error');
+                        showPopupMessage(error.message);
+                    } finally {
+                        authSubmitBtn.textContent = isSignUpMode ? "Sign Up" : "Sign In";
+                        authSubmitBtn.disabled = false;
                     }
-                    
-                    localStorage.setItem('ama_thrift_user', JSON.stringify(currentUser));
-                    updateUserUI();
-                    loginModal.classList.add('hidden');
-                    authForm.reset();
                 });
             }
 
+            // Google Authentication
+            if (googleAuthBtn) {
+                googleAuthBtn.addEventListener('click', async () => {
+                    const provider = new GoogleAuthProvider();
+                    try {
+                        const result = await signInWithPopup(auth, provider);
+                        window.logToBash(`Google Auth Success: ${result.user.email}`, 'success');
+                        await processLoginSuccess(result.user);
+                    } catch (error) {
+                        window.logToBash(`Google Auth Failed: ${error.message}`, 'error');
+                        showPopupMessage("Google Auth Failed.");
+                    }
+                });
+            }
+
+            // Yahoo Authentication
+            if (yahooAuthBtn) {
+                yahooAuthBtn.addEventListener('click', async () => {
+                    const provider = new OAuthProvider('yahoo.com');
+                    try {
+                        const result = await signInWithPopup(auth, provider);
+                        window.logToBash(`Yahoo Auth Success: ${result.user.email}`, 'success');
+                        await processLoginSuccess(result.user);
+                    } catch (error) {
+                        window.logToBash(`Yahoo Auth Failed: ${error.message}`, 'error');
+                        showPopupMessage("Yahoo Auth Failed.");
+                    }
+                });
+            }
+
+            // Send OTP (Firebase Link with Phone for SMS Validation)
+            if (sendOtpBtn) {
+                sendOtpBtn.addEventListener('click', async () => {
+                    const phone = document.getElementById('verify-phone-number').value.trim();
+                    if(!phone) { showPopupMessage("Please enter a phone number"); return; }
+                    
+                    sendOtpBtn.textContent = "Sending...";
+                    sendOtpBtn.disabled = true;
+                    
+                    try {
+                        // Links phone number to the newly signed-up (Email or Social) session
+                        confirmationResultObj = await linkWithPhoneNumber(auth.currentUser, phone, window.recaptchaVerifier);
+                        window.logToBash(`SMS OTP sent to ${phone}`, 'success');
+                        phoneInputGroup.classList.add('hidden');
+                        otpInputGroup.classList.remove('hidden');
+                    } catch (error) {
+                        window.logToBash(`SMS Failed: ${error.message}`, 'error');
+                        if (error.code === 'auth/credential-already-in-use') {
+                            showPopupMessage("This phone number is already registered to another account.");
+                        } else if(error.code === 'auth/billing-not-enabled' || error.message.includes('domain')) {
+                            showPopupMessage("Dev Environment: Using mock verification fallback.");
+                            skipOtpDevBtn.classList.remove('hidden'); // allow dev bypass
+                        } else {
+                            showPopupMessage("Failed to send OTP. Check number format (+233...).");
+                            if(window.recaptchaVerifier) {
+                                window.recaptchaVerifier.clear();
+                                window.recaptchaVerifier = null;
+                                initRecaptcha();
+                            }
+                        }
+                    } finally {
+                        sendOtpBtn.textContent = "Send SMS Code";
+                        sendOtpBtn.disabled = false;
+                    }
+                });
+            }
+
+            // Confirm OTP
+            if (confirmOtpBtn) {
+                confirmOtpBtn.addEventListener('click', async () => {
+                    const code = document.getElementById('verify-otp-code').value.trim();
+                    if(!code) return;
+                    
+                    confirmOtpBtn.textContent = "Verifying...";
+                    confirmOtpBtn.disabled = true;
+                    
+                    try {
+                        if (confirmationResultObj) {
+                            await confirmationResultObj.confirm(code);
+                        }
+                        
+                        // Successfully linked! Save verified status purely to database security standard.
+                        const phone = document.getElementById('verify-phone-number').value.trim();
+                        await updateDoc(doc(db, "users", auth.currentUser.uid), {
+                            phone: phone,
+                            phoneVerified: true
+                        });
+                        
+                        window.logToBash(`Phone verified completely.`, 'success');
+                        showPopupMessage("Account fully verified!");
+                        
+                        // Proceed to app
+                        const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
+                        currentUser = { uid: auth.currentUser.uid, email: auth.currentUser.email, ...userDoc.data() };
+                        updateUserUI();
+                        document.getElementById('login-modal').classList.add('hidden');
+                        
+                        if (pendingCartAction) {
+                            addToCart(pendingCartAction);
+                            const p = products.find(prod => prod.id === pendingCartAction);
+                            if(p) showPopupMessage(`${p.name} added to your bag!`);
+                            pendingCartAction = null;
+                        }
+
+                    } catch (error) {
+                        window.logToBash(`OTP Failed: ${error.message}`, 'error');
+                        showPopupMessage("Invalid verification code.");
+                    } finally {
+                        confirmOtpBtn.textContent = "Verify & Complete";
+                        confirmOtpBtn.disabled = false;
+                    }
+                });
+            }
+
+            // Mock Verification Bypass (Fallback for dev env lacking billing)
+            if (skipOtpDevBtn) {
+                skipOtpDevBtn.addEventListener('click', async () => {
+                    const phone = document.getElementById('verify-phone-number').value.trim();
+                    if(!phone) return;
+                    try {
+                        await updateDoc(doc(db, "users", auth.currentUser.uid), {
+                            phone: phone,
+                            phoneVerified: true
+                        });
+                        window.logToBash(`Mock Phone verified.`, 'warning');
+                        const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
+                        currentUser = { uid: auth.currentUser.uid, email: auth.currentUser.email, ...userDoc.data() };
+                        updateUserUI();
+                        document.getElementById('login-modal').classList.add('hidden');
+                    } catch (e) {}
+                });
+            }
+
+            // Profile updates
+            const profileForm = document.getElementById('profile-form');
             if (profileForm) {
-                profileForm.addEventListener('submit', (e) => {
+                profileForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
                     if (!currentUser) return;
-                    const newName = document.getElementById('profile-name').value;
-                    const newPhone = document.getElementById('profile-phone').value;
-                    const newPass = document.getElementById('profile-password').value;
                     
-                    currentUser.name = newName;
-                    currentUser.phone = newPhone;
-                    if (newPass) currentUser.password = newPass;
+                    const btn = profileForm.querySelector('button[type="submit"]');
+                    btn.textContent = "Updating...";
+                    btn.disabled = true;
 
-                    localStorage.setItem('ama_thrift_user', JSON.stringify(currentUser));
-                    showPopupMessage("Profile updated successfully!");
-                    updateUserUI(); // update header name
-                    document.getElementById('profile-password').value = '';
-                    window.logToBash(`Profile updated for user: ${currentUser.email}`, 'info');
+                    const newName = document.getElementById('profile-name').value;
+                    
+                    try {
+                        await updateDoc(doc(db, "users", currentUser.uid), { name: newName });
+                        currentUser.name = newName;
+                        showPopupMessage("Profile updated successfully!");
+                        updateUserUI();
+                    } catch (error) {
+                        showPopupMessage("Error updating profile.");
+                    } finally {
+                        btn.textContent = "Update Profile";
+                        btn.disabled = false;
+                    }
                 });
             }
 
+            // Dismiss Login / Force Flow Logic
             if (loginModal) {
-                loginModal.addEventListener('click', (e) => {
+                loginModal.addEventListener('click', async (e) => {
                     if(e.target === loginModal || e.target.id === 'close-login-modal') {
+                        // DB Dependency Check: If they close while verifying, log them out to force flow compliance later
+                        if (currentAuthState === 'PHONE_VERIFY' && auth.currentUser) {
+                            await signOut(auth);
+                            window.logToBash("Verification aborted. User signed out for security.", 'warning');
+                        }
                         loginModal.classList.add('hidden');
-                    }
-                });
-            }
-            
-            // Team Member Modal Logic
-            document.querySelectorAll('.team-member-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    const memberId = card.dataset.member;
-                    const data = teamData[memberId];
-                    if (data && teamModal) {
-                        document.getElementById('team-modal-img').src = data.img;
-                        document.getElementById('team-modal-name').textContent = data.name;
-                        document.getElementById('team-modal-role').textContent = data.role;
-                        document.getElementById('team-modal-bio').textContent = data.bio;
-                        
-                        let socialsHtml = '';
-                        if (data.socials.instagram) socialsHtml += `<a href="${data.socials.instagram}" class="text-gray-500 hover:text-brand transition-colors"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>`;
-                        if (data.socials.twitter) socialsHtml += `<a href="${data.socials.twitter}" class="text-gray-500 hover:text-brand transition-colors"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a>`;
-                        if (data.socials.linkedin) socialsHtml += `<a href="${data.socials.linkedin}" class="text-gray-500 hover:text-brand transition-colors"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>`;
-                        if (data.socials.facebook) socialsHtml += `<a href="${data.socials.facebook}" class="text-gray-500 hover:text-brand transition-colors"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>`;
-                        
-                        document.getElementById('team-modal-socials').innerHTML = socialsHtml;
-                        teamModal.classList.remove('hidden');
-                        window.logToBash(`Viewed team member: ${data.name}`, 'info');
-                    }
-                });
-            });
-            
-            if (closeTeamModal) {
-                closeTeamModal.addEventListener('click', () => {
-                    teamModal.classList.add('hidden');
-                });
-            }
-            
-            if (teamModal) {
-                teamModal.addEventListener('click', (e) => {
-                    if (e.target === teamModal) {
-                        teamModal.classList.add('hidden');
+                        pendingCartAction = null; 
                     }
                 });
             }
             
             // Visual Image Search (Camera/Sparkle)
+            const visualSearchBtn = document.getElementById('visual-search-btn');
+            const visualSearchInput = document.getElementById('visual-search-input');
             if (visualSearchBtn && visualSearchInput) {
                 visualSearchBtn.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -1974,30 +2294,22 @@
                 
                 visualSearchInput.addEventListener('change', (e) => {
                     if(e.target.files && e.target.files.length > 0) {
-                        const file = e.target.files[0];
-                        window.logToBash(`Visual Search initiated for file: ${file.name}`, 'warning');
-                        
-                        // Mock Processing delay
                         searchInput.value = "Analyzing image styling...";
                         setTimeout(() => {
-                            // Pick a random category to simulate finding similar clothing
                             const categories = ['Female', 'Male', 'Unisex', 'Vintage'];
                             const randomCat = categories[Math.floor(Math.random() * categories.length)];
                             searchInput.value = `Similar to: ${randomCat}`;
-                            
                             const filtered = products.filter(p => p.category === randomCat);
                             renderProducts(filtered, 'product-list');
                             navigateToPage('explore');
                             searchDropdown.classList.add('hidden');
-                            
-                            window.logToBash(`Visual match found: ${randomCat} items`, 'success');
                             showPopupMessage(`Found ${filtered.length} similar items!`);
                         }, 2000);
                     }
                 });
             }
 
-            // Global Click to close dropdowns
+            // Global Clicks
             document.addEventListener('click', (event) => {
                 if (searchDropdown && !searchIcon.contains(event.target) && !searchDropdown.contains(event.target)) {
                     searchDropdown.classList.add('hidden');
@@ -2015,31 +2327,37 @@
                     if (!searchDropdown.classList.contains('hidden')) { searchInput.focus(); }
                 });
             }
+            
+            if (userIcon) {
+                userIcon.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    userDropdown.classList.toggle('hidden');
+                    searchDropdown.classList.add('hidden');
+                });
+            }
 
             if (searchButton) searchButton.addEventListener('click', handleSearch);
             if (searchInput) { searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSearch(); }); }
-
             if (mobileMenuButton) { mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); }); }
             
             document.addEventListener('click', (e) => {
                  if (e.target.closest('.nav-link') || e.target.closest('.nav-link-mobile')) {
                     e.preventDefault();
                     const link = e.target.closest('.nav-link, .nav-link-mobile');
-                    
-                    // Don't intercept inner actions
                     if (e.target.closest('.wishlist-btn')) return;
                     
                     const pageId = link.dataset.page;
                     if (pageId === 'explore') { renderProducts(products, 'product-list'); }
                     
-                    // Purchase Auth Walls
                     if (pageId === 'cart' && !currentUser) {
                         showPopupMessage("Please log in to view your bag.");
+                        switchAuthState('LOGIN');
                         loginModal.classList.remove('hidden');
                         return;
                     }
                     if (pageId === 'checkout' && !currentUser) {
                         showPopupMessage("Please log in to proceed to checkout.");
+                        switchAuthState('LOGIN');
                         loginModal.classList.remove('hidden');
                         return;
                     }
@@ -2048,10 +2366,29 @@
                     if (pageId === 'account') {
                         if (!currentUser) {
                             showPopupMessage("Please log in to view your account.");
+                            switchAuthState('LOGIN');
                             loginModal.classList.remove('hidden');
                             return;
                         } else {
-                            renderAccountPage(); // refresh details
+                            renderAccountPage(); 
+                        }
+                    }
+
+                    if (pageId === 'checkout') {
+                        document.getElementById('fullname').value = currentUser.name || currentUser.email;
+                        document.getElementById('email').value = currentUser.email || '';
+                        
+                        const phoneInput = document.getElementById('phone');
+                        if (currentUser.phone) {
+                            document.getElementById('phone-pref-saved').checked = true;
+                            phoneInput.style.display = 'block';
+                            phoneInput.value = currentUser.phone;
+                            phoneInput.placeholder = "Phone Number (e.g. 024XXXXXXX)";
+                        } else {
+                            document.getElementById('phone-pref-diff').checked = true;
+                            phoneInput.style.display = 'block';
+                            phoneInput.value = '';
+                            phoneInput.placeholder = "Enter New Mobile Number";
                         }
                     }
 
@@ -2076,9 +2413,8 @@
             });
             
             document.addEventListener('click', (e) => {
-                // Intercept Wishlist Heart Clicks
                 if (e.target.closest('.wishlist-btn')) {
-                    e.stopPropagation(); // Stop opening the detail page
+                    e.stopPropagation(); 
                     const btn = e.target.closest('.wishlist-btn');
                     const productId = parseInt(btn.dataset.id);
                     if (!isNaN(productId)) { toggleWishlist(productId); }
@@ -2086,7 +2422,7 @@
                 }
                 
                  if (e.target.closest('.product-card')) {
-                    if (e.target.closest('.add-to-cart-btn')) return; // handled below
+                    if (e.target.closest('.add-to-cart-btn')) return; 
                     const card = e.target.closest('.product-card');
                     const productId = parseInt(card.dataset.productId);
                     if (!isNaN(productId)) { renderProductDetail(productId); }
@@ -2102,16 +2438,18 @@
 
             document.addEventListener('click', (e) => {
                 if (e.target.closest('.add-to-cart-btn')) {
-                    // Purchase Auth Wall
+                    const button = e.target.closest('.add-to-cart-btn');
+                    const productId = parseInt(button.dataset.id);
+                    if (isNaN(productId)) return;
+                    
                     if (!currentUser) {
+                        pendingCartAction = productId; 
                         showPopupMessage("Please log in or sign up to shop.");
+                        switchAuthState('LOGIN');
                         loginModal.classList.remove('hidden');
                         return;
                     }
 
-                    const button = e.target.closest('.add-to-cart-btn');
-                    const productId = parseInt(button.dataset.id);
-                    if (isNaN(productId)) return;
                     const product = products.find(p => p.id === productId);
                     if (!product) return;
                     addToCart(productId);
@@ -2155,7 +2493,28 @@
                         deliveryLocationInput.value = '';
                         currentDeliveryFee = 0;
                     }
-                    updateCart(); // Recalculate Totals
+                    updateCart(); 
+                });
+            });
+
+            // Phone Preference Radio Listeners
+            const phoneRadios = document.querySelectorAll('input[name="phone_pref"]');
+            const phoneInput = document.getElementById('phone');
+
+            phoneRadios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    if (e.target.value === 'saved') {
+                        phoneInput.style.display = 'block';
+                        phoneInput.value = currentUser ? (currentUser.phone || '') : '';
+                        phoneInput.placeholder = "Phone Number (e.g. 024XXXXXXX)";
+                        phoneInput.required = true;
+                    } else if (e.target.value === 'different') {
+                        phoneInput.style.display = 'block';
+                        phoneInput.value = '';
+                        phoneInput.placeholder = "Enter New Mobile Number";
+                        phoneInput.required = true;
+                        phoneInput.focus();
+                    }
                 });
             });
 
@@ -2164,14 +2523,12 @@
                 checkoutForm.addEventListener('submit', (e) => {
                     e.preventDefault();
                     
-                    const phoneInput = document.getElementById('phone').value.trim();
+                    const phoneValue = document.getElementById('phone').value.trim();
                     const phoneError = document.getElementById('phone-error');
                     
-                    // Phone Verification Layer
                     const phoneRegex = /^[+]?[\d\s-]{10,15}$/;
-                    if (!phoneRegex.test(phoneInput)) {
+                    if (!phoneRegex.test(phoneValue)) {
                         phoneError.classList.remove('hidden');
-                        window.logToBash('Validation Failed: Invalid Phone format.', 'error');
                         return;
                     }
                     phoneError.classList.add('hidden');
@@ -2183,8 +2540,9 @@
                     currentDeliveryDetails = {
                         name: document.getElementById('fullname').value,
                         email: document.getElementById('email').value,
-                        phone: phoneInput,
+                        phone: phoneValue,
                         address: finalAddressStr,
+                        paymentPref: document.querySelector('input[name="phone_pref"]:checked').value
                     };
 
                     document.getElementById('confirm-name').textContent = currentDeliveryDetails.name;
@@ -2194,7 +2552,6 @@
                     
                     document.getElementById('checkout-content').classList.add('hidden');
                     document.getElementById('details-confirmation').classList.remove('hidden');
-                    window.logToBash('Phone number verified. Delivery details confirmed locally.', 'info');
                 });
             }
             
@@ -2220,29 +2577,43 @@
                     
                     let nextOrderIdNumber = Math.floor(Math.random() * 900000) + 100000;
                     const orderId = `AMAT-${nextOrderIdNumber}`;
-                    
-                    window.logToBash(`Initiating Paystack Gateway for Order ${orderId}...`, 'warning');
+                    let channels = ['card', 'bank', 'mobile_money'];
 
-                    // Standard Paystack Pop setup (Amounts passed in GHS strictly)
                     let handler = PaystackPop.setup({
                         key: PAYSTACK_PUBLIC_KEY, 
                         email: currentDeliveryDetails.email,
-                        amount: Math.round(totalGH * 100), // convert to pesewas
+                        amount: Math.round(totalGH * 100),
                         currency: 'GHS',
                         ref: orderId,
+                        phone: currentDeliveryDetails.phone,
+                        channels: channels,
                         callback: async function(response){
-                            window.logToBash(`Payment successful! Reference: ${response.reference}`, 'success');
-                            
-                            // Save Order to Current User's Purchase History
                             if (currentUser) {
-                                if(!currentUser.orders) currentUser.orders = [];
-                                currentUser.orders.push({
+                                const newOrder = {
                                     orderId: orderId,
                                     date: new Date().toLocaleDateString(),
                                     items: [...cart],
                                     total: formatPrice(totalGH)
-                                });
-                                localStorage.setItem('ama_thrift_user', JSON.stringify(currentUser));
+                                };
+
+                                if(!currentUser.orders) currentUser.orders = [];
+                                currentUser.orders.push(newOrder);
+
+                                try {
+                                    await addDoc(collection(db, "orders"), {
+                                        ...newOrder,
+                                        uid: currentUser.uid,
+                                        email: currentDeliveryDetails.email,
+                                        timestamp: serverTimestamp(),
+                                        deliveryDetails: currentDeliveryDetails
+                                    });
+
+                                    await updateDoc(doc(db, "users", currentUser.uid), {
+                                        orders: currentUser.orders
+                                    });
+                                } catch (err) {
+                                    window.logToBash(`Error saving order to DB: ${err.message}`, 'error');
+                                }
                             }
                             
                             document.getElementById('details-confirmation').classList.add('hidden');
@@ -2252,24 +2623,36 @@
                         },
                         onClose: function(){
                             showPopupMessage('Payment was cancelled.');
-                            window.logToBash('Paystack window closed by user.', 'warning');
                         }
                     });
 
-                    // Check if Paystack keys are set, if not just skip to success for Demo
                     if (PAYSTACK_PUBLIC_KEY === 'YOUR_PAYSTACK_PUBLIC_KEY') {
                         showPopupMessage('Demo Mode: Paystack Key Missing. Simulating Success...');
-                        setTimeout(() => {
-                            // Save Order to Current User's Purchase History
+                        setTimeout(async () => {
                             if (currentUser) {
-                                if(!currentUser.orders) currentUser.orders = [];
-                                currentUser.orders.push({
+                                const newOrder = {
                                     orderId: orderId,
                                     date: new Date().toLocaleDateString(),
                                     items: [...cart],
                                     total: formatPrice(totalGH)
-                                });
-                                localStorage.setItem('ama_thrift_user', JSON.stringify(currentUser));
+                                };
+
+                                if(!currentUser.orders) currentUser.orders = [];
+                                currentUser.orders.push(newOrder);
+
+                                try {
+                                    await addDoc(collection(db, "orders"), {
+                                        ...newOrder,
+                                        uid: currentUser.uid,
+                                        email: currentDeliveryDetails.email,
+                                        timestamp: serverTimestamp(),
+                                        deliveryDetails: currentDeliveryDetails
+                                    });
+
+                                    await updateDoc(doc(db, "users", currentUser.uid), {
+                                        orders: currentUser.orders
+                                    });
+                                } catch (err) {}
                             }
 
                             document.getElementById('details-confirmation').classList.add('hidden');
@@ -2284,28 +2667,68 @@
             }
             
             // Restored Form Implementations
+            const careerForm = document.getElementById('career-application-form');
             if(careerForm) {
-                careerForm.addEventListener('submit', (e) => {
+                careerForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    const confirmationMsg = document.getElementById('application-confirmation');
-                    confirmationMsg.classList.remove('hidden');
-                    careerForm.reset();
-                    window.scrollTo(0, confirmationMsg.offsetTop - 100);
-                     setTimeout(() => { confirmationMsg.classList.add('hidden'); }, 4000);
+                    const btn = careerForm.querySelector('button[type="submit"]');
+                    btn.textContent = "Submitting...";
+                    btn.disabled = true;
+
+                    try {
+                        await addDoc(collection(db, "applications"), {
+                            jobTitle: document.getElementById('career-job-title-display').value,
+                            name: document.getElementById('career-name').value,
+                            email: document.getElementById('career-email').value,
+                            message: document.getElementById('career-message').value,
+                            timestamp: serverTimestamp()
+                        });
+                        
+                        const confirmationMsg = document.getElementById('application-confirmation');
+                        confirmationMsg.classList.remove('hidden');
+                        careerForm.reset();
+                        window.scrollTo(0, confirmationMsg.offsetTop - 100);
+                        setTimeout(() => { confirmationMsg.classList.add('hidden'); }, 4000);
+                    } catch (error) {
+                        showPopupMessage("Error submitting application.");
+                    } finally {
+                        btn.textContent = "Submit Application";
+                        btn.disabled = false;
+                    }
                 });
             }
 
+            const contactForm = document.getElementById('contact-form');
             if(contactForm) {
-                contactForm.addEventListener('submit', (e) => {
+                contactForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    const confirmationMsg = document.getElementById('contact-confirmation');
-                    confirmationMsg.classList.remove('hidden');
-                    contactForm.reset();
-                    window.scrollTo(0, confirmationMsg.offsetTop - 100);
-                     setTimeout(() => { confirmationMsg.classList.add('hidden'); }, 4000);
+                    const btn = contactForm.querySelector('button[type="submit"]');
+                    btn.textContent = "Sending...";
+                    btn.disabled = true;
+
+                    try {
+                        await addDoc(collection(db, "contacts"), {
+                            name: document.getElementById('contact-name').value,
+                            email: document.getElementById('contact-email').value,
+                            message: document.getElementById('contact-message').value,
+                            timestamp: serverTimestamp()
+                        });
+
+                        const confirmationMsg = document.getElementById('contact-confirmation');
+                        confirmationMsg.classList.remove('hidden');
+                        contactForm.reset();
+                        window.scrollTo(0, confirmationMsg.offsetTop - 100);
+                        setTimeout(() => { confirmationMsg.classList.add('hidden'); }, 4000);
+                    } catch (error) {
+                        showPopupMessage("Error sending message.");
+                    } finally {
+                        btn.textContent = "Send Message";
+                        btn.disabled = false;
+                    }
                 });
             }
 
+            const trackingForm = document.getElementById('tracking-form');
             if (trackingForm) {
                 trackingForm.addEventListener('submit', (e) => {
                     e.preventDefault();
@@ -2317,10 +2740,11 @@
                         return;
                     }
                     container.innerHTML = `<div class="p-4 bg-card rounded-lg text-center text-green-500 font-bold text-sm md:text-base">Searching for Order: ${id}... Database connection required to fetch live status.</div>`;
-                    window.logToBash(`Tracking query initiated for: ${id}`, 'info');
                 });
             }
 
+            const addTestimonialBtn = document.getElementById('add-testimonial-btn');
+            const testimonialFormContainer = document.getElementById('testimonial-form-container');
             if(addTestimonialBtn) {
                 addTestimonialBtn.addEventListener('click', () => {
                     testimonialFormContainer.classList.toggle('hidden');
@@ -2328,20 +2752,39 @@
                 });
             }
 
+            const testimonialForm = document.getElementById('testimonial-form');
             if(testimonialForm) {
                 testimonialForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
+                    const btn = testimonialForm.querySelector('button[type="submit"]');
+                    btn.textContent = "Submitting...";
+                    btn.disabled = true;
+
                     const name = document.getElementById('testimonial-name').value.trim();
                     const comment = document.getElementById('testimonial-comment').value.trim();
+                    
                     if (name && comment) {
-                        testimonials.unshift({name, comment});
-                        renderTestimonials();
-                        testimonialForm.reset();
-                        testimonialFormContainer.classList.add('hidden');
-                        const confirmationMsg = document.getElementById('testimonial-confirmation');
-                        confirmationMsg.classList.remove('hidden');
-                        setTimeout(() => confirmationMsg.classList.add('hidden'), 3000);
-                        window.logToBash(`Review added by ${name}.`, 'success');
+                        try {
+                            await addDoc(collection(db, "testimonials"), {
+                                name: name,
+                                comment: comment,
+                                timestamp: serverTimestamp()
+                            });
+                            
+                            testimonials.unshift({name, comment});
+                            renderTestimonials();
+                            testimonialForm.reset();
+                            testimonialFormContainer.classList.add('hidden');
+                            
+                            const confirmationMsg = document.getElementById('testimonial-confirmation');
+                            confirmationMsg.classList.remove('hidden');
+                            setTimeout(() => confirmationMsg.classList.add('hidden'), 3000);
+                        } catch (error) {
+                            showPopupMessage("Error submitting review.");
+                        } finally {
+                            btn.textContent = "Submit Review";
+                            btn.disabled = false;
+                        }
                     }
                 });
             }
@@ -2350,10 +2793,9 @@
                 getDirectionsBtn.addEventListener('click', () => {
                     const destinationUrl = `https://www.google.com/maps/dir/?api=1&destination=6.088829,-0.276848`;
                     window.open(destinationUrl, '_blank');
-                    window.logToBash('Opening Google Maps navigation...', 'info');
                 });
             }
         });
     </script>
 </body>
-</html>
+</html>4
