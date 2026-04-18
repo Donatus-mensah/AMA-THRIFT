@@ -360,7 +360,7 @@
                 <nav class="hidden md:flex items-center space-x-6 lg:space-x-8 font-semibold text-xs lg:text-sm uppercase tracking-wider">
                     <a href="#home" class="nav-link hover:text-green-500 transition-colors duration-300 active" data-page="home">Home</a>
                     <a href="#categories" class="nav-link hover:text-green-500 transition-colors duration-300" data-page="categories">Categories</a>
-                    <a href="#explore" class="nav-link hover:text-green-500 transition-colors duration-300" data-page="explore">Explore</a>
+                    <a href="#explore" class="nav-link hover:text-green-500 transition-colors duration-300" data-page="explore" data-filter="all">Explore</a>
                     <a href="#locate-us" class="nav-link hover:text-green-500 transition-colors duration-300" data-page="locate-us">Locate Us</a>
                 </nav>
 
@@ -377,12 +377,15 @@
                     </button>
 
                     <!-- User Profile Icon -->
-                    <div class="relative">
-                        <button id="user-icon" class="icon-button transition-colors duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <div class="relative flex items-center">
+                        <button id="user-icon" class="icon-button transition-colors duration-300 flex items-center justify-center">
+                            <!-- SVG for default icon -->
+                            <svg id="navbar-user-svg" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            <!-- Image for profile picture -->
+                            <img id="navbar-user-avatar" src="" alt="Profile" class="w-6 h-6 md:w-7 md:h-7 rounded-full hidden object-cover border border-green-500 shadow-sm">
                         </button>
                         <!-- User Dropdown (Dynamic based on Auth) -->
-                        <div id="user-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-card rounded-lg shadow-lg z-50 py-2 border border-gray-200 dark:border-gray-800">
+                        <div id="user-dropdown" class="hidden absolute right-0 top-full mt-2 w-48 bg-card rounded-lg shadow-lg z-50 py-2 border border-gray-200 dark:border-gray-800">
                             <!-- Injected by JS -->
                         </div>
                     </div>
@@ -426,7 +429,7 @@
             <nav class="flex flex-col space-y-4 text-center text-sm font-semibold uppercase tracking-wider">
                 <a href="#home" class="nav-link-mobile hover:text-green-500 transition-colors duration-300 active" data-page="home">Home</a>
                 <a href="#categories" class="nav-link-mobile hover:text-green-500 transition-colors duration-300" data-page="categories">Categories</a>
-                <a href="#explore" class="nav-link-mobile hover:text-green-500 transition-colors duration-300" data-page="explore">Explore</a>
+                <a href="#explore" class="nav-link-mobile hover:text-green-500 transition-colors duration-300" data-page="explore" data-filter="all">Explore</a>
                 <a href="#locate-us" class="nav-link-mobile hover:text-green-500 transition-colors duration-300" data-page="locate-us">Locate Us</a>
             </nav>
         </div>
@@ -443,8 +446,8 @@
                         <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold logo-font mb-3 md:mb-4 leading-tight tracking-tight">Curating Your Unique Style</h1>
                         <p class="text-sm sm:text-base md:text-lg lg:text-xl mb-6 md:mb-8 font-medium">Discover a world of premium thrift clothing, where every piece tells a unique story.</p>
                         <div class="flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-4 mb-6 md:mb-8">
-                            <a href="#explore" class="hero-explore-btn font-bold py-2 px-6 sm:py-3 sm:px-8 rounded-full text-sm sm:text-base transition-all duration-300 transform hover:scale-105 inline-block nav-link w-full sm:w-auto" data-page="explore">Explore Collection</a>
-                             <a href="#new-arrivals" class="bg-black/90 dark:bg-white/90 text-white dark:text-black font-bold py-2 px-6 sm:py-3 sm:px-8 rounded-full text-sm sm:text-base transition-all duration-300 transform hover:scale-105 inline-block nav-link border border-gray-700 dark:border-gray-300 w-full sm:w-auto" data-page="new-arrivals">Shop New Arrivals</a>
+                            <a href="#explore" class="hero-explore-btn font-bold py-2 px-6 sm:py-3 sm:px-8 rounded-full text-sm sm:text-base transition-all duration-300 transform hover:scale-105 inline-block nav-link w-full sm:w-auto" data-page="explore" data-filter="all">Explore Collection</a>
+                             <a href="#explore" class="bg-black/90 dark:bg-white/90 text-white dark:text-black font-bold py-2 px-6 sm:py-3 sm:px-8 rounded-full text-sm sm:text-base transition-all duration-300 transform hover:scale-105 inline-block nav-link border border-gray-700 dark:border-gray-300 w-full sm:w-auto" data-page="explore" data-filter="new_arrival">Shop New Arrivals</a>
                         </div>
                          <p class="text-xs sm:text-sm italic font-semibold tracking-wide" style="color: var(--hero-subtext-color);">Free delivery on orders within Accra</p>
                     </div>
@@ -456,7 +459,7 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between items-end mb-6 md:mb-10 border-b border-gray-200 dark:border-gray-800 pb-2">
                         <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font">Trending Now <span class="text-brand">🔥</span></h2>
-                        <a href="#explore" class="nav-link text-sm md:text-base text-brand font-semibold hover:underline" data-page="explore">View All</a>
+                        <a href="#explore" class="nav-link text-sm md:text-base text-brand font-semibold hover:underline" data-page="explore" data-filter="trending">View All</a>
                     </div>
                     <div id="trending-product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"></div>
                 </div>
@@ -467,7 +470,7 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between items-end mb-6 md:mb-10 border-b border-gray-200 dark:border-gray-800 pb-2">
                         <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font">Clearance & Deals <span class="text-red-500">🏷️</span></h2>
-                        <a href="#explore" class="nav-link text-sm md:text-base text-brand font-semibold hover:underline" data-page="explore">View All</a>
+                        <a href="#explore" class="nav-link text-sm md:text-base text-brand font-semibold hover:underline" data-page="explore" data-filter="deals">View All</a>
                     </div>
                     <div id="deals-product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"></div>
                 </div>
@@ -576,7 +579,7 @@
         <!-- Explore Page -->
         <div id="explore-page" class="page pt-8 md:pt-16">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12">Our Collection</h2>
+                <h2 id="explore-title" class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12">Our Collection</h2>
                 <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"></div>
             </div>
         </div>
@@ -637,14 +640,6 @@
              </div>
         </div>
         
-        <!-- New Arrivals Page -->
-        <div id="new-arrivals-page" class="page pt-8 md:pt-16">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12">Freshly Handpicked: New Arrivals</h2>
-                <div id="new-arrivals-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"></div>
-            </div>
-        </div>
-
         <!-- My Account Page -->
         <div id="account-page" class="page pt-8 md:pt-16">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 max-w-6xl">
@@ -653,6 +648,16 @@
                     <!-- Profile Settings -->
                     <div class="lg:col-span-1 bg-card p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 h-fit">
                         <h3 class="text-xl font-bold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Profile Settings</h3>
+                        
+                        <!-- Profile Avatar Upload Section -->
+                        <div class="flex justify-center mb-6 mt-4 relative group w-24 h-24 mx-auto">
+                            <img id="profile-avatar-preview" src="https://placehold.co/200x200/1a1a1a/4ade80?text=User" alt="Profile" class="w-24 h-24 rounded-full object-cover border-2 border-green-500 shadow-sm transition-opacity">
+                            <label for="profile-picture-upload" class="absolute inset-0 flex items-center justify-center bg-black/60 text-white rounded-full opacity-0 group-hover:opacity-100 cursor-pointer transition-opacity backdrop-blur-sm">
+                                <span class="text-xs font-bold uppercase tracking-wider">Change</span>
+                            </label>
+                            <input type="file" id="profile-picture-upload" class="hidden" accept="image/*">
+                        </div>
+
                         <form id="profile-form" class="space-y-4">
                             <div>
                                 <label class="text-xs text-muted font-bold uppercase">Name</label>
@@ -798,7 +803,7 @@
                 
                 <div id="order-confirmation" class="hidden text-center bg-green-900/40 backdrop-blur-md border border-green-500 p-6 md:p-10 rounded-2xl shadow-2xl">
                     <h3 class="text-2xl md:text-3xl font-bold logo-font text-green-400 mb-4">Payment Successful! Thank You!</h3>
-                    <p class="text-sm md:text-base text-slate-200 mb-6 max-w-lg mx-auto">Your order has been processed via Paystack successfully. Your Order ID is: <strong id="confirmed-order-id" class="text-green-400 bg-black/50 px-2 py-1 rounded"></strong>. Use this ID to track your shipment.</p>
+                    <p class="text-sm md:text-base text-slate-200 mb-6 max-w-lg mx-auto">Your order has been processed via Paystack successfully. Your Order ID is: <strong id="confirmed-order-id" class="text-green-400 bg-black/50 px-2 py-1 rounded"></strong>. A receipt has been sent to your email and phone.</p>
                     <a href="#account" class="bg-button text-button font-bold py-3 px-8 rounded-full text-sm md:text-base hover:bg-button-hover transition-colors duration-300 nav-link shadow-md inline-block mr-2" data-page="account">View Order Record</a>
                     <a href="#home" class="bg-gray-600 text-white font-bold py-3 px-8 rounded-full text-sm md:text-base hover:bg-gray-500 transition-colors duration-300 nav-link shadow-md inline-block mt-2 sm:mt-0" data-page="home">Continue Shopping</a>
                 </div>
@@ -936,7 +941,13 @@
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold logo-font text-center mb-8 md:mb-12">Privacy Policy</h2>
                     <div class="space-y-6 md:space-y-8 text-sm md:text-base text-muted leading-relaxed">
                         <div><h3 class="text-lg md:text-xl font-semibold logo-font text-brand mb-2">Last Updated: October 2025</h3><p>Ama Thrift and Clothing is committed to protecting your privacy. We use your data strictly to process orders and improve your shopping experience.</p></div>
-                        <div><h3 class="text-xl md:text-2xl font-semibold logo-font text-brand mb-2">Contact Us</h3><p>If you have questions or comments about this Privacy Policy, please contact us at: <a href="mailto:nyaa4266@gmail.com" class="text-brand font-bold hover:underline">nyaa4266@gmail.com</a></p></div>
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-semibold logo-font text-brand mb-2">Contact Us</h3>
+                            <p>If you have questions or comments about this Privacy Policy, please contact us at:<br>
+                            <a href="mailto:adelaideasantewaa446@gmail.com" class="text-brand font-bold hover:underline">adelaideasantewaa446@gmail.com</a><br>
+                            <a href="mailto:donatusernestmensah@gmail.com" class="text-brand font-bold hover:underline">donatusernestmensah@gmail.com</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -963,7 +974,12 @@
                         <h3 class="text-xl md:text-2xl font-semibold logo-font mb-6" style="color: var(--text-color);">Contact Information</h3>
                          <div class="bg-section-muted p-5 rounded-xl shadow-sm border border-gray-200/50 dark:border-gray-700/50"><h4 class="font-bold text-brand text-base md:text-lg flex items-center"><span class="mr-2">📍</span>Address</h4><p class="pl-8 text-sm md:text-base mt-1">OLD ESTATE SSNIT TRAFFIC - Koforidua, Ghana</p></div>
                         <div class="bg-section-muted p-5 rounded-xl shadow-sm border border-gray-200/50 dark:border-gray-700/50"><h4 class="font-bold text-brand text-base md:text-lg flex items-center"><span class="mr-2">📞</span>Phone</h4><p class="pl-8 text-sm md:text-base mt-1">+233 53 445 7430</p></div>
-                        <div class="bg-section-muted p-5 rounded-xl shadow-sm border border-gray-200/50 dark:border-gray-700/50"><h4 class="font-bold text-brand text-base md:text-lg flex items-center"><span class="mr-2">📧</span>Email</h4><p class="pl-8 text-sm md:text-base mt-1"><a href="mailto:nyaa4266@gmail.com" class="hover:underline text-brand font-medium">nyaa4266@gmail.com</a></p></div>
+                        <div class="bg-section-muted p-5 rounded-xl shadow-sm border border-gray-200/50 dark:border-gray-700/50"><h4 class="font-bold text-brand text-base md:text-lg flex items-center"><span class="mr-2">📧</span>Email</h4>
+                            <p class="pl-8 text-sm md:text-base mt-1">
+                                <a href="mailto:adelaideasantewaa446@gmail.com" class="hover:underline text-brand font-medium block">adelaideasantewaa446@gmail.com</a>
+                                <a href="mailto:donatusernestmensah@gmail.com" class="hover:underline text-brand font-medium block mt-1">donatusernestmensah@gmail.com</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -981,7 +997,10 @@
                             <div class="space-y-3 text-sm md:text-base text-muted">
                                 <p class="flex items-start"><span class="text-brand mr-3 mt-1 text-lg">📍</span> <span>OLD ESTATE SSNIT TRAFFIC <br> Koforidua, Ghana</span></p>
                                 <p class="flex items-start"><span class="text-brand mr-3 mt-1 text-lg">📞</span> <span>+233 53 445 7430</span></p>
-                                 <p class="flex items-start"><span class="text-brand mr-3 mt-1 text-lg">📧</span> <a href="mailto:nyaa4266@gmail.com" class="hover:underline text-brand font-medium">nyaa4266@gmail.com</a></p>
+                                 <p class="flex items-start flex-col">
+                                    <span class="flex"><span class="text-brand mr-3 mt-1 text-lg">📧</span> <a href="mailto:adelaideasantewaa446@gmail.com" class="hover:underline text-brand font-medium">adelaideasantewaa446@gmail.com</a></span>
+                                    <span class="flex mt-1 pl-8"><a href="mailto:donatusernestmensah@gmail.com" class="hover:underline text-brand font-medium">donatusernestmensah@gmail.com</a></span>
+                                 </p>
                             </div>
                         </div>
                         <div>
@@ -1015,9 +1034,9 @@
             </div>
             <div>
                 <h3 class="font-bold text-base md:text-lg mb-4 text-brand uppercase tracking-wider">Store</h3>
-                <div class="mb-2 w-fit"><a href="#new-arrivals" class="nav-link inline-block hover:text-green-500 transition-colors duration-300 font-medium" data-page="new-arrivals">New Arrivals</a></div>
+                <div class="mb-2 w-fit"><a href="#new-arrivals" class="nav-link inline-block hover:text-green-500 transition-colors duration-300 font-medium" data-page="explore" data-filter="new_arrival">New Arrivals</a></div>
                 <div class="mb-2 w-fit"><a href="#categories" class="nav-link inline-block hover:text-green-500 transition-colors duration-300 font-medium" data-page="categories">Categories</a></div>
-                <div class="mb-2 w-fit"><a href="#explore" class="nav-link inline-block hover:text-green-500 transition-colors duration-300 font-medium" data-page="explore">Explore</a></div>
+                <div class="mb-2 w-fit"><a href="#explore" class="nav-link inline-block hover:text-green-500 transition-colors duration-300 font-medium" data-page="explore" data-filter="all">Explore</a></div>
             </div>
             <div>
                 <h3 class="font-bold text-base md:text-lg mb-4 text-brand uppercase tracking-wider">Follow Us</h3>
@@ -1123,9 +1142,7 @@
    <script type="module">
         import * as THREE from 'three';
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        // Firestore imports
-        import { getFirestore, collection, getDocs, query, addDoc, setDoc, doc, getDoc, updateDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-        // Official Firebase Authentication imports
+        import { getFirestore, collection, getDocs, query, addDoc, setDoc, doc, getDoc, updateDoc, serverTimestamp, where, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
         import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, OAuthProvider, RecaptchaVerifier, linkWithPhoneNumber, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
         // === BASH TERMINAL LOGIC ===
@@ -1328,6 +1345,9 @@
         // --- SECURE AUTHENTICATION & UI LOGIC ---
         function updateUserUI() {
             const userDropdown = document.getElementById('user-dropdown');
+            const navAvatar = document.getElementById('navbar-user-avatar');
+            const navSvg = document.getElementById('navbar-user-svg');
+            const accountAvatarPreview = document.getElementById('profile-avatar-preview');
             
             if (currentUser) {
                 userDropdown.innerHTML = `
@@ -1338,12 +1358,76 @@
                     <button id="my-account-btn" class="w-full text-left px-4 py-3 text-sm hover:text-green-500 hover:bg-black/5 dark:hover:bg-white/5 font-semibold transition-colors">My Account & Orders</button>
                     <button id="logout-btn" class="w-full text-left px-4 py-3 text-sm hover:text-red-500 hover:bg-red-500/10 font-semibold text-gray-500 transition-colors">Log Out</button>
                 `;
+
+                if (currentUser.photoURL) {
+                    navSvg.classList.add('hidden');
+                    navAvatar.src = currentUser.photoURL;
+                    navAvatar.classList.remove('hidden');
+                    if (accountAvatarPreview) accountAvatarPreview.src = currentUser.photoURL;
+                } else {
+                    navAvatar.classList.add('hidden');
+                    navSvg.classList.remove('hidden');
+                    if (accountAvatarPreview) accountAvatarPreview.src = 'https://placehold.co/200x200/1a1a1a/4ade80?text=User';
+                }
+
             } else {
                 userDropdown.innerHTML = `
                     <button id="mock-login-btn" class="w-full text-left px-4 py-3 text-sm hover:text-green-500 font-semibold">Login / Sign Up</button>
                 `;
+                navAvatar.classList.add('hidden');
+                navSvg.classList.remove('hidden');
+                if (accountAvatarPreview) accountAvatarPreview.src = 'https://placehold.co/200x200/1a1a1a/4ade80?text=User';
             }
         }
+
+        // Profile Picture Upload Handler
+        document.getElementById('profile-picture-upload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const MAX_WIDTH = 200;
+                    const MAX_HEIGHT = 200;
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > height) {
+                        if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; }
+                    } else {
+                        if (height > MAX_HEIGHT) { width *= MAX_HEIGHT / height; height = MAX_HEIGHT; }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    // Compress to base64
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                    document.getElementById('profile-avatar-preview').src = dataUrl;
+
+                    if (currentUser && auth.currentUser) {
+                        updateDoc(doc(db, "users", currentUser.uid), { photoURL: dataUrl })
+                            .then(() => {
+                                currentUser.photoURL = dataUrl;
+                                updateProfile(auth.currentUser, { photoURL: dataUrl });
+                                updateUserUI();
+                                showPopupMessage("Profile picture updated!");
+                            })
+                            .catch(err => {
+                                showPopupMessage("Failed to update picture.");
+                                if(window.logToBash) window.logToBash("Photo update failed: " + err.message, "error");
+                            });
+                    }
+                }
+                img.src = event.target.result;
+            }
+            reader.readAsDataURL(file);
+        });
 
         // Firebase Auth Listener
         onAuthStateChanged(auth, async (user) => {
@@ -1356,6 +1440,7 @@
                         const data = userDoc.data();
                         if (data.phoneVerified) {
                             currentUser = { uid: user.uid, email: user.email, ...data };
+                            if(user.photoURL && !currentUser.photoURL) currentUser.photoURL = user.photoURL; // Sync provider photo
                             updateUserUI();
                             document.getElementById('login-modal').classList.add('hidden');
                             
@@ -1374,6 +1459,7 @@
                             name: user.displayName || 'Thrift Shopper',
                             email: user.email || '',
                             phone: user.phoneNumber || '',
+                            photoURL: user.photoURL || '',
                             phoneVerified: !!user.phoneNumber,
                             orders: []
                         });
@@ -1434,6 +1520,9 @@
             document.getElementById('profile-name').value = currentUser.name || '';
             document.getElementById('profile-email').value = currentUser.email || '';
             document.getElementById('profile-phone').value = currentUser.phone || '';
+            
+            const accountAvatarPreview = document.getElementById('profile-avatar-preview');
+            if(currentUser.photoURL && accountAvatarPreview) accountAvatarPreview.src = currentUser.photoURL;
 
             const orderList = document.getElementById('order-history-list');
             if (!currentUser.orders || currentUser.orders.length === 0) {
@@ -1808,6 +1897,7 @@
 
             const filteredProducts = products.filter(product => (product.name || '').toLowerCase().includes(searchTerm) || (product.category || '').toLowerCase().includes(searchTerm));
             renderProducts(filteredProducts, 'product-list');
+            document.getElementById('explore-title').textContent = `Search Results: "${searchTerm}"`;
             navigateToPage('explore');
             searchDropdown.classList.add('hidden');
             searchInput.value = '';
@@ -1862,6 +1952,7 @@
                     name: name || user.displayName || 'Thrift Shopper',
                     email: user.email || '',
                     phone: user.phoneNumber || '',
+                    photoURL: user.photoURL || '',
                     phoneVerified: !!user.phoneNumber,
                     orders: []
                 });
@@ -1872,6 +1963,7 @@
 
             if (userData.phoneVerified) {
                 currentUser = { uid: user.uid, email: user.email, ...userData };
+                if(user.photoURL && !currentUser.photoURL) currentUser.photoURL = user.photoURL;
                 updateUserUI();
                 document.getElementById('login-modal').classList.add('hidden');
                 
@@ -2082,6 +2174,7 @@
                                 name: name || 'Thrift Shopper',
                                 email: email,
                                 phone: phone,
+                                photoURL: '',
                                 phoneVerified: false,
                                 orders: []
                             });
@@ -2287,6 +2380,7 @@
                             searchInput.value = `Similar to: ${randomCat}`;
                             const filtered = products.filter(p => p.category === randomCat);
                             renderProducts(filtered, 'product-list');
+                            document.getElementById('explore-title').textContent = `Search Results: Similar to ${randomCat}`;
                             navigateToPage('explore');
                             searchDropdown.classList.add('hidden');
                             showPopupMessage(`Found ${filtered.length} similar items!`);
@@ -2355,6 +2449,7 @@
                 if(backToExBtn) {
                     e.preventDefault();
                     renderProducts(products, 'product-list'); 
+                    document.getElementById('explore-title').textContent = "Our Collection";
                     navigateToPage('explore');
                     return;
                 }
@@ -2365,7 +2460,27 @@
                     if (navLink.getAttribute('href') && navLink.getAttribute('href').startsWith('#')) { e.preventDefault(); }
                     
                     const pageId = navLink.dataset.page;
-                    if (pageId === 'explore') { renderProducts(products, 'product-list'); }
+                    
+                    // Filter Logic for Explore Page
+                    if (pageId === 'explore') { 
+                        const filter = navLink.dataset.filter || 'all';
+                        let filteredProducts = products;
+                        let pageTitle = "Our Collection";
+
+                        if (filter === 'trending') {
+                            filteredProducts = products.filter(p => p.trending);
+                            pageTitle = "Trending Now";
+                        } else if (filter === 'deals') {
+                            filteredProducts = products.filter(p => p.originalPrice);
+                            pageTitle = "Clearance & Deals";
+                        } else if (filter === 'new_arrival') {
+                            filteredProducts = products.filter(p => p.new_arrival);
+                            pageTitle = "New Arrivals";
+                        }
+                        
+                        document.getElementById('explore-title').textContent = pageTitle;
+                        renderProducts(filteredProducts, 'product-list'); 
+                    }
                     
                     if (pageId === 'cart' && !currentUser) {
                         showPopupMessage("Please log in to view your bag.");
@@ -2427,6 +2542,7 @@
                     const category = catCard.dataset.category;
                     const filtered = products.filter(p => p.category === category);
                     renderProducts(filtered, 'product-list');
+                    document.getElementById('explore-title').textContent = `Category: ${category}`;
                     navigateToPage('explore');
                     return;
                 }
@@ -2603,13 +2719,15 @@
                                             orderId: orderId,
                                             date: new Date().toLocaleDateString(),
                                             items: [...cart],
-                                            total: formatPrice(totalGH)
+                                            total: formatPrice(totalGH),
+                                            status: 'Processing' // Default tracking status
                                         };
 
                                         if(!currentUser.orders) currentUser.orders = [];
                                         currentUser.orders.push(newOrder);
 
                                         try {
+                                            // Save main order
                                             await addDoc(collection(db, "orders"), {
                                                 ...newOrder,
                                                 uid: currentUser.uid,
@@ -2619,9 +2737,26 @@
                                                 paystackReference: response.reference
                                             });
 
+                                            // Update user document
                                             await updateDoc(doc(db, "users", currentUser.uid), {
                                                 orders: currentUser.orders
                                             });
+
+                                            // Trigger Email Receipt (Using Firebase Trigger Email Extension convention)
+                                            await addDoc(collection(db, "mail"), {
+                                                to: currentDeliveryDetails.email,
+                                                message: {
+                                                    subject: `Ama Thrift - Order Confirmation (${orderId})`,
+                                                    html: `<h3>Thank you for your order!</h3><p>Your order ID is <strong>${orderId}</strong>.</p><p>Total Paid: ${formatPrice(totalGH)}</p><p>You can track your order using your Order ID on our tracking page.</p>`
+                                                }
+                                            });
+
+                                            // Trigger SMS Receipt (Using Firebase Twilio SMS Extension convention)
+                                            await addDoc(collection(db, "messages"), {
+                                                to: currentDeliveryDetails.phone,
+                                                body: `Ama Thrift: Payment successful! Your Order ID is ${orderId}. Total: ${formatPrice(totalGH)}. Track your order on our website.`
+                                            });
+
                                         } catch (err) {
                                             if(window.logToBash) window.logToBash(`Error saving order to DB: ${err.message}`, 'error');
                                         }
@@ -2652,7 +2787,6 @@
                     }
                 });
             }
-            
             // Restored Form Implementations
             const careerForm = document.getElementById('career-application-form');
             if(careerForm) {
