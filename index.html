@@ -166,6 +166,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
+            pointer-events: none;
         }
 
         .glass-effect {
@@ -1268,19 +1269,8 @@
         }
 
         // --- Application State ---
-        let products = [
-             { id: 101, name: "Emerald Silk Evening Dress", category: "Female", price: 150.00, image: "https://tatxyrbbezljpcvubueu.supabase.co/storage/v1/object/public/site/Screenshot%202026-04-17%20161910.png", video: "https://tatxyrbbezljpcvubueu.supabase.co/storage/v1/object/public/site/WhatsApp%20Video%202026-04-17%20at%2012.29.15%20AM.mp4", gallery: ["https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&q=80&w=600"], description: "Elegant emerald green slip dress, perfect for evening events. Features an open back and adjustable straps.", fabric: "100% Silk", size: "M (UK 10)", quality: "Like New", longevity: "True to size", new_arrival: true, trending: true },
-             { id: 102, name: "Floral Summer Sundress", category: "Female", price: 95.00, originalPrice: 120.00, image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&q=80&w=600", video: "https://assets.mixkit.co/videos/preview/mixkit-young-woman-in-a-yellow-dress-dancing-in-a-field-4286-large.mp4", gallery: ["https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1550639525-c97d455acf70?auto=format&fit=crop&q=80&w=600"], description: "Breezy and light floral dress perfect for sunny days. Has hidden side pockets.", fabric: "Cotton Blend", size: "S (UK 8)", quality: "Gently Used", longevity: "Relaxed fit", new_arrival: true },
-             { id: 103, name: "Vintage Oversized Denim Jacket", category: "Unisex", price: 180.00, image: "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&q=80&w=600", video: "https://assets.mixkit.co/videos/preview/mixkit-stylish-man-in-a-denim-jacket-and-sunglasses-4318-large.mp4", gallery: ["https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&q=80&w=600"], description: "Classic 90s retro oversized denim jacket. Essential for layering in any season.", fabric: "100% Heavy Cotton", size: "L", quality: "Vintage Fade", longevity: "Oversized fit", new_arrival: false, trending: true },
-             { id: 104, name: "Kids Denim Overalls", category: "Kids", price: 65.00, originalPrice: 85.00, image: "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&q=80&w=600", video: null, gallery: ["https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&q=80&w=600"], description: "Durable and playful kids overalls with adjustable suspenders.", fabric: "Heavy Cotton Denim", size: "4T", quality: "Good", longevity: "Generous fit", new_arrival: true },
-             { id: 105, name: "Mens Casual Linen Shirt", category: "Male", price: 85.00, image: "https://images.unsplash.com/photo-1596755094514-f87e32f85e23?auto=format&fit=crop&q=80&w=600", video: "https://assets.mixkit.co/videos/preview/mixkit-man-walking-in-a-fashion-suit-1647-large.mp4", gallery: ["https://images.unsplash.com/photo-1596755094514-f87e32f85e23?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&q=80&w=600"], description: "Breathable linen shirt, great for casual outings or beachwear.", fabric: "100% Linen", size: "M", quality: "Excellent", longevity: "Regular fit", new_arrival: false, trending: true },
-             { id: 106, name: "Classic Pleated Trousers", category: "Male", price: 110.00, originalPrice: 140.00, image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=600", video: null, gallery: ["https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=600"], description: "Tailored vintage pleated trousers for a sharp, sophisticated look.", fabric: "Wool Blend", size: "32W 30L", quality: "Like New", longevity: "Tailored fit", new_arrival: false },
-             { id: 107, name: "Boho Chic Midi Dress", category: "Female", price: 130.00, image: "https://images.unsplash.com/photo-1612336307429-8a898d10e223?auto=format&fit=crop&q=80&w=600", video: "https://assets.mixkit.co/videos/preview/mixkit-young-woman-in-a-fashion-photoshoot-39832-large.mp4", gallery: ["https://images.unsplash.com/photo-1612336307429-8a898d10e223?auto=format&fit=crop&q=80&w=600", "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&q=80&w=600"], description: "Gorgeous bohemian midi dress featuring intricate embroidery and bell sleeves.", fabric: "Viscose", size: "L (UK 12)", quality: "Excellent", longevity: "Flowy fit", new_arrival: true, trending: false }
-        ];
-        let testimonials = [
-            {name: "Sarah M.", comment: "Best thrift store in Accra! The quality is amazing."},
-            {name: "John K.", comment: "Found some incredible vintage pieces here."}
-        ];
+        let products = [];
+        let testimonials = [];
         
         let cart = [];
         let wishlist = [];
@@ -1295,9 +1285,12 @@
         let currentAuthState = 'LOGIN'; // 'LOGIN', 'SIGNUP', 'PHONE_VERIFY'
         let confirmationResultObj = null;
 
-        // Helper to format pricing everywhere
+        // Helper to format pricing safely
         function formatPrice(price) {
-            return `GH₵${parseFloat(price).toFixed(2)}`;
+            if (price === null || price === undefined) return `GH₵0.00`;
+            const num = parseFloat(price);
+            if (isNaN(num)) return `GH₵0.00`;
+            return `GH₵${num.toFixed(2)}`;
         }
 
         // --- Theme Logic ---
@@ -1352,7 +1345,7 @@
             }
         }
 
-        // Firebase Auth Listener with STRICT Database Check
+        // Firebase Auth Listener
         onAuthStateChanged(auth, async (user) => {
             if (user) {
                 try {
@@ -1361,26 +1354,22 @@
                     
                     if (userDoc.exists()) {
                         const data = userDoc.data();
-                        // App heavily relies on database verified status, not just auth token
                         if (data.phoneVerified) {
                             currentUser = { uid: user.uid, email: user.email, ...data };
                             updateUserUI();
                             document.getElementById('login-modal').classList.add('hidden');
                             
-                            // Process pending actions
                             if (pendingCartAction) {
                                 addToCart(pendingCartAction);
                                 const p = products.find(prod => prod.id === pendingCartAction);
-                                if(p) showPopupMessage(`${p.name} added to your bag!`);
+                                if(p) showPopupMessage(`${p.name || 'Item'} added to your bag!`);
                                 pendingCartAction = null;
                             }
                         } else {
-                            // User exists but phone is not verified. Force Verification.
                             document.getElementById('verify-phone-number').value = data.phone || '';
                             showPhoneVerificationUI();
                         }
                     } else {
-                        // Edge case: Signed in via Auth but no DB document exists. Initialize and force Verification.
                         await setDoc(userDocRef, {
                             name: user.displayName || 'Thrift Shopper',
                             email: user.email || '',
@@ -1412,7 +1401,7 @@
             } else if (state === 'PHONE_VERIFY') {
                 standardView.classList.add('hidden');
                 verifyView.classList.remove('hidden');
-                initRecaptcha(); // Initialize recaptcha for SMS
+                initRecaptcha(); 
             }
         }
 
@@ -1504,12 +1493,14 @@
 
         function updateWishlistUI() {
             const badge = document.getElementById('wishlist-badge');
-            badge.textContent = wishlist.length;
-            if(wishlist.length > 0) badge.classList.remove('hidden');
-            else badge.classList.add('hidden');
+            if (badge) {
+                badge.textContent = wishlist.length;
+                if(wishlist.length > 0) badge.classList.remove('hidden');
+                else badge.classList.add('hidden');
+            }
             
             document.querySelectorAll(`.wishlist-btn`).forEach(btn => {
-                const id = parseInt(btn.dataset.id);
+                const id = String(btn.dataset.id);
                 if(wishlist.includes(id)) {
                     btn.classList.add('text-red-500', 'fill-current');
                     btn.classList.remove('text-gray-400');
@@ -1539,14 +1530,16 @@
         // --- Helper Functions ---
         function renderProducts(productsToRender, containerId) {
             const productList = document.getElementById(containerId);
-             if (!productList) return;
+            if (!productList) return;
             productList.innerHTML = '';
+            
             if (!productsToRender || productsToRender.length === 0) {
                 productList.innerHTML = `<p class="text-muted text-center col-span-full">No items found.</p>`;
                 return;
             }
+            
             productsToRender.forEach(product => {
-                const isWished = wishlist.includes(product.id) ? 'text-red-500 fill-current' : 'text-gray-400';
+                const isWished = wishlist.includes(String(product.id)) ? 'text-red-500 fill-current' : 'text-gray-400';
                 
                 const badgeHTML = product.originalPrice ? `<span class="absolute top-3 left-3 md:top-4 md:left-4 bg-red-500 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded shadow z-10">SALE</span>` : 
                                   (product.trending ? `<span class="absolute top-3 left-3 md:top-4 md:left-4 bg-amber-500 text-black text-[10px] md:text-xs font-bold px-2 py-1 rounded shadow z-10">TRENDING</span>` : '');
@@ -1557,12 +1550,16 @@
 
                 const mediaHTML = product.video ? `
                     <div class="relative w-full h-[220px] md:h-[260px] mb-3 rounded-lg overflow-hidden group/vid" onmouseenter="const v = this.querySelector('video'); if(v) { const p = v.play(); if(p) p.catch(()=>{}); }" onmouseleave="const v = this.querySelector('video'); if(v) { v.pause(); v.currentTime=0; }">
-                        <img src="${product.image}" alt="${product.name}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover/vid:opacity-0" onerror="this.src='https://placehold.co/300x300/1a1a1a/4ade80?text=Style'">
+                        <img src="${product.image}" alt="Product Image" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover/vid:opacity-0" onerror="this.src='https://placehold.co/300x300/1a1a1a/4ade80?text=Style'">
                         <video src="${product.video}" muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover/vid:opacity-100 transition-opacity duration-500" onerror="this.style.display='none'"></video>
                     </div>
                 ` : `
-                    <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://placehold.co/300x300/1a1a1a/4ade80?text=Style'">
+                    <img src="${product.image}" alt="Product Image" class="product-image" onerror="this.src='https://placehold.co/300x300/1a1a1a/4ade80?text=Style'">
                 `;
+
+                const productNameStr = product.name || 'Untitled Product';
+                const productCatStr = product.category || 'Uncategorized';
+                const productSizeStr = product.size || 'N/A';
 
                 const productCard = `
                     <div class="product-card relative cursor-pointer bg-card rounded-2xl p-4 flex flex-col items-center text-center transform hover:-translate-y-2 transition-all duration-300 shadow-lg border border-gray-200 dark:border-gray-800" data-product-id="${product.id}">
@@ -1573,8 +1570,8 @@
                         </button>
                         
                         ${mediaHTML}
-                        <h3 class="text-base sm:text-lg font-semibold logo-font leading-tight mb-1">${product.name}</h3>
-                        <p class="text-[11px] sm:text-xs text-muted mb-2 font-medium">${product.category} • <span class="border border-green-500/50 rounded px-1.5 ml-1">${product.size}</span></p>
+                        <h3 class="text-base sm:text-lg font-semibold logo-font leading-tight mb-1">${productNameStr}</h3>
+                        <p class="text-[11px] sm:text-xs text-muted mb-2 font-medium">${productCatStr} • <span class="border border-green-500/50 rounded px-1.5 ml-1">${productSizeStr}</span></p>
                         ${priceHTML}
                         <button class="add-to-cart-btn w-full bg-button text-button font-bold py-2 md:py-3 px-4 rounded-full text-sm md:text-base hover:bg-button-hover transition-colors duration-300 shadow-sm" data-id="${product.id}">Add to Bag</button>
                     </div>
@@ -1584,11 +1581,18 @@
         }
         
         function renderProductDetail(productId) {
-            const product = products.find(p => p.id === productId);
+            const product = products.find(p => String(p.id) === String(productId));
             if (!product) { navigateToPage('explore'); return; }
 
+            const productNameStr = product.name || 'Untitled Product';
+            const productCatStr = product.category || 'Uncategorized';
+            const productDescStr = product.description || 'No description available.';
+            const productSizeStr = product.size || 'N/A';
+            const productQualStr = product.quality || 'Pre-loved';
+            const productFabricStr = product.fabric || product.ingredients || 'Mixed Blend';
+
             let galleryHTML = '';
-            const images = product.gallery && product.gallery.length > 0 ? product.gallery : [product.image];
+            const images = product.gallery && product.gallery.length > 0 ? product.gallery : [product.image].filter(Boolean);
             
             if (images.length > 1) {
                 galleryHTML = `<div class="flex gap-2 sm:gap-3 overflow-x-auto py-2 px-1">` + 
@@ -1598,30 +1602,31 @@
 
             document.getElementById('pdp-image-container').innerHTML = `
                 <div class="rounded-2xl overflow-hidden shadow-xl bg-black/5 dark:bg-white/5 border border-gray-200/50 dark:border-gray-800/50">
-                    <img id="pdp-main-image" src="${images[0]}" alt="${product.name}" class="w-full h-auto min-h-[300px] md:min-h-[400px] max-h-[500px] md:max-h-[600px] object-cover transition-opacity duration-300" onerror="this.src='https://placehold.co/600x600/1a1a1a/4ade80?text=Style'" />
+                    <img id="pdp-main-image" src="${images[0] || 'https://placehold.co/600x600/1a1a1a/4ade80?text=Style'}" alt="Product Preview" class="w-full h-auto min-h-[300px] md:min-h-[400px] max-h-[500px] md:max-h-[600px] object-cover transition-opacity duration-300" onerror="this.src='https://placehold.co/600x600/1a1a1a/4ade80?text=Style'" />
                 </div>
                 ${galleryHTML}
             `;
             
-            document.getElementById('pdp-name').textContent = product.name;
-            document.getElementById('pdp-category').textContent = product.category;
+            document.getElementById('pdp-name').textContent = productNameStr;
+            document.getElementById('pdp-category').textContent = productCatStr;
             
             document.getElementById('pdp-price').innerHTML = product.originalPrice ? 
                 `<span class="text-lg md:text-2xl line-through text-gray-500 mr-3 font-medium">${formatPrice(product.originalPrice)}</span>${formatPrice(product.price)}` : 
                 formatPrice(product.price);
                 
-            document.getElementById('pdp-description').textContent = product.description;
-            document.getElementById('pdp-size').textContent = product.size || 'N/A';
-            document.getElementById('pdp-quality').textContent = product.quality || 'Pre-loved';
-            document.getElementById('pdp-fabric').textContent = product.fabric || product.ingredients || 'Mixed Blend';
+            document.getElementById('pdp-description').textContent = productDescStr;
+            document.getElementById('pdp-size').textContent = productSizeStr;
+            document.getElementById('pdp-quality').textContent = productQualStr;
+            document.getElementById('pdp-fabric').textContent = productFabricStr;
             
             document.getElementById('pdp-add-to-cart-btn').dataset.id = product.id;
 
-            const nameWords = product.name.toLowerCase().split(' ').filter(w => w.length > 3);
-            let scoredProducts = products.filter(p => p.id !== product.id).map(p => {
+            // Safe Matching Logic (Prevents crash if a DB product lacks a name)
+            const nameWords = productNameStr.toLowerCase().split(' ').filter(w => w.length > 3);
+            let scoredProducts = products.filter(p => String(p.id) !== String(product.id)).map(p => {
                 let score = 0;
-                if (p.category === product.category) score += 20; 
-                const pNameWords = p.name.toLowerCase();
+                if ((p.category || '') === productCatStr) score += 20; 
+                const pNameWords = (p.name || '').toLowerCase();
                 nameWords.forEach(word => { if (pNameWords.includes(word)) score += 5; });
                 return { ...p, matchScore: score };
             });
@@ -1670,8 +1675,8 @@
                 itemsHtml += `
                     <div class="flex items-center justify-between py-4 border-b last:border-b-0 border-gray-200/50 dark:border-gray-700/50">
                         <div class="flex items-center flex-1">
-                            <img src="${product.image}" alt="${product.name}" class="w-14 h-14 md:w-20 md:h-20 object-cover rounded-lg mr-3 md:mr-4 shadow-sm" onerror="this.src='https://placehold.co/64x64/1a1a1a/4ade80?text=Img'">
-                            <div class="pr-2"><h4 class="font-bold text-sm md:text-lg leading-tight mb-1">${product.name}</h4><p class="text-muted font-medium text-xs md:text-sm">${formatPrice(itemPrice)}</p></div>
+                            <img src="${product.image}" alt="Product" class="w-14 h-14 md:w-20 md:h-20 object-cover rounded-lg mr-3 md:mr-4 shadow-sm" onerror="this.src='https://placehold.co/64x64/1a1a1a/4ade80?text=Img'">
+                            <div class="pr-2"><h4 class="font-bold text-sm md:text-lg leading-tight mb-1">${product.name || 'Item'}</h4><p class="text-muted font-medium text-xs md:text-sm">${formatPrice(itemPrice)}</p></div>
                         </div>
                         <div class="flex items-center space-x-2 md:space-x-4">
                             <div class="flex items-center border rounded-full font-bold bg-white/50 dark:bg-black/50" style="border-color: var(--border-input);">
@@ -1722,7 +1727,7 @@
                 const product = products.find(p => p.id === item.id);
                 if (!product) return;
                 let itemPrice = parseFloat(product.price);
-                itemsHtml += `<div class="flex justify-between items-center text-xs md:text-sm border-b border-gray-200/50 dark:border-gray-800/50 pb-2"><p class="text-muted font-medium">${product.name} <span class="text-green-500 font-bold ml-1 md:ml-2">x${item.quantity}</span></p><p class="font-bold text-sm md:text-base">${formatPrice(itemPrice * item.quantity)}</p></div>`;
+                itemsHtml += `<div class="flex justify-between items-center text-xs md:text-sm border-b border-gray-200/50 dark:border-gray-800/50 pb-2"><p class="text-muted font-medium">${product.name || 'Item'} <span class="text-green-500 font-bold ml-1 md:ml-2">x${item.quantity}</span></p><p class="font-bold text-sm md:text-base">${formatPrice(itemPrice * item.quantity)}</p></div>`;
                  subtotalGH += itemPrice * item.quantity;
             });
              itemsHtml += '</div>';
@@ -1801,7 +1806,7 @@
                 renderRecentSearches();
             }
 
-            const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchTerm) || product.category.toLowerCase().includes(searchTerm));
+            const filteredProducts = products.filter(product => (product.name || '').toLowerCase().includes(searchTerm) || (product.category || '').toLowerCase().includes(searchTerm));
             renderProducts(filteredProducts, 'product-list');
             navigateToPage('explore');
             searchDropdown.classList.add('hidden');
@@ -1811,8 +1816,8 @@
         function startHeroCarousel() {
             const heroCarousel = document.getElementById('hero-carousel');
             if (!products || products.length === 0) return;
-            let heroImages = products.filter(p => p.category === 'Female' || p.category === 'Male').slice(0, 5).map(p => p.image);
-            if(heroImages.length === 0) { heroImages = products.slice(0, 5).map(p => p.image); }
+            let heroImages = products.filter(p => p.category === 'Female' || p.category === 'Male').slice(0, 5).map(p => p.image).filter(Boolean);
+            if(heroImages.length === 0) { heroImages = products.slice(0, 5).map(p => p.image).filter(Boolean); }
             if (!heroCarousel || heroImages.length === 0) return;
             heroCarousel.innerHTML = ''; 
             heroImages.forEach((src, index) => {
@@ -1853,7 +1858,6 @@
             const userDoc = await getDoc(userDocRef);
 
             if (!userDoc.exists()) {
-                // New user - requires saving baseline and verification explicitly
                 await setDoc(userDocRef, {
                     name: name || user.displayName || 'Thrift Shopper',
                     email: user.email || '',
@@ -1867,7 +1871,6 @@
             const userData = updatedDoc.data();
 
             if (userData.phoneVerified) {
-                // Already completely verified via database
                 currentUser = { uid: user.uid, email: user.email, ...userData };
                 updateUserUI();
                 document.getElementById('login-modal').classList.add('hidden');
@@ -1875,11 +1878,10 @@
                 if (pendingCartAction) {
                     addToCart(pendingCartAction);
                     const p = products.find(prod => prod.id === pendingCartAction);
-                    if(p) showPopupMessage(`${p.name} added to your bag!`);
+                    if(p) showPopupMessage(`${p.name || 'Item'} added to your bag!`);
                     pendingCartAction = null;
                 }
             } else {
-                // Needs phone verification setup, forcing user to input number via UI
                 document.getElementById('verify-phone-number').value = userData.phone || '';
                 showPhoneVerificationUI();
             }
@@ -1896,19 +1898,19 @@
                         const productsRef = collection(db, 'products');
                         const productsQuery = query(productsRef);
                         const productsSnapshot = await getDocs(productsQuery);
-                        const fetchedProducts = productsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                        products = productsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                         
                         const testimonialsRef = collection(db, 'testimonials');
                         const testimonialsQuery = query(testimonialsRef);
                         const testimonialsSnapshot = await getDocs(testimonialsQuery);
-                        const fetchedTestimonials = testimonialsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
-                        if (fetchedProducts.length > 0) products = fetchedProducts;
-                        if (fetchedTestimonials.length > 0) testimonials = fetchedTestimonials;
-                    } catch(e) { window.logToBash('Firestore Sync Failed. Using local offline cache.', 'error'); }
+                        testimonials = testimonialsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    } catch(e) { window.logToBash('Firestore Sync Failed. Check rules or connection.', 'error'); }
                 }
                 
-                renderProducts(products.filter(p => p.new_arrival).slice(0, 4) || products.slice(0, 4), 'featured-product-list');
+                let featured = products.filter(p => p.new_arrival).slice(0, 4);
+                if (featured.length === 0) featured = products.slice(0, 4);
+                renderProducts(featured, 'featured-product-list');
+                
                 renderProducts(products.filter(p => p.trending), 'trending-product-list');
                 renderProducts(products.filter(p => p.originalPrice), 'deals-product-list');
                 renderProducts(products, 'product-list');
@@ -2029,11 +2031,10 @@
             const confirmOtpBtn = document.getElementById('confirm-otp-btn');
             const phoneInputGroup = document.getElementById('phone-input-group');
             const otpInputGroup = document.getElementById('otp-input-group');
-            const skipOtpDevBtn = document.getElementById('skip-otp-dev-btn'); // Fallback dev tool
+            const skipOtpDevBtn = document.getElementById('skip-otp-dev-btn');
             
             let isSignUpMode = false;
 
-            // Auth Toggle
             if (authToggleBtn) {
                 authToggleBtn.addEventListener('click', () => {
                     isSignUpMode = !isSignUpMode;
@@ -2059,7 +2060,6 @@
                 });
             }
 
-            // Standard Email Auth Submission
             if (authForm) {
                 authForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
@@ -2077,7 +2077,6 @@
                             
                             userCredential = await createUserWithEmailAndPassword(auth, email, password);
                             
-                            // Initialize user in DB with unverified phone
                             const userDocRef = doc(db, "users", userCredential.user.uid);
                             await setDoc(userDocRef, {
                                 name: name || 'Thrift Shopper',
@@ -2089,10 +2088,8 @@
                             
                             window.logToBash(`Registered standard user: ${email}`, 'success');
                             
-                            // Immediately switch to Phone Verify step
                             document.getElementById('verify-phone-number').value = phone;
                             showPhoneVerificationUI();
-                            
                         } else {
                             userCredential = await signInWithEmailAndPassword(auth, email, password);
                             await processLoginSuccess(userCredential.user);
@@ -2108,7 +2105,6 @@
                 });
             }
 
-            // Google Authentication
             if (googleAuthBtn) {
                 googleAuthBtn.addEventListener('click', async () => {
                     const provider = new GoogleAuthProvider();
@@ -2123,7 +2119,6 @@
                 });
             }
 
-            // Yahoo Authentication
             if (yahooAuthBtn) {
                 yahooAuthBtn.addEventListener('click', async () => {
                     const provider = new OAuthProvider('yahoo.com');
@@ -2138,7 +2133,6 @@
                 });
             }
 
-            // Send OTP (Firebase Link with Phone for SMS Validation)
             if (sendOtpBtn) {
                 sendOtpBtn.addEventListener('click', async () => {
                     const phone = document.getElementById('verify-phone-number').value.trim();
@@ -2148,7 +2142,6 @@
                     sendOtpBtn.disabled = true;
                     
                     try {
-                        // Links phone number to the newly signed-up (Email or Social) session
                         confirmationResultObj = await linkWithPhoneNumber(auth.currentUser, phone, window.recaptchaVerifier);
                         window.logToBash(`SMS OTP sent to ${phone}`, 'success');
                         phoneInputGroup.classList.add('hidden');
@@ -2159,7 +2152,7 @@
                             showPopupMessage("This phone number is already registered to another account.");
                         } else if(error.code === 'auth/billing-not-enabled' || error.message.includes('domain')) {
                             showPopupMessage("Dev Environment: Using mock verification fallback.");
-                            skipOtpDevBtn.classList.remove('hidden'); // allow dev bypass
+                            skipOtpDevBtn.classList.remove('hidden'); 
                         } else {
                             showPopupMessage("Failed to send OTP. Check number format (+233...).");
                             if(window.recaptchaVerifier) {
@@ -2175,7 +2168,6 @@
                 });
             }
 
-            // Confirm OTP
             if (confirmOtpBtn) {
                 confirmOtpBtn.addEventListener('click', async () => {
                     const code = document.getElementById('verify-otp-code').value.trim();
@@ -2189,7 +2181,6 @@
                             await confirmationResultObj.confirm(code);
                         }
                         
-                        // Successfully linked! Save verified status purely to database security standard.
                         const phone = document.getElementById('verify-phone-number').value.trim();
                         await updateDoc(doc(db, "users", auth.currentUser.uid), {
                             phone: phone,
@@ -2199,7 +2190,6 @@
                         window.logToBash(`Phone verified completely.`, 'success');
                         showPopupMessage("Account fully verified!");
                         
-                        // Proceed to app
                         const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
                         currentUser = { uid: auth.currentUser.uid, email: auth.currentUser.email, ...userDoc.data() };
                         updateUserUI();
@@ -2208,7 +2198,7 @@
                         if (pendingCartAction) {
                             addToCart(pendingCartAction);
                             const p = products.find(prod => prod.id === pendingCartAction);
-                            if(p) showPopupMessage(`${p.name} added to your bag!`);
+                            if(p) showPopupMessage(`${p.name || 'Item'} added to your bag!`);
                             pendingCartAction = null;
                         }
 
@@ -2222,7 +2212,6 @@
                 });
             }
 
-            // Mock Verification Bypass (Fallback for dev env lacking billing)
             if (skipOtpDevBtn) {
                 skipOtpDevBtn.addEventListener('click', async () => {
                     const phone = document.getElementById('verify-phone-number').value.trim();
@@ -2241,7 +2230,6 @@
                 });
             }
 
-            // Profile updates
             const profileForm = document.getElementById('profile-form');
             if (profileForm) {
                 profileForm.addEventListener('submit', async (e) => {
@@ -2268,11 +2256,9 @@
                 });
             }
 
-            // Dismiss Login / Force Flow Logic
             if (loginModal) {
                 loginModal.addEventListener('click', async (e) => {
                     if(e.target === loginModal || e.target.id === 'close-login-modal') {
-                        // DB Dependency Check: If they close while verifying, log them out to force flow compliance later
                         if (currentAuthState === 'PHONE_VERIFY' && auth.currentUser) {
                             await signOut(auth);
                             window.logToBash("Verification aborted. User signed out for security.", 'warning');
@@ -2309,44 +2295,76 @@
                 });
             }
 
-            // Global Clicks
-            document.addEventListener('click', (event) => {
-                if (searchDropdown && !searchIcon.contains(event.target) && !searchDropdown.contains(event.target)) {
-                    searchDropdown.classList.add('hidden');
-                }
-                if (userDropdown && !userIcon.contains(event.target) && !userDropdown.contains(event.target)) {
-                    userDropdown.classList.add('hidden');
-                }
-            });
-
-            if (searchIcon) {
-                searchIcon.addEventListener('click', (event) => {
-                    event.stopPropagation();
-                    searchDropdown.classList.toggle('hidden');
-                    userDropdown.classList.add('hidden');
-                    if (!searchDropdown.classList.contains('hidden')) { searchInput.focus(); }
-                });
-            }
-            
-            if (userIcon) {
-                userIcon.addEventListener('click', (event) => {
-                    event.stopPropagation();
-                    userDropdown.classList.toggle('hidden');
-                    searchDropdown.classList.add('hidden');
-                });
-            }
-
-            if (searchButton) searchButton.addEventListener('click', handleSearch);
-            if (searchInput) { searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSearch(); }); }
-            if (mobileMenuButton) { mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); }); }
-            
+            // *** GLOBAL CENTRALIZED CLICK HANDLER *** // Ensures actions don't interfere with each other or throw silent background errors.
             document.addEventListener('click', (e) => {
-                 if (e.target.closest('.nav-link') || e.target.closest('.nav-link-mobile')) {
+                
+                // --- Top Bar Interactions ---
+                if (searchDropdown && !searchIcon.contains(e.target) && !searchDropdown.contains(e.target)) {
+                    searchDropdown.classList.add('hidden');
+                }
+                if (userDropdown && !userIcon.contains(e.target) && !userDropdown.contains(e.target)) {
+                    userDropdown.classList.add('hidden');
+                }
+
+                // --- 1. Wishlist Button Priority ---
+                const wishlistBtn = e.target.closest('.wishlist-btn');
+                if (wishlistBtn) {
                     e.preventDefault();
-                    const link = e.target.closest('.nav-link, .nav-link-mobile');
-                    if (e.target.closest('.wishlist-btn')) return;
+                    e.stopPropagation();
+                    const productId = String(wishlistBtn.dataset.id);
+                    if (productId && productId !== "undefined") { toggleWishlist(productId); }
+                    return;
+                }
+
+                // --- 2. Add to Cart Priority ---
+                const cartBtn = e.target.closest('.add-to-cart-btn');
+                if (cartBtn) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const productId = String(cartBtn.dataset.id);
+                    if (!productId || productId === "undefined") return;
                     
-                    const pageId = link.dataset.page;
+                    if (!currentUser) {
+                        pendingCartAction = productId; 
+                        showPopupMessage("Please log in or sign up to shop.");
+                        switchAuthState('LOGIN');
+                        if (loginModal) loginModal.classList.remove('hidden');
+                        return;
+                    }
+
+                    const product = products.find(p => p.id === productId);
+                    if (!product) return;
+                    addToCart(productId);
+                    cartBtn.innerHTML = `Added ✓`;
+                    setTimeout(() => { cartBtn.innerHTML = 'Add to Bag'; }, 1500);
+                    showPopupMessage(`${product.name || 'Item'} added to your bag!`);
+                    return;
+                }
+
+                // --- 3. View Product Card Details ---
+                const productCard = e.target.closest('.product-card');
+                if (productCard) {
+                    e.preventDefault();
+                    const productId = String(productCard.dataset.productId);
+                    if (productId && productId !== "undefined") { renderProductDetail(productId); }
+                    return;
+                }
+                
+                // --- 4. Back To Explore From Detail ---
+                const backToExBtn = e.target.closest('#back-to-explore-btn');
+                if(backToExBtn) {
+                    e.preventDefault();
+                    renderProducts(products, 'product-list'); 
+                    navigateToPage('explore');
+                    return;
+                }
+
+                // --- 5. Navigation Links & Categories ---
+                const navLink = e.target.closest('.nav-link') || e.target.closest('.nav-link-mobile');
+                if (navLink) {
+                    if (navLink.getAttribute('href') && navLink.getAttribute('href').startsWith('#')) { e.preventDefault(); }
+                    
+                    const pageId = navLink.dataset.page;
                     if (pageId === 'explore') { renderProducts(products, 'product-list'); }
                     
                     if (pageId === 'cart' && !currentUser) {
@@ -2393,88 +2411,67 @@
                     }
 
                     if (pageId === 'application') {
-                        const jobTitle = link.dataset.jobTitle || 'General Application';
+                        const jobTitle = navLink.dataset.jobTitle || 'General Application';
                         const titleInput = document.getElementById('career-job-title-display');
                         if (titleInput) titleInput.value = jobTitle;
                     }
                     
                     navigateToPage(pageId);
                     if (mobileMenu && !mobileMenu.classList.contains('hidden')) { mobileMenu.classList.add('hidden'); }
-                 }
-            });
+                    return;
+                }
 
-            document.querySelectorAll('.category-card').forEach(card => {
-                card.addEventListener('click', (e) => {
-                    const category = e.currentTarget.dataset.category;
+                // --- 6. Category Box Navigation ---
+                const catCard = e.target.closest('.category-card');
+                if (catCard) {
+                    const category = catCard.dataset.category;
                     const filtered = products.filter(p => p.category === category);
                     renderProducts(filtered, 'product-list');
                     navigateToPage('explore');
-                });
-            });
-            
-            document.addEventListener('click', (e) => {
-                if (e.target.closest('.wishlist-btn')) {
-                    e.stopPropagation(); 
-                    const btn = e.target.closest('.wishlist-btn');
-                    const productId = parseInt(btn.dataset.id);
-                    if (!isNaN(productId)) { toggleWishlist(productId); }
                     return;
                 }
-                
-                 if (e.target.closest('.product-card')) {
-                    if (e.target.closest('.add-to-cart-btn')) return; 
-                    const card = e.target.closest('.product-card');
-                    const productId = parseInt(card.dataset.productId);
-                    if (!isNaN(productId)) { renderProductDetail(productId); }
-                 }
-            });
-            
-            if(backToExploreBtn) {
-                backToExploreBtn.addEventListener('click', (e) => {
-                    renderProducts(products, 'product-list'); 
-                    navigateToPage('explore');
-                });
-            }
 
-            document.addEventListener('click', (e) => {
-                if (e.target.closest('.add-to-cart-btn')) {
-                    const button = e.target.closest('.add-to-cart-btn');
-                    const productId = parseInt(button.dataset.id);
-                    if (isNaN(productId)) return;
-                    
-                    if (!currentUser) {
-                        pendingCartAction = productId; 
-                        showPopupMessage("Please log in or sign up to shop.");
-                        switchAuthState('LOGIN');
-                        loginModal.classList.remove('hidden');
-                        return;
-                    }
-
-                    const product = products.find(p => p.id === productId);
-                    if (!product) return;
-                    addToCart(productId);
-                    button.innerHTML = `Added ✓`;
-                    setTimeout(() => { button.innerHTML = 'Add to Bag'; }, 1500);
-                    showPopupMessage(`${product.name} added to your bag!`);
+                // --- 7. Cart Quantity Handlers ---
+                const qtyChangeBtn = e.target.closest('.quantity-change-btn');
+                if (qtyChangeBtn) {
+                    const productId = String(qtyChangeBtn.dataset.id);
+                    const change = parseInt(qtyChangeBtn.dataset.change);
+                    handleQuantityChange(productId, change);
+                    return;
                 }
-                if (e.target.closest('#empty-cart-btn')) { emptyCart(); }
+                const removeCartBtn = e.target.closest('.remove-from-cart-btn');
+                if (removeCartBtn) {
+                    const productId = String(removeCartBtn.dataset.id);
+                    removeFromCart(productId);
+                    return;
+                }
+                const emptyCartBtn = e.target.closest('#empty-cart-btn');
+                if (emptyCartBtn) {
+                    emptyCart();
+                    return;
+                }
             });
 
-            const cartItemsEl = document.getElementById('cart-items');
-            if (cartItemsEl) {
-                cartItemsEl.addEventListener('click', (e) => {
-                    if (e.target.closest('.quantity-change-btn')) {
-                        const btn = e.target.closest('.quantity-change-btn');
-                        const productId = parseInt(btn.dataset.id);
-                        const change = parseInt(btn.dataset.change);
-                        handleQuantityChange(productId, change);
-                    }
-                    if (e.target.closest('.remove-from-cart-btn')) {
-                        const productId = parseInt(e.target.closest('.remove-from-cart-btn').dataset.id);
-                        removeFromCart(productId);
-                    }
+            if (searchIcon) {
+                searchIcon.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    searchDropdown.classList.toggle('hidden');
+                    userDropdown.classList.add('hidden');
+                    if (!searchDropdown.classList.contains('hidden')) { searchInput.focus(); }
                 });
             }
+            
+            if (userIcon) {
+                userIcon.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    userDropdown.classList.toggle('hidden');
+                    searchDropdown.classList.add('hidden');
+                });
+            }
+
+            if (searchButton) searchButton.addEventListener('click', handleSearch);
+            if (searchInput) { searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSearch(); }); }
+            if (mobileMenuButton) { mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); }); }
             
             // Delivery Radio Listeners
             const deliveryRadios = document.querySelectorAll('input[name="delivery_zone"]');
