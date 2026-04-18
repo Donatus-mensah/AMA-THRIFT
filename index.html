@@ -2566,7 +2566,13 @@
             // Paystack Payment integration
             const confirmOrderBtn = document.getElementById('confirm-order-btn');
             if (confirmOrderBtn) {
-                confirmOrderBtn.addEventListener('click', () => {
+                confirmOrderBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    const originalContent = confirmOrderBtn.innerHTML;
+                    confirmOrderBtn.innerHTML = 'Connecting...';
+                    confirmOrderBtn.disabled = true;
+
                     let subtotalGH = 0;
                     cart.forEach(item => {
                         const product = products.find(p => p.id === item.id);
@@ -2575,57 +2581,78 @@
                     const taxGH = subtotalGH * 0.01;
                     const totalGH = subtotalGH + taxGH + currentDeliveryFee;
                     
+                    if (totalGH <= 0) {
+                        showPopupMessage('Your bag is empty!');
+                        confirmOrderBtn.innerHTML = originalContent;
+                        confirmOrderBtn.disabled = false;
+                        return;
+                    }
+                    
                     let nextOrderIdNumber = Math.floor(Math.random() * 900000) + 100000;
                     const orderId = `AMAT-${nextOrderIdNumber}`;
 
-                    let handler = PaystackPop.setup({
-                        key: PAYSTACK_PUBLIC_KEY, 
-                        email: currentDeliveryDetails.email,
-                        amount: Math.round(totalGH * 100),
-                        currency: 'GHS',
-                        ref: orderId,
-                        phone: currentDeliveryDetails.phone,
-                        callback: async function(response){
-                            if (currentUser) {
-                                const newOrder = {
-                                    orderId: orderId,
-                                    date: new Date().toLocaleDateString(),
-                                    items: [...cart],
-                                    total: formatPrice(totalGH)
-                                };
+                    try {
+                        let handler = PaystackPop.setup({
+                            key: PAYSTACK_PUBLIC_KEY, 
+                            email: currentDeliveryDetails.email,
+                            amount: Math.round(totalGH * 100),
+                            currency: 'GHS',
+                            ref: orderId,
+                            channels: ['card', 'mobile_money'],
+                            callback: function(response){
+                                (async function() {
+                                    if (currentUser) {
+                                        const newOrder = {
+                                            orderId: orderId,
+                                            date: new Date().toLocaleDateString(),
+                                            items: [...cart],
+                                            total: formatPrice(totalGH)
+                                        };
 
-                                if(!currentUser.orders) currentUser.orders = [];
-                                currentUser.orders.push(newOrder);
+                                        if(!currentUser.orders) currentUser.orders = [];
+                                        currentUser.orders.push(newOrder);
 
-                                try {
-                                    await addDoc(collection(db, "orders"), {
-                                        ...newOrder,
-                                        uid: currentUser.uid,
-                                        email: currentDeliveryDetails.email,
-                                        timestamp: serverTimestamp(),
-                                        deliveryDetails: currentDeliveryDetails,
-                                        paystackReference: response.reference
-                                    });
+                                        try {
+                                            await addDoc(collection(db, "orders"), {
+                                                ...newOrder,
+                                                uid: currentUser.uid,
+                                                email: currentDeliveryDetails.email,
+                                                timestamp: serverTimestamp(),
+                                                deliveryDetails: currentDeliveryDetails,
+                                                paystackReference: response.reference
+                                            });
 
-                                    await updateDoc(doc(db, "users", currentUser.uid), {
-                                        orders: currentUser.orders
-                                    });
-                                } catch (err) {
-                                    window.logToBash(`Error saving order to DB: ${err.message}`, 'error');
-                                }
+                                            await updateDoc(doc(db, "users", currentUser.uid), {
+                                                orders: currentUser.orders
+                                            });
+                                        } catch (err) {
+                                            if(window.logToBash) window.logToBash(`Error saving order to DB: ${err.message}`, 'error');
+                                        }
+                                    }
+                                    
+                                    confirmOrderBtn.innerHTML = originalContent;
+                                    confirmOrderBtn.disabled = false;
+
+                                    document.getElementById('details-confirmation').classList.add('hidden');
+                                    document.getElementById('order-confirmation').classList.remove('hidden');
+                                    document.getElementById('confirmed-order-id').textContent = orderId;
+                                    emptyCart();
+                                })();
+                            },
+                            onClose: function(){
+                                showPopupMessage('Payment was cancelled.');
+                                confirmOrderBtn.innerHTML = originalContent;
+                                confirmOrderBtn.disabled = false;
                             }
-                            
-                            document.getElementById('details-confirmation').classList.add('hidden');
-                            document.getElementById('order-confirmation').classList.remove('hidden');
-                            document.getElementById('confirmed-order-id').textContent = orderId;
-                            emptyCart();
-                        },
-                        onClose: function(){
-                            showPopupMessage('Payment was cancelled.');
-                        }
-                    });
+                        });
 
-                    handler.openIframe();
+                        handler.openIframe();
+                    } catch (error) {
+                        showPopupMessage('Payment gateway error. Please try again.');
+                        if(window.logToBash) window.logToBash('Paystack error: ' + error.message, 'error');
+                        confirmOrderBtn.innerHTML = originalContent;
+                        confirmOrderBtn.disabled = false;
+                    }
                 });
             }
             
