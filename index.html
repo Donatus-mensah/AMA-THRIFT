@@ -1008,7 +1008,7 @@
                         </div>
                     </div>
                     <div class="h-64 sm:h-96 lg:h-full w-full rounded-xl overflow-hidden border-2 border-green-500/30 shadow-inner">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!m12!1m3!1d480.06761737989615!2d-0.2768482514723241!3d6.088829161661174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf4177e5643815%3A0x673dd6b90e838488!2sECPL%20Koforidua%20Retail!5e0!3m2!1sen!2sgh!4v1761069061683!5m2!1sen!2sgh" class="w-full h-full min-h-[300px]" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://maps.google.com/maps?q=6.088829,-0.276848&t=&z=16&ie=UTF8&iwloc=&output=embed" class="w-full h-full min-h-[300px]" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
@@ -1689,10 +1689,19 @@
                 `</div>`;
             }
 
-            document.getElementById('pdp-image-container').innerHTML = `
+            const mediaHTML = product.video ? `
+                <div class="relative w-full rounded-2xl overflow-hidden shadow-xl bg-black/5 dark:bg-white/5 border border-gray-200/50 dark:border-gray-800/50 group/vid" onmouseenter="const v = this.querySelector('video'); if(v) { const p = v.play(); if(p) p.catch(()=>{}); }" onmouseleave="const v = this.querySelector('video'); if(v) { v.pause(); v.currentTime=0; }">
+                    <img id="pdp-main-image" src="${images[0] || 'https://placehold.co/600x600/1a1a1a/4ade80?text=Style'}" alt="Product Preview" class="w-full h-auto min-h-[300px] md:min-h-[400px] max-h-[500px] md:max-h-[600px] object-cover transition-opacity duration-500 group-hover/vid:opacity-0" onerror="this.src='https://placehold.co/600x600/1a1a1a/4ade80?text=Style'" />
+                    <video src="${product.video}" muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover/vid:opacity-100 transition-opacity duration-500" onerror="this.style.display='none'"></video>
+                </div>
+            ` : `
                 <div class="rounded-2xl overflow-hidden shadow-xl bg-black/5 dark:bg-white/5 border border-gray-200/50 dark:border-gray-800/50">
                     <img id="pdp-main-image" src="${images[0] || 'https://placehold.co/600x600/1a1a1a/4ade80?text=Style'}" alt="Product Preview" class="w-full h-auto min-h-[300px] md:min-h-[400px] max-h-[500px] md:max-h-[600px] object-cover transition-opacity duration-300" onerror="this.src='https://placehold.co/600x600/1a1a1a/4ade80?text=Style'" />
                 </div>
+            `;
+
+            document.getElementById('pdp-image-container').innerHTML = `
+                ${mediaHTML}
                 ${galleryHTML}
             `;
             
