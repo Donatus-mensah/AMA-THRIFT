@@ -2577,7 +2577,6 @@
                     
                     let nextOrderIdNumber = Math.floor(Math.random() * 900000) + 100000;
                     const orderId = `AMAT-${nextOrderIdNumber}`;
-                    let channels = ['card', 'bank', 'mobile_money'];
 
                     let handler = PaystackPop.setup({
                         key: PAYSTACK_PUBLIC_KEY, 
@@ -2586,7 +2585,6 @@
                         currency: 'GHS',
                         ref: orderId,
                         phone: currentDeliveryDetails.phone,
-                        channels: channels,
                         callback: async function(response){
                             if (currentUser) {
                                 const newOrder = {
@@ -2605,7 +2603,8 @@
                                         uid: currentUser.uid,
                                         email: currentDeliveryDetails.email,
                                         timestamp: serverTimestamp(),
-                                        deliveryDetails: currentDeliveryDetails
+                                        deliveryDetails: currentDeliveryDetails,
+                                        paystackReference: response.reference
                                     });
 
                                     await updateDoc(doc(db, "users", currentUser.uid), {
@@ -2626,43 +2625,7 @@
                         }
                     });
 
-                    if (PAYSTACK_PUBLIC_KEY === 'YOUR_PAYSTACK_PUBLIC_KEY') {
-                        showPopupMessage('Demo Mode: Paystack Key Missing. Simulating Success...');
-                        setTimeout(async () => {
-                            if (currentUser) {
-                                const newOrder = {
-                                    orderId: orderId,
-                                    date: new Date().toLocaleDateString(),
-                                    items: [...cart],
-                                    total: formatPrice(totalGH)
-                                };
-
-                                if(!currentUser.orders) currentUser.orders = [];
-                                currentUser.orders.push(newOrder);
-
-                                try {
-                                    await addDoc(collection(db, "orders"), {
-                                        ...newOrder,
-                                        uid: currentUser.uid,
-                                        email: currentDeliveryDetails.email,
-                                        timestamp: serverTimestamp(),
-                                        deliveryDetails: currentDeliveryDetails
-                                    });
-
-                                    await updateDoc(doc(db, "users", currentUser.uid), {
-                                        orders: currentUser.orders
-                                    });
-                                } catch (err) {}
-                            }
-
-                            document.getElementById('details-confirmation').classList.add('hidden');
-                            document.getElementById('order-confirmation').classList.remove('hidden');
-                            document.getElementById('confirmed-order-id').textContent = orderId;
-                            emptyCart();
-                        }, 2000);
-                    } else {
-                        handler.openIframe();
-                    }
+                    handler.openIframe();
                 });
             }
             
@@ -2798,4 +2761,4 @@
         });
     </script>
 </body>
-</html>4
+</html>
